@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Size } from '../types/product';
+import { Size } from '@/types/product';
 import { cn } from '@/lib/utils';
 
 interface SizeSelectorProps {
