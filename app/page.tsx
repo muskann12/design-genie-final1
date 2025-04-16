@@ -7,7 +7,7 @@ import ShopBanner from './components/colage'
 
 const page = () => {
   return (
-    <div className='bg-[#001534]'>
+    <div className='bg-gray-200'>
       <HeroSection />
       <div className='mt-[]'>
       <ProductSlider/>

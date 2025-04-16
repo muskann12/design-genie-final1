@@ -21,7 +21,7 @@ interface Product {
 const products: Product[] = [
   { 
     name: "Classic Baseball Cap", 
-    image: "/images/cap1.png", 
+    image: "/images/cap1.jpg", 
     price: 1200, 
     rating: 4,
     description: "Premium quality baseball cap with adjustable strap. Perfect for casual outings and sunny days.",
@@ -30,7 +30,7 @@ const products: Product[] = [
   },
   { 
     name: "Snapback Hat", 
-    image: "/images/cap2.png", 
+    image: "/images/cap2.jpg", 
     price: 1500, 
     rating: 4,
     description: "Stylish snapback hat with flat brim. Ideal for streetwear fashion.",
@@ -39,7 +39,7 @@ const products: Product[] = [
   },
   { 
     name: "Bucket Hat", 
-    image: "/images/cap3.png", 
+    image: "/images/cap3.jpg", 
     price: 1300, 
     rating: 4,
     description: "Trendy bucket hat with a relaxed fit. Made from breathable fabric.",
@@ -48,7 +48,7 @@ const products: Product[] = [
   },
   { 
     name: "Dad Hat", 
-    image: "/images/cap4.png", 
+    image: "/images/cap4.jpg", 
     price: 1100, 
     rating: 5,
     description: "Classic dad hat with curved brim. Soft and comfortable for all-day wear.",
@@ -57,7 +57,7 @@ const products: Product[] = [
   },
   { 
     name: "Trucker Cap", 
-    image: "/images/cap5.png", 
+    image: "/images/cap5.jpg", 
     price: 1400, 
     rating: 4,
     description: "Vintage-style trucker cap with mesh back. Great for outdoor activities.",
@@ -66,7 +66,7 @@ const products: Product[] = [
   },
   { 
     name: "Beanie with Brim", 
-    image: "/images/cap6.png", 
+    image: "/images/cap6.jpg", 
     price: 1600, 
     rating: 4,
     description: "Winter beanie with a small brim. Warm and stylish for cold weather.",
@@ -94,7 +94,7 @@ const ProductSlider = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-800 to-gray-100"
+          className="text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-950 to-gray-700"
         >
           PREMIUM CAPS COLLECTION
         </motion.h2>
@@ -102,7 +102,7 @@ const ProductSlider = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
-          className="mt-4 text-lg text-gray-300"
+          className="mt-4 text-lg text-gray-900"
         >
           Discover our exclusive range of stylish headwear
         </motion.p>
@@ -125,7 +125,7 @@ const ProductSlider = () => {
         {products.map((product, index) => (
           <SwiperSlide key={index}>
             <motion.div
-              className="p-2 rounded-xl shadow-lg text-center cursor-pointer bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-all"
+              className="p-2 rounded-xl shadow-lg text-center cursor-pointer  transition-all"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
@@ -146,8 +146,8 @@ const ProductSlider = () => {
                   ))}
                 </div>
 
-                <h3 className="text-xl font-semibold text-white mb-1">{product.name}</h3>
-                <p className="text-white text-sm font-bold">PKR {product.price.toLocaleString()}</p>
+                <h3 className="text-xl font-semibold text-blue-950 mb-1">{product.name}</h3>
+                <p className="text-blue-950 text-sm font-bold">PKR {product.price.toLocaleString()}</p>
               </div>
             </motion.div>
           </SwiperSlide>

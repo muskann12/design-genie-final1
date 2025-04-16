@@ -94,7 +94,7 @@ const ProductSlider = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-800 to-gray-100"
+          className="text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-950 to-gray-500"
         >
           FEATURED PRODUCTS
         </motion.h2>
@@ -138,8 +138,8 @@ const ProductSlider = () => {
                   ))}
                 </div>
 
-                <h3 className="text-xl font-semibold text-white mb-1">{product.name}</h3>
-                <p className="text-white text-sm font-bold">PKR {product.price.toLocaleString()}</p>
+                <h3 className="text-xl font-semibold text-blue-950 mb-1">{product.name}</h3>
+                <p className="text-blue-950 text-sm font-bold">PKR {product.price.toLocaleString()}</p>
               </div>
             </motion.div>
           </SwiperSlide>
