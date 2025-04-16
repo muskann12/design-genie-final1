@@ -13,7 +13,7 @@ const Footer: React.FC = () => {
           <input
             type="email"
             placeholder="Enter Your Email Address"
-            className="p-8 rounded-[88px] w-full md:w-96 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="p-8 rounded-[88px] w-full md:w-96 text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-400"
           />
         </div>
 
@@ -43,10 +43,10 @@ const Footer: React.FC = () => {
         <div>
           <h3 className="text-lg font-semibold mb-4">Quick Links:</h3>
           <ul className="space-y-2">
-            <li><a href="#" className="hover:text-gray-400">Home</a></li>
-            <li><a href="#" className="hover:text-gray-400">About Us</a></li>
-            <li><a href="#" className="hover:text-gray-400">Shop</a></li>
-            <li><a href="#" className="hover:text-gray-400">Contact Us</a></li>
+            <li><a href="/" className="hover:text-gray-400">Home</a></li>
+            <li><a href="/about" className="hover:text-gray-400">About Us</a></li>
+            <li><a href="/shop" className="hover:text-gray-400">Shop</a></li>
+            <li><a href="/contact" className="hover:text-gray-400">Contact Us</a></li>
             <li><a href="#" className="hover:text-gray-400">FAQs</a></li>
           </ul>
         </div>
@@ -55,8 +55,8 @@ const Footer: React.FC = () => {
         <div>
           <h3 className="text-lg font-semibold mb-4 font-iN">Help & Support:</h3>
           <ul className="space-y-2">
-            <li><a href="#" className="hover:text-gray-400">Privacy Policy</a></li>
-            <li><a href="#" className="hover:text-gray-400">Terms & Conditions</a></li>
+            <li><a href="/privacy" className="hover:text-gray-400">Privacy Policy</a></li>
+            <li><a href="/t-c" className="hover:text-gray-400">Terms & Conditions</a></li>
           </ul>
         </div>
 

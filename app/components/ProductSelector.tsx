@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ProductOption, ProductType } from '../types/product';
+import { ProductOption, ProductType } from '@/types/product';
 import { cn } from '@/lib/utils';
 
 interface ProductCardProps {

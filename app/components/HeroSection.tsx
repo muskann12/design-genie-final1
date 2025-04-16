@@ -11,6 +11,10 @@ const HeroSection = () => {
     setIsLoaded(true);
   }, []);
 
+  const handleNavigate = () => {
+    router.push("/create-design");
+  };
+
   return (
     <section className="relative w-full h-screen bg-gradient-to-r from-[#83C2EA] to-[#001534] overflow-hidden flex items-stretch">
       <div className="container mx-auto px-6 py-16 relative z-10 flex flex-col lg:flex-row items-center justify-between gap-12 mt-[-40px]">
@@ -53,7 +57,7 @@ const HeroSection = () => {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.3, delay: 0.4 }}
-                onClick={() => router.push("/create")}
+                onClick={handleNavigate}
                 className="group flex items-center justify-center gap-3 text-gray-100 px-5 py-2.5 rounded-full border border-blue-950 hover:bg-gray-200 transition-all duration-300 shadow-md"
               >
                 <div className="w-8 h-8 bg-blue-950 rounded-full flex items-center justify-center">
@@ -82,8 +86,8 @@ const HeroSection = () => {
 
             {/* Circular Image */}
             <div className="w-40 h-32 ml-6 overflow-hidden rounded-tr-[31px] hidden md:block">
-                <img src="/images/hero3.png" alt="Circular" className="w-full h-full object-cover" />
-              </div>
+              <img src="/images/hero3.png" alt="Circular" className="w-full h-full object-cover" />
+            </div>
           </motion.div>
         </div>
 
@@ -92,7 +96,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="relative flex-1 flex justify-center lg:justify-end "
+          className="relative flex-1 flex justify-center lg:justify-end"
         >
           {/* Large Circles */}
           <div className="absolute bottom-0 right-0 w-72 h-72 md:w-80 md:h-80 bg-gradient-to-r from-gray-500 to-blue-500 rounded-full opacity-40 animate-pulse" />

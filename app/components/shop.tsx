@@ -1,18 +1,15 @@
-
 'use client'
 import { useState, useEffect } from "react";
 import { ShoppingBag, CheckCircle, ChevronDown, Search, Filter, X, Heart } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 
-// Product data
+// Product data (removed all mugs)
 const products = [
   { name: "White Printed T-Shirt", category: "T-Shirts", image: "/images/s8.png", price: 1399 },
-  { name: "Printed Mug", category: "Mugs", image: "/images/pm1.jpg", price: 1800 },
-  { name: "Drop  Cat T-Shirt", category: "T-Shirts", image: "/images/ps2.jpg", price: 1399 },
-  { name: "Tokyo Printed  T-Shirt", category: "T-Shirts", image: "/images/s3.png", price: 1399 },
-  { name: "Tokyo Printed  T-Shirt", category: "Caps", image: "/images/cap1.jpg", price: 700 },
-  { name: "Hustle Harder Mug", category: "Mugs", image: "/images/pm3.jpg", price: 2500 },
+  { name: "Drop Cat T-Shirt", category: "T-Shirts", image: "/images/ps2.jpg", price: 1399 },
+  { name: "Tokyo Printed T-Shirt", category: "T-Shirts", image: "/images/s3.png", price: 1399 },
+  { name: "Tokyo Printed T-Shirt", category: "Caps", image: "/images/cap1.jpg", price: 700 },
   { name: "Swag Baggy T-Shirt", category: "T-Shirts", image: "/images/s11.png", price: 1399 },
   { name: "Classy Baggy T-Shirt", category: "T-Shirts", image: "/images/s13.png", price: 1399 },
   { name: "Tokyo Black T-Shirt", category: "Caps", image: "/images/cap2.jpg", price: 700 },
@@ -20,29 +17,21 @@ const products = [
   { name: "White Mind T-Shirt", category: "T-Shirts", image: "/images/s17.png", price: 1399 },
   { name: "Classy Color T-Shirt", category: "T-Shirts", image: "/images/ps4.jpg", price: 1399 },
   { name: "Tokyo Black T-Shirt", category: "Caps", image: "/images/cap3.jpg", price: 700 },
-  { name: "Pink Hearts Cute Mug", category: "Mugs", image: "/images/mug3.jpg", price: 2500 },
   { name: "Spooky Black T-Shirt", category: "T-Shirts", image: "/images/s5.png", price: 1399 },
   { name: "Simple Print T-Shirt", category: "T-Shirts", image: "/images/slider5.png", price: 1399 },
   { name: "Tokyo Black T-Shirt", category: "Caps", image: "/images/cap4.jpg", price: 700 },
   { name: "Swag PinkPanther T-Shirt", category: "T-Shirts", image: "/images/s16.png", price: 1399 },
   { name: "Bluish Quote White T-Shirt", category: "T-Shirts", image: "/images/s1.png", price: 1399 },
-  { name: "Black and Blue Mug", category: "Mugs", image: "/images/pm4.jpg", price: 2500 },
   { name: "Galaxy Theme T-Shirt", category: "T-Shirts", image: "/images/ps1.jpg", price: 1399 },
-  { name: "Black Printed Mug", category: "Mugs", image: "/images/pm5.jpg", price: 2500 },
-  { name: "Slay Mug", category: "Mugs", image: "/images/pm6.jpg", price: 2500 },
   { name: "Funky Dark Blue T-Shirt", category: "T-Shirts", image: "/images/ps6.jpg", price: 1399 },
-  { name: "Blue Theme Mug", category: "Mugs", image: "/images/mug1.jpg", price: 2500 },
   { name: "Butterfly theme T-Shirt", category: "T-Shirts", image: "/images/s2.png", price: 1399 },
-  { name: "Bows Theme Mug", category: "Mugs", image: "/images/mug2.jpg", price: 2500 },
   { name: "Classic White T-Shirt", category: "T-Shirts", image: "/images/s18.png", price: 1399 },
   { name: "Funcky Bear T-Shirt", category: "T-Shirts", image: "/images/s19.png", price: 1399 },
-  { name: "Fairy Pastel Mug", category: "Mugs", image: "/images/mug4.jpg", price: 2500 },
   { name: "Drama Queen T-Shirt", category: "T-Shirts", image: "/images/s20.png", price: 1399 },
-  { name: "Classic Rise Grind Shine Mug", category: "Mugs", image: "/images/mug5.jpg", price: 2500 },
 ];
 
 const sizes = ["S", "M", "L", "XL"];
-const categories = ["All", "Caps", "T-Shirts", "Mugs", "Deals"];
+const categories = ["All", "Caps", "T-Shirts"]; // Removed "Mugs" and "Deals"
 
 const Index = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
@@ -277,7 +266,7 @@ const Index = () => {
         </div>
 
         {/* Product Grid with enhanced cards */}
-        <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
+        <div className="grid grid-cols-2 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
           {filteredProducts.map((product, index) => {
             const isDiscounted = product.price === 1399;
             const originalPrice = 1500;
@@ -388,7 +377,7 @@ const Index = () => {
                     whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.97 }}
                     onClick={() => handleAddToCart(product, index)}
-                    className="w-full py-2.5 bg-gradient-to-r from-blue-950 to-blue-800 text-white text-sm font-semibold rounded-lg flex items-center justify-center shadow-sm hover:shadow transition-all"
+                    className="w-full py-2.5 bg-gradient-to-r from-blue-950 to-blue-900 text-white text-sm font-semibold rounded-lg flex items-center justify-center shadow-sm hover:shadow transition-all"
                   >
                     <ShoppingBag className="inline-block w-4 h-4 mr-2" />
                     Add to Cart
