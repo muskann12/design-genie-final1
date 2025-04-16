@@ -22,7 +22,7 @@ const ProductAnimation = ({ isVisible }: ProductAnimationProps) => {
     <AnimatePresence>
       {loaded && (
         <motion.div
-          className="absolute inset-0 z-50 bg-white flex items-center justify-center"
+          className="absolute inset-0 z-50 bg-gray-100 flex items-center justify-center"
           initial={{ opacity: 1 }}
           animate={{ opacity: 0 }}
           exit={{ opacity: 0 }}
