@@ -23,42 +23,64 @@ export const Payment_Component = () => {
   }, []);
 
   if (loading) {
-    return <div className='min-h-screen bg-gradient-to-b from-gray-100 to-white text-blue-950 font-extrabold text-3xl flex justify-center items-center font-sans'>Loading order data...</div>;
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-[#f9fafb]">
+        <div className="animate-pulse text-center">
+          <div className="h-8 w-8 rounded-full bg-gray-300 mx-auto mb-4" />
+          <p className="text-gray-500 text-sm">Fetching payment details...</p>
+        </div>
+      </div>
+    );
   }
 
   if (!orderData) {
-    return <div className='min-h-screen bg-gradient-to-b from-gray-100 to-white text-blue-950 font-extrabold text-3xl flex justify-center items-center font-sans'>No order data found</div>;
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-[#f9fafb] px-4">
+        <div className="max-w-sm text-center bg-white p-6 rounded-xl shadow-md">
+          <h2 className="text-2xl font-semibold text-gray-800 mb-2">No Active Order</h2>
+          <p className="text-gray-500 mb-4 text-sm">It looks like you haven’t placed any orders yet.</p>
+          <button className="bg-black text-white px-5 py-2 rounded-full text-sm hover:bg-gray-800 transition-all duration-200">
+            Start Shopping
+          </button>
+        </div>
+      </div>
+    );
   }
 
   return (
-    <div className="min-h-screen max-w-7xl mx-auto relative z-10 px-4 sm:px-6 lg:px-8 py-12 bg-gradient-to-b from-gray-100 to-white">
-    {/* Header Section with enhanced styling */}
-    <motion.div 
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
-      className="text-center mb-12"
-    >
-      <motion.h1 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.5, duration: 0.8 }}
-        className="text-4xl md:text-6xl font-extrabold tracking-tight text-gray-900 mb-4"
-      >
-        <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-950 to-gray-800">
-        Payment Confirmation
-        </span>
-      </motion.h1>
-      <motion.p
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.7 }}
-        className="max-w-2xl mx-auto text-gray-500 text-lg"
-      >
-         While you wait, feel free to explore more of our premium collection for style and comfort. We’re here to make sure you look and feel your best!
-      </motion.p>
-    </motion.div>
-    <PaymentOptions orderData={orderData}/>
+    <div className="min-h-screen bg-[#f9fafb]">
+      <div className="max-w-md mx-auto px-4 py-16">
+        
+        {/* Header */}
+        <motion.div 
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="mb-10 text-center"
+        >
+          <h1 className="text-4xl font-semibold text-gray-900">Checkout</h1>
+          <p className="text-sm text-gray-500 mt-2">Secure and seamless payment</p>
+        </motion.div>
+
+        {/* Payment Card */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1 }}
+          className="rounded-xl bg-white shadow-lg p-6 border border-gray-100"
+        >
+          <PaymentOptions orderData={orderData} />
+        </motion.div>
+
+        {/* Security Footer */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.2 }}
+          className="mt-8 text-center text-xs text-gray-400"
+        >
+          Transactions are protected with end-to-end encryption.
+        </motion.div>
+      </div>
     </div>
   );
 };
