@@ -29,7 +29,16 @@ const products = [
   { name: "Nexus Snapback", category: "Caps", image: "/images/cap1.jpg", price: 700 },
   { name: "Tokyo Nights Cap", category: "Caps", image: "/images/cap2.jpg", price: 700 },
   { name: "Quantum Edge Cap", category: "Caps", image: "/images/cap3.jpg", price: 700 },
-  { name: "Pixel Peak Cap", category: "Caps", image: "/images/cap4.jpg", price: 700 }
+  { name: "Pixel Peak Cap", category: "Caps", image: "/images/cap4.jpg", price: 700 },
+  { name: "Pixel Peak Cap", category: "Caps", image: "/images/c1.jpg", price: 700 },
+  { name: "Pixel Peak Cap", category: "Caps", image: "/images/c2.jpg", price: 700 },
+  { name: "Pixel Peak Cap", category: "Caps", image: "/images/c3.jpg", price: 700 },
+  { name: "Pixel Peak Cap", category: "Caps", image: "/images/c4.jpg", price: 700 },
+  { name: "Pixel Peak Cap", category: "Caps", image: "/images/c5.jpg", price: 700 },
+  { name: "Pixel Peak Cap", category: "Caps", image: "/images/c6.jpg", price: 700 },
+  { name: "Pixel Peak Cap", category: "Caps", image: "/images/c7.jpg", price: 700 },
+  { name: "Pixel Peak Cap", category: "Caps", image: "/images/c8.jpg", price: 700 },
+  { name: "Pixel Peak Cap", category: "Caps", image: "/images/c9.jpg", price: 700 },
 ];
 
 const sizes = ["S", "M", "L", "XL"];
