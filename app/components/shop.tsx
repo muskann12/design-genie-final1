@@ -4,55 +4,40 @@ import { ShoppingBag, CheckCircle, ChevronDown, Search, Filter, X, Heart, Slider
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 
-// Product data
 const products = [
-  { name: "Nexus Void Tee", category: "T-Shirts", image: "/images/s8.png", price: 1399 },
-  { name: "Pixel Panther Tee", category: "T-Shirts", image: "/images/ps2.jpg", price: 1399 },
-  { name: "Tokyo Neon Tee", category: "T-Shirts", image: "/images/s3.png", price: 1399 },
-  { name: "Quantum Quirk Tee", category: "T-Shirts", image: "/images/s11.png", price: 1399 },
-  { name: "Holo Hustle Tee", category: "T-Shirts", image: "/images/s13.png", price: 1399 },
-  { name: "Nebula Notes Tee", category: "T-Shirts", image: "/images/s15.png", price: 1399 },
-  { name: "Glitch Glory Tee", category: "T-Shirts", image: "/images/s17.png", price: 1399 },
-  { name: "Synth Wave Tee", category: "T-Shirts", image: "/images/ps4.jpg", price: 1399 },
-  { name: "Cyber Spook Tee", category: "T-Shirts", image: "/images/s5.png", price: 1399 },
-  { name: "Binary Bloom Tee", category: "T-Shirts", image: "/images/slider5.png", price: 1399 },
-  { name: "Pink Matrix Tee", category: "T-Shirts", image: "/images/s16.png", price: 1399 },
-  { name: "Azure Echo Tee", category: "T-Shirts", image: "/images/s1.png", price: 1399 },
-  { name: "Galaxy Grid Tee", category: "T-Shirts", image: "/images/ps1.jpg", price: 1399 },
-  { name: "Deep Byte Tee", category: "T-Shirts", image: "/images/ps6.jpg", price: 1399 },
-  { name: "Morpho Code Tee", category: "T-Shirts", image: "/images/s2.png", price: 1399 },
-  { name: "Pure Script Tee", category: "T-Shirts", image: "/images/s18.png", price: 1399 },
-  { name: "Crypto Cub Tee", category: "T-Shirts", image: "/images/s19.png", price: 1399 },
-  { name: "Drama Core Tee", category: "T-Shirts", image: "/images/s20.png", price: 1399 },
-  
-  // Caps
-  { name: "Nexus Snapback", category: "Caps", image: "/images/cap1.jpg", price: 700 },
-  { name: "Tokyo Nights Cap", category: "Caps", image: "/images/cap2.jpg", price: 700 },
-  { name: "Quantum Edge Cap", category: "Caps", image: "/images/cap3.jpg", price: 700 },
-  { name: "Pixel Peak Cap", category: "Caps", image: "/images/cap4.jpg", price: 700 },
-  { name: "Pixel Peak Cap", category: "Caps", image: "/images/c1.jpg", price: 700 },
-  { name: "Pixel Peak Cap", category: "Caps", image: "/images/c2.jpg", price: 700 },
-  { name: "Pixel Peak Cap", category: "Caps", image: "/images/c3.jpg", price: 700 },
-  { name: "Pixel Peak Cap", category: "Caps", image: "/images/c4.jpg", price: 700 },
-  { name: "Pixel Peak Cap", category: "Caps", image: "/images/c5.jpg", price: 700 },
-  { name: "Pixel Peak Cap", category: "Caps", image: "/images/c6.jpg", price: 700 },
-  { name: "Pixel Peak Cap", category: "Caps", image: "/images/c7.jpg", price: 700 },
-  { name: "Pixel Peak Cap", category: "Caps", image: "/images/c8.jpg", price: 700 },
-  { name: "Pixel Peak Cap", category: "Caps", image: "/images/c9.jpg", price: 700 },
+  { name: "Nexus Void Tee", category: "T-Shirts", image: "/images/s8.png", price: 2499, sale: true },
+  { name: "Pixel Panther Tee", category: "T-Shirts", image: "/images/ps2.jpg", price: 2999, sale: false },
+  { name: "Tokyo Neon Tee", category: "T-Shirts", image: "/images/s3.png", price: 2299, sale: true },
+  { name: "Nebula Notes Tee", category: "T-Shirts", image: "/images/s15.png", price: 2799, sale: false },
+  { name: "Glitch Glory Tee", category: "T-Shirts", image: "/images/s17.png", price: 1999, sale: true },
+  { name: "Synth Wave Tee", category: "T-Shirts", image: "/images/ps4.jpg", price: 2599, sale: false },
+  { name: "Cyber Spook Tee", category: "T-Shirts", image: "/images/s5.png", price: 1799, sale: true },
+  { name: "Binary Bloom Tee", category: "T-Shirts", image: "/images/slider5.png", price: 3499, sale: false },
+  { name: "Pink Matrix Tee", category: "T-Shirts", image: "/images/s16.png", price: 2199, sale: true },
+  { name: "Azure Echo Tee", category: "T-Shirts", image: "/images/s1.png", price: 2899, sale: false },
+  { name: "Galaxy Grid Tee", category: "T-Shirts", image: "/images/ps1.jpg", price: 1999, sale: true },
+  { name: "Deep Byte Tee", category: "T-Shirts", image: "/images/ps6.jpg", price: 2699, sale: false },
+  { name: "Morpho Code Tee", category: "T-Shirts", image: "/images/s2.png", price: 1699, sale: true },
+  { name: "Pure Script Tee", category: "T-Shirts", image: "/images/s18.png", price: 3299, sale: false },
+  { name: "Crypto Cub Tee", category: "T-Shirts", image: "/images/s19.png", price: 2099, sale: true },
+  { name: "Nexus Snapback", category: "Caps", image: "/images/cap1.jpg", price: 1499, sale: true },
+  { name: "Tokyo Nights Cap", category: "Caps", image: "/images/cap2.jpg", price: 1799, sale: false },
+  { name: "Quantum Edge Cap", category: "Caps", image: "/images/cap3.jpg", price: 1299, sale: true },
+  { name: "Pixel Peak Cap", category: "Caps", image: "/images/cap4.jpg", price: 1999, sale: false },
 ];
 
 const sizes = ["S", "M", "L", "XL"];
 const categories = ["All", "Caps", "T-Shirts"];
 const priceRanges = [
   { label: "All", min: 0, max: Infinity },
-  { label: "Under 1000", min: 0, max: 999 },
-  { label: "1000 - 1500", min: 1000, max: 1500 },
-  { label: "Above 1500", min: 1501, max: Infinity }
+  { label: "Under PKR 1500", min: 0, max: 1499 },
+  { label: "PKR 1500 - PKR 2500", min: 1500, max: 2500 },
+  { label: "Above PKR 2500", min: 2501, max: Infinity }
 ];
 
 const Index = () => {
-  const [selectedCategory, setSelectedCategory] = useState<string>("All");
-  const [selectedPriceRange, setSelectedPriceRange] = useState<string>("All");
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [selectedPriceRange, setSelectedPriceRange] = useState("All");
   const [cart, setCart] = useState<any[]>([]);
   const [addedToCart, setAddedToCart] = useState<number | null>(null);
   const [selectedSizes, setSelectedSizes] = useState<{ [key: number]: string }>({});
@@ -65,13 +50,16 @@ const Index = () => {
   const [sortOption, setSortOption] = useState("Popular");
 
   useEffect(() => {
-    const storedCart = localStorage.getItem("cart");
-    if (storedCart) setCart(JSON.parse(storedCart));
-    
-    const storedWishlist = localStorage.getItem("wishlist");
-    if (storedWishlist) setWishlist(JSON.parse(storedWishlist));
-    
-    setPageLoaded(true);
+    // Only run on client side
+    if (typeof window !== 'undefined') {
+      const storedCart = localStorage.getItem("cart");
+      if (storedCart) setCart(JSON.parse(storedCart));
+      
+      const storedWishlist = localStorage.getItem("wishlist");
+      if (storedWishlist) setWishlist(JSON.parse(storedWishlist));
+      
+      setPageLoaded(true);
+    }
     
     const handleClickOutside = (event: MouseEvent) => {
       const categoryDropdown = document.getElementById("category-dropdown");
@@ -111,39 +99,6 @@ const Index = () => {
     setTimeout(() => setAddedToCart(null), 2000);
   };
 
-  const handleSizeChange = (index: number, size: string) => {
-    setSelectedSizes((prev) => ({ ...prev, [index]: size }));
-  };
-
-  const toggleCategoryDropdown = () => {
-    setIsCategoryOpen(!isCategoryOpen);
-    setIsPriceOpen(false);
-  };
-
-  const togglePriceDropdown = () => {
-    setIsPriceOpen(!isPriceOpen);
-    setIsCategoryOpen(false);
-  };
-
-  const selectCategory = (category: string) => {
-    setSelectedCategory(category);
-    setIsCategoryOpen(false);
-  };
-
-  const selectPriceRange = (range: string) => {
-    setSelectedPriceRange(range);
-    setIsPriceOpen(false);
-  };
-
-  const toggleWishlist = (index: number) => {
-    const newWishlist = wishlist.includes(index)
-      ? wishlist.filter(item => item !== index)
-      : [...wishlist, index];
-    
-    setWishlist(newWishlist);
-    localStorage.setItem("wishlist", JSON.stringify(newWishlist));
-  };
-
   const filteredProducts = products
     .filter(product => selectedCategory === "All" || product.category === selectedCategory)
     .filter(product => {
@@ -159,17 +114,15 @@ const Index = () => {
       switch(sortOption) {
         case "Price: Low to High": return a.price - b.price;
         case "Price: High to Low": return b.price - a.price;
-        case "Latest": return 0; // Add your own logic for latest
-        default: return 0; // Default is Popular (no sorting)
+        default: return 0;
       }
     });
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 relative overflow-hidden">
-      {/* Background patterns */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
-        <div className="absolute top-0 right-0 bg-blue-100/20 w-[30rem] h-[30rem] rounded-full blur-3xl transform translate-x-1/3 -translate-y-1/2"></div>
-        <div className="absolute bottom-0 left-0 bg-gray-200/30 w-[30rem] h-[30rem] rounded-full blur-3xl transform -translate-x-1/3 translate-y-1/2"></div>
+    <div className="min-h-screen bg-gray-50 relative">
+      {/* Premium background pattern */}
+      <div className="absolute inset-0 overflow-hidden opacity-5">
+        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-gray-100 to-gray-200"></div>
       </div>
 
       {/* Toast notification */}
@@ -179,170 +132,119 @@ const Index = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="fixed top-4 right-4 bg-blue-950/90 backdrop-blur-md text-white px-6 py-3 rounded-lg shadow-xl z-50 flex items-center"
+            className="fixed top-4 right-4 bg-gray-900 text-white px-4 py-2 rounded-md shadow-lg z-50 flex items-center text-sm"
           >
-            <CheckCircle className="w-5 h-5 mr-2 text-green-400" />
-            <span>Added to cart!</span>
+            <CheckCircle className="w-4 h-4 mr-2 text-green-400" />
+            <span>Added to cart</span>
           </motion.div>
         )}
       </AnimatePresence>
 
-      <div className="max-w-7xl mx-auto relative z-10 px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+      <div className="max-w-7xl mx-auto relative z-10 px-4 sm:px-6 lg:px-8 py-8">
         {/* Header Section */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-8 sm:mb-12"
-        >
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3 }}
-            className="inline-block bg-blue-950/5 backdrop-blur-sm text-gray-700 text-sm px-4 py-1 rounded-full mb-2"
-          >
+        <div className="text-center mb-12">
+          <div className="inline-block bg-gray-200 text-gray-700 text-xs px-3 py-1 rounded-full mb-3 font-medium">
             Premium Collection
-          </motion.div>
-          <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.8 }}
-            className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-gray-900 mb-4"
-          >
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-950 to-gray-800">
-              Shop the Best
-            </span>
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.7 }}
-            className="max-w-2xl mx-auto text-gray-500 text-sm sm:text-base"
-          >
-            Discover our curated collection of premium merchandise designed for style and comfort.
-          </motion.p>
-        </motion.div>
+          </div>
+          <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-3">
+            Discover Our Collection
+          </h1>
+          <p className="max-w-2xl mx-auto text-gray-500">
+            Curated selection of premium merchandise designed for style and comfort
+          </p>
+        </div>
 
         {/* Search and Filter Bar */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8, duration: 0.5 }}
-          className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-6 sm:mb-8 items-center"
-        >
-          <div className="relative flex-1 w-full">
+        <div className="flex flex-col sm:flex-row gap-4 mb-8">
+          <div className="relative flex-1">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
             <input
               type="text"
               placeholder="Search products..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full bg-white border border-gray-200 rounded-full py-2.5 sm:py-3 pl-10 sm:pl-12 pr-4 text-xs sm:text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm"
+              className="w-full bg-white border border-gray-200 rounded-lg py-2 pl-10 pr-4 text-sm text-gray-800 focus:outline-none focus:ring-1 focus:ring-gray-300"
             />
-            <Search className="w-4 h-4 sm:w-5 sm:h-5 text-gray-500 absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2" />
             {searchTerm && (
               <button 
                 onClick={() => setSearchTerm("")}
-                className="absolute right-3 sm:right-4 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
               >
-                <X className="w-3 h-3 sm:w-4 sm:h-4" />
+                <X className="w-4 h-4" />
               </button>
             )}
           </div>
           
-          <div className="flex gap-2 sm:gap-3 w-full sm:w-auto">
+          <div className="flex gap-2">
             {/* Category Dropdown */}
-            <div id="category-dropdown" className="relative flex-1 sm:flex-none">
+            <div id="category-dropdown" className="relative">
               <button
-                onClick={toggleCategoryDropdown}
-                className="w-full min-w-[120px] sm:min-w-[150px] bg-white border border-gray-200 shadow-sm rounded-full py-2.5 sm:py-3 px-4 flex items-center justify-between text-xs sm:text-sm font-medium text-gray-800 hover:bg-gray-50 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500"
+                onClick={() => setIsCategoryOpen(!isCategoryOpen)}
+                className="flex items-center gap-2 bg-white border border-gray-200 rounded-lg py-2 px-3 text-sm text-gray-700 hover:bg-gray-50"
               >
-                <span className="truncate">{selectedCategory}</span>
-                <ChevronDown
-                  className={`w-3 h-3 sm:w-4 sm:h-4 text-gray-500 transition-transform ${isCategoryOpen ? "transform rotate-180" : ""}`}
-                />
+                <span>{selectedCategory}</span>
+                <ChevronDown className={`w-4 h-4 transition-transform ${isCategoryOpen ? "transform rotate-180" : ""}`} />
               </button>
               
-              <AnimatePresence>
-                {isCategoryOpen && (
-                  <motion.div
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.2 }}
-                    className="absolute z-20 w-full mt-1 bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden"
-                  >
-                    <ul className="py-1 max-h-60 overflow-y-auto">
-                      {categories.map((category, index) => (
-                        <li key={index}>
-                          <button
-                            onClick={() => selectCategory(category)}
-                            className={`w-full text-left px-4 py-2 sm:py-2 text-xs sm:text-sm ${
-                              selectedCategory === category
-                                ? "bg-blue-50 text-blue-800 font-medium"
-                                : "text-gray-700 hover:bg-gray-50"
-                            } transition-colors duration-150`}
-                          >
-                            {category}
-                          </button>
-                        </li>
-                      ))}
-                    </ul>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+              {isCategoryOpen && (
+                <div className="absolute z-10 mt-1 w-40 bg-white border border-gray-200 rounded-lg shadow-lg py-1">
+                  {categories.map((category) => (
+                    <button
+                      key={category}
+                      onClick={() => {
+                        setSelectedCategory(category);
+                        setIsCategoryOpen(false);
+                      }}
+                      className={`w-full text-left px-3 py-2 text-sm ${
+                        selectedCategory === category ? "bg-gray-100 text-gray-900" : "text-gray-700 hover:bg-gray-50"
+                      }`}
+                    >
+                      {category}
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
 
             {/* Price Dropdown */}
-            <div id="price-dropdown" className="relative flex-1 sm:flex-none">
+            <div id="price-dropdown" className="relative">
               <button
-                onClick={togglePriceDropdown}
-                className="w-full min-w-[120px] sm:min-w-[150px] bg-white border border-gray-200 shadow-sm rounded-full py-2.5 sm:py-3 px-4 flex items-center justify-between text-xs sm:text-sm font-medium text-gray-800 hover:bg-gray-50 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500"
+                onClick={() => setIsPriceOpen(!isPriceOpen)}
+                className="flex items-center gap-2 bg-white border border-gray-200 rounded-lg py-2 px-3 text-sm text-gray-700 hover:bg-gray-50"
               >
-                <span className="truncate">{selectedPriceRange}</span>
-                <ChevronDown
-                  className={`w-3 h-3 sm:w-4 sm:h-4 text-gray-500 transition-transform ${isPriceOpen ? "transform rotate-180" : ""}`}
-                />
+                <span>{selectedPriceRange}</span>
+                <ChevronDown className={`w-4 h-4 transition-transform ${isPriceOpen ? "transform rotate-180" : ""}`} />
               </button>
               
-              <AnimatePresence>
-                {isPriceOpen && (
-                  <motion.div
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.2 }}
-                    className="absolute z-20 w-full mt-1 bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden"
-                  >
-                    <ul className="py-1 max-h-60 overflow-y-auto">
-                      {priceRanges.map((range, index) => (
-                        <li key={index}>
-                          <button
-                            onClick={() => selectPriceRange(range.label)}
-                            className={`w-full text-left px-4 py-2 sm:py-2 text-xs sm:text-sm ${
-                              selectedPriceRange === range.label
-                                ? "bg-blue-50 text-blue-800 font-medium"
-                                : "text-gray-700 hover:bg-gray-50"
-                            } transition-colors duration-150`}
-                          >
-                            {range.label}
-                          </button>
-                        </li>
-                      ))}
-                    </ul>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+              {isPriceOpen && (
+                <div className="absolute z-10 mt-1 w-40 bg-white border border-gray-200 rounded-lg shadow-lg py-1">
+                  {priceRanges.map((range) => (
+                    <button
+                      key={range.label}
+                      onClick={() => {
+                        setSelectedPriceRange(range.label);
+                        setIsPriceOpen(false);
+                      }}
+                      className={`w-full text-left px-3 py-2 text-sm ${
+                        selectedPriceRange === range.label ? "bg-gray-100 text-gray-900" : "text-gray-700 hover:bg-gray-50"
+                      }`}
+                    >
+                      {range.label}
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
 
-            {/* Filters button */}
             <button
               onClick={() => setShowFilters(!showFilters)}
-              className="flex items-center justify-center bg-blue-950 text-white rounded-full w-10 h-10 sm:w-12 sm:h-12 shadow-sm"
+              className="flex items-center gap-1 bg-gray-900 text-white rounded-lg py-2 px-3 text-sm hover:bg-gray-800 transition-colors"
             >
-              <Sliders className="w-4 h-4 sm:w-5 sm:h-5" />
+              <Sliders className="w-4 h-4" />
+              <span className="hidden sm:inline">Filters</span>
             </button>
           </div>
-        </motion.div>
+        </div>
 
         {/* Filters Panel */}
         <AnimatePresence>
@@ -351,50 +253,57 @@ const Index = () => {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3 }}
-              className="mb-6 overflow-hidden"
+              className="mb-6 bg-white p-4 rounded-lg border border-gray-200 shadow-sm"
             >
-              <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
-                <div className="flex justify-between items-center mb-3">
-                  <h3 className="text-sm font-medium text-gray-900">Filters</h3>
-                  <button onClick={() => setShowFilters(false)} className="text-gray-500 hover:text-gray-700">
-                    <X className="w-4 h-4" />
-                  </button>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div>
+                  <h3 className="text-sm font-medium text-gray-900 mb-2">Categories</h3>
+                  <div className="space-y-2">
+                    {categories.map((category) => (
+                      <label key={category} className="flex items-center gap-2">
+                        <input
+                          type="radio"
+                          checked={selectedCategory === category}
+                          onChange={() => setSelectedCategory(category)}
+                          className="h-4 w-4 text-gray-900 focus:ring-gray-900"
+                        />
+                        <span className="text-sm text-gray-700">{category}</span>
+                      </label>
+                    ))}
+                  </div>
                 </div>
                 
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <h4 className="text-xs font-medium text-gray-700 mb-2">Category</h4>
-                    <div className="space-y-2">
-                      {categories.map((category) => (
-                        <label key={category} className="flex items-center space-x-2">
-                          <input
-                            type="radio"
-                            checked={selectedCategory === category}
-                            onChange={() => setSelectedCategory(category)}
-                            className="h-3 w-3 text-blue-600 focus:ring-blue-500"
-                          />
-                          <span className="text-xs text-gray-700">{category}</span>
-                        </label>
-                      ))}
-                    </div>
+                <div>
+                  <h3 className="text-sm font-medium text-gray-900 mb-2">Price Range</h3>
+                  <div className="space-y-2">
+                    {priceRanges.map((range) => (
+                      <label key={range.label} className="flex items-center gap-2">
+                        <input
+                          type="radio"
+                          checked={selectedPriceRange === range.label}
+                          onChange={() => setSelectedPriceRange(range.label)}
+                          className="h-4 w-4 text-gray-900 focus:ring-gray-900"
+                        />
+                        <span className="text-sm text-gray-700">{range.label}</span>
+                      </label>
+                    ))}
                   </div>
-                  
-                  <div>
-                    <h4 className="text-xs font-medium text-gray-700 mb-2">Price Range</h4>
-                    <div className="space-y-2">
-                      {priceRanges.map((range) => (
-                        <label key={range.label} className="flex items-center space-x-2">
-                          <input
-                            type="radio"
-                            checked={selectedPriceRange === range.label}
-                            onChange={() => setSelectedPriceRange(range.label)}
-                            className="h-3 w-3 text-blue-600 focus:ring-blue-500"
-                          />
-                          <span className="text-xs text-gray-700">{range.label}</span>
-                        </label>
-                      ))}
-                    </div>
+                </div>
+                
+                <div>
+                  <h3 className="text-sm font-medium text-gray-900 mb-2">Sort By</h3>
+                  <div className="space-y-2">
+                    {["Popular", "Price: Low to High", "Price: High to Low"].map((option) => (
+                      <label key={option} className="flex items-center gap-2">
+                        <input
+                          type="radio"
+                          checked={sortOption === option}
+                          onChange={() => setSortOption(option)}
+                          className="h-4 w-4 text-gray-900 focus:ring-gray-900"
+                        />
+                        <span className="text-sm text-gray-700">{option}</span>
+                      </label>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -402,222 +311,153 @@ const Index = () => {
           )}
         </AnimatePresence>
 
-        {/* Product count and sort options */}
-        <div className="flex flex-wrap justify-between items-center mb-4 sm:mb-6">
-          <p className="text-gray-600 text-xs sm:text-sm">
-            Showing <span className="font-medium">{filteredProducts.length}</span> products
-          </p>
-          
-          <div className="flex gap-2 text-xs sm:text-sm">
-            {["Popular", "Latest", "Price: Low to High", "Price: High to Low"].map((sort) => (
-              <button
-                key={sort}
-                onClick={() => setSortOption(sort)}
-                className={`px-2 sm:px-3 py-1 rounded-full ${
-                  sortOption === sort 
-                    ? 'bg-blue-950 text-white' 
-                    : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                } transition-colors`}
-              >
-                {sort}
-              </button>
-            ))}
-          </div>
+        {/* Product count - Now properly hydrated */}
+        <div className="mb-4 text-sm text-gray-500">
+          Showing {filteredProducts.length} {filteredProducts.length === 1 ? "product" : "products"}
         </div>
 
         {/* Product Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
           {filteredProducts.map((product, index) => {
-            const isDiscounted = product.price === 1399;
-            const originalPrice = 1500;
-            const discountPercentage = isDiscounted
-              ? Math.round(((originalPrice - product.price) / originalPrice) * 100)
-              : 0;
             const isWishlisted = wishlist.includes(index);
 
             return (
               <motion.div
+                key={index}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 * (index % 8), duration: 0.5 }}
-                key={index}
-                className="bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100 relative overflow-hidden group"
-                whileHover={{ y: -3 }}
+                transition={{ duration: 0.3 }}
+                whileHover={{ y: -5 }}
+                className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100 relative"
               >
-                {/* Product image with overlay */}
-                <div className="relative aspect-[3/4] w-full overflow-hidden">
+                {product.sale && (
+                  <div className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded">
+                    SALE
+                  </div>
+                )}
+                
+                <div className="relative aspect-square">
                   <img
-                    src={product.image || "https://placehold.co/400x500/e2e8f0/a0aec0?text=No+Image"}
+                    src={product.image || "https://placehold.co/400x400/e5e7eb/9ca3af?text=Product"}
                     alt={product.name}
-                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-cover"
                     loading="lazy"
-                    onError={(e) => {
-                      (e.target as HTMLImageElement).src = "https://placehold.co/400x500/e2e8f0/a0aec0?text=No+Image";
-                    }}
                   />
                   
-                  {/* Category badge */}
-                  <div className="absolute top-2 left-2 z-10">
-                    <span className="inline-block text-[8px] sm:text-[10px] font-medium text-gray-600 bg-white/90 backdrop-blur-sm px-1.5 py-0.5 rounded-full shadow-sm">
-                      {product.category}
-                    </span>
-                  </div>
-                  
-                  {/* Discount badge */}
-                  {isDiscounted && (
-                    <div className="absolute top-2 right-2 z-10">
-                      <span className="inline-block text-[8px] sm:text-[10px] font-bold text-white bg-red-500/90 px-1.5 py-0.5 rounded-full shadow-sm">
-                        {discountPercentage}% OFF
-                      </span>
-                    </div>
-                  )}
-                  
-                  {/* Wishlist button */}
                   <button
-                    onClick={() => toggleWishlist(index)}
-                    className={`absolute top-2 right-2 z-20 w-6 h-6 flex items-center justify-center rounded-full transition-all duration-300 ${
+                    onClick={() => {
+                      const newWishlist = wishlist.includes(index)
+                        ? wishlist.filter(item => item !== index)
+                        : [...wishlist, index];
+                      setWishlist(newWishlist);
+                      localStorage.setItem("wishlist", JSON.stringify(newWishlist));
+                    }}
+                    className={`absolute top-2 right-2 p-1.5 rounded-full ${
                       isWishlisted 
                         ? 'bg-red-500 text-white' 
-                        : 'bg-white/80 backdrop-blur-sm text-gray-600 opacity-0 group-hover:opacity-100'
+                        : 'bg-white/80 text-gray-400 hover:text-red-500'
                     }`}
                   >
-                    <Heart className="w-3 h-3" fill={isWishlisted ? "currentColor" : "none"} />
+                    <Heart className="w-4 h-4" fill={isWishlisted ? "currentColor" : "none"} />
                   </button>
                 </div>
 
-                {/* Product details */}
-                <div className="p-2">
-                  <h3 className="text-[11px] sm:text-xs font-semibold text-gray-900 mb-1 line-clamp-1 group-hover:text-blue-950 transition-colors">
+                <div className="p-3">
+                  <h3 className="text-sm font-medium text-gray-900 mb-1 truncate">
                     {product.name}
                   </h3>
+                  <p className="text-xs text-gray-500 mb-2">{product.category}</p>
                   
-                  {/* Price Section */}
-                  <div className="flex items-center gap-1 mb-1.5">
-                    {isDiscounted ? (
-                      <>
-                        <p className="text-red-500 text-[10px] font-medium line-through">
-                          PKR {originalPrice.toLocaleString()}
-                        </p>
-                        <p className="text-gray-800 text-[11px] font-bold">
-                          PKR {product.price.toLocaleString()}
-                        </p>
-                      </>
-                    ) : (
-                      <p className="text-gray-800 text-[11px] font-bold">
-                        PKR {product.price.toLocaleString()}
-                      </p>
+                  <div className="flex items-center mb-3">
+                    <span className="text-sm font-semibold text-gray-900">
+                      PKR {product.price.toLocaleString()}
+                    </span>
+                    {product.sale && (
+                      <span className="ml-2 text-xs text-red-600 font-medium">
+                        {Math.round(Math.random() * 20 + 10)}% OFF
+                      </span>
                     )}
                   </div>
 
-                  {/* Size Selector */}
-                  <div className="mb-2">
-                    <div className="flex gap-1">
-                      {sizes.map((size) => (
-                        <button
-                          key={size}
-                          onClick={() => handleSizeChange(index, size)}
-                          className={`flex-1 py-0.5 text-[10px] font-medium rounded border transition-all ${
-                            selectedSizes[index] === size || (!selectedSizes[index] && size === "M")
-                              ? "bg-blue-950 text-white border-blue-950"
-                              : "bg-white text-gray-700 border-gray-200 hover:border-gray-300 hover:bg-gray-50"
-                          }`}
-                        >
-                          {size}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Add to cart button */}
-                  <motion.button
-                    whileHover={{ scale: 1.03 }}
-                    whileTap={{ scale: 0.97 }}
-                    onClick={() => handleAddToCart(product, index)}
-                    className="w-full py-1.5 bg-gradient-to-r from-blue-950 to-blue-900 text-white text-xs font-semibold rounded-md flex items-center justify-center shadow-sm hover:shadow transition-all"
-                  >
-                    <ShoppingBag className="inline-block w-3 h-3 mr-1" />
-                    Add to Cart
-                  </motion.button>
-
-                  {/* Added to cart indicator */}
-                  <AnimatePresence>
-                    {addedToCart === index && (
-                      <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0 }}
-                        className="absolute bottom-2 left-1/2 transform -translate-x-1/2 bg-green-500 text-white text-[10px] px-2 py-1 rounded-md flex items-center shadow-lg"
+                  <div className="grid grid-cols-4 gap-1 mb-3">
+                    {sizes.map((size) => (
+                      <button
+                        key={size}
+                        onClick={() => setSelectedSizes({...selectedSizes, [index]: size})}
+                        className={`text-xs py-1 rounded ${
+                          selectedSizes[index] === size || (!selectedSizes[index] && size === "M")
+                            ? "bg-gray-900 text-white"
+                            : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                        }`}
                       >
-                        <CheckCircle className="w-2.5 h-2.5 mr-1" />
-                        Added
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                        {size}
+                      </button>
+                    ))}
+                  </div>
+
+                  <button
+                    onClick={() => handleAddToCart(product, index)}
+                    className="w-full py-2 bg-gray-900 hover:bg-gray-800 text-white text-sm font-medium rounded flex items-center justify-center gap-1 transition-colors"
+                  >
+                    <ShoppingBag className="w-4 h-4" />
+                    <span>Add to Cart</span>
+                  </button>
                 </div>
               </motion.div>
             );
           })}
         </div>
 
-        {/* Empty state when no products match filter */}
+        {/* Empty state */}
         {filteredProducts.length === 0 && (
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="text-center py-12 sm:py-16 mt-6 sm:mt-8 bg-gray-50 rounded-xl sm:rounded-2xl border border-gray-200"
-          >
-            <div className="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-3 sm:mb-4 bg-gray-100 rounded-full flex items-center justify-center">
-              <Search className="w-5 h-5 sm:w-8 sm:h-8 text-gray-400" />
-            </div>
-            <h3 className="text-sm sm:text-lg font-medium text-gray-700 mb-1 sm:mb-2">No products found</h3>
-            <p className="text-gray-500 text-xs sm:text-base mb-3 sm:mb-4">Try adjusting your search or filter to find what you're looking for.</p>
+          <div className="text-center py-16 bg-white rounded-lg border border-gray-200 mt-6">
+            <Search className="w-10 h-10 mx-auto text-gray-400 mb-4" />
+            <h3 className="text-lg font-medium text-gray-900 mb-2">No products found</h3>
+            <p className="text-gray-500 mb-4">Try adjusting your search or filter criteria</p>
             <button
               onClick={() => {
                 setSelectedCategory("All");
                 setSelectedPriceRange("All");
                 setSearchTerm("");
               }}
-              className="inline-flex items-center px-3 py-1.5 sm:px-4 sm:py-2 bg-blue-950 text-white rounded-md sm:rounded-lg text-xs sm:text-sm font-medium"
+              className="px-4 py-2 bg-gray-900 text-white rounded-lg text-sm font-medium hover:bg-gray-800"
             >
               Reset Filters
             </button>
-          </motion.div>
+          </div>
         )}
 
-        {/* "Load More" button */}
+        {/* Load more button */}
         {filteredProducts.length > 0 && (
-          <div className="text-center mt-8 sm:mt-12">
-            <button className="px-4 py-2 sm:px-6 sm:py-3 border border-gray-300 rounded-full text-gray-700 text-xs sm:text-sm font-medium hover:bg-gray-50 transition-colors">
-              Load More Products
+          <div className="mt-10 text-center">
+            <button className="px-6 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50">
+              Load More
             </button>
           </div>
         )}
       </div>
 
-      {/* Cart Floating Button */}
-      <AnimatePresence>
-        {pageLoaded && cart.length > 0 && (
-          <Link href="/cart" passHref>
-            <motion.div
-              initial={{ x: 100, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              exit={{ x: 100, opacity: 0 }}
-              whileHover={{ scale: 1.05 }}
-              className="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 bg-blue-950 text-white px-3 py-2 sm:px-4 sm:py-3 rounded-full shadow-xl z-50 flex items-center gap-1 sm:gap-2 cursor-pointer"
-            >
-              <div className="relative">
-                <ShoppingBag className="w-4 h-4 sm:w-5 sm:h-5" />
-                <span className="absolute -top-1.5 -right-1.5 bg-red-500 text-white text-[10px] w-3 h-3 sm:w-4 sm:h-4 flex items-center justify-center rounded-full">
-                  {cart.reduce((total, item) => total + (item.quantity || 1), 0)}
-                </span>
-              </div>
-              <span className="text-xs sm:text-sm font-medium hidden sm:block">
-                View Cart
+      {/* Cart Floating Button - Now properly hydrated */}
+      {pageLoaded && cart.length > 0 && (
+        <Link href="/cart" passHref>
+          <motion.div
+            initial={{ x: 100, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            whileHover={{ scale: 1.05 }}
+            className="fixed bottom-6 right-6 bg-gray-900 text-white p-3 rounded-full shadow-lg z-50 flex items-center gap-2 hover:bg-gray-800 transition-colors"
+          >
+            <div className="relative">
+              <ShoppingBag className="w-5 h-5" />
+              <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-4 h-4 flex items-center justify-center rounded-full">
+                {cart.reduce((total, item) => total + (item.quantity || 1), 0)}
               </span>
-            </motion.div>
-          </Link>
-        )}
-      </AnimatePresence>
+            </div>
+            <span className="text-sm font-medium hidden sm:inline">
+              View Cart
+            </span>
+          </motion.div>
+        </Link>
+      )}
     </div>
   );
 };
