@@ -24,6 +24,14 @@ const products = [
   { name: "Tokyo Nights Cap", category: "Caps", image: "/images/cap2.jpg", price: 1799, sale: false },
   { name: "Quantum Edge Cap", category: "Caps", image: "/images/cap3.jpg", price: 1299, sale: true },
   { name: "Pixel Peak Cap", category: "Caps", image: "/images/cap4.jpg", price: 1999, sale: false },
+  { name: "Pixel Peak Cap", category: "Caps", image: "/images/c1.jpg", price: 1999, sale: false },
+  { name: "Pixel Peak Cap", category: "Caps", image: "/images/c2.jpg", price: 1999, sale: false },
+  { name: "Pixel Peak Cap", category: "Caps", image: "/images/c3.jpg", price: 1999, sale: false },
+  { name: "Pixel Peak Cap", category: "Caps", image: "/images/c4.jpg", price: 1999, sale: false },
+  { name: "Pixel Peak Cap", category: "Caps", image: "/images/c5.jpg", price: 1999, sale: false },
+  { name: "Pixel Peak Cap", category: "Caps", image: "/images/c6.jpg", price: 1999, sale: false },
+  { name: "Pixel Peak Cap", category: "Caps", image: "/images/c7.jpg", price: 1999, sale: false },
+  { name: "Pixel Peak Cap", category: "Caps", image: "/images/c8.jpg", price: 1999, sale: false },
 ];
 
 const sizes = ["S", "M", "L", "XL"];

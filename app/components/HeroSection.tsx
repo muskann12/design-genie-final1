@@ -2,6 +2,14 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
+import { Inter } from 'next/font/google';
+
+// Load Inter font with required weights
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800', '900'],
+  variable: '--font-inter',
+});
 
 const HeroSection = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -16,7 +24,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative w-full h-screen bg-gradient-to-r from-[#83C2EA] to-[#001534] overflow-hidden flex items-stretch">
+    <section className={`relative w-full h-screen bg-gradient-to-r from-[#83C2EA] to-[#001534] overflow-hidden flex items-stretch ${inter.variable} font-sans`}>
       <div className="container mx-auto px-6 py-16 relative z-10 flex flex-col lg:flex-row items-center justify-between gap-12 mt-[-40px]">
         {/* Left Side - Text Content */}
         <div className="flex-1 space-y-6 max-w-lg text-center lg:text-left">
@@ -24,12 +32,12 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-5xl md:text-6xl md:font-extrabold lg:font-extrabold lg:text-7xl font-bold"
+            className="text-5xl md:text-6xl font-extrabold lg:text-7xl"
           >
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-gray-950 to-blue-600">Unleash Your</span>
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-gray-950 to-blue-600">Creativity,</span>
-            <span className="block">Design <span className="bg-gradient-to-r from-gray-950 to-blue-600 bg-clip-text text-transparent">Your</span></span>
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-gray-950 to-blue-600">Way!</span>
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-gray-950 to-blue-600 font-extrabold">Unleash Your</span>
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-gray-950 to-blue-600 font-extrabold">Creativity,</span>
+            <span className="block font-extrabold">Design <span className="bg-gradient-to-r from-gray-950 to-blue-600 bg-clip-text text-transparent">Your</span></span>
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-gray-950 to-blue-600 font-extrabold">Way!</span>
           </motion.h1>
 
           {/* Button & Image */}
@@ -45,7 +53,7 @@ const HeroSection = () => {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
-                className="text-gray-950 text-base font-thin max-w-sm"
+                className="text-gray-950 text-base font-light max-w-sm"
               >
                 Transform your imagination into reality. <br />
                 Design anything you dream of with the 
