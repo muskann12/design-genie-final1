@@ -151,7 +151,7 @@ const Index = () => {
       <div className="max-w-7xl mx-auto relative z-10 px-4 sm:px-6 lg:px-8 py-8">
         {/* Header Section */}
         <div className="text-center mb-12">
-          <div className="inline-block bg-gray-200 text-gray-700 text-xs px-3 py-1 rounded-full mb-3 font-medium">
+          <div className="inline-block bg-gray-200  text-gray-700 text-xs px-3 py-1 rounded-full mb-3 font-medium">
             Premium Collection
           </div>
           <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-3">

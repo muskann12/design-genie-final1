@@ -22,7 +22,7 @@ export default function Header() {
         {/* Logo */}
         <Link href="/">
           <Image 
-            src="/images/logoo.png" 
+            src="/images/l.png" 
             alt="Logo"
             width={80}
             height={80}
@@ -59,7 +59,7 @@ export default function Header() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.4 }}
-            className="md:hidden bg-[#021B41]  text-white flex flex-col items-center space-y-6 py-6"
+            className="md:hidden bg-[#001028]  text-white flex flex-col items-center space-y-6 py-6"
           >
             <Link href="/" onClick={() => setIsOpen(false)}>HOME</Link>
             <Link href="/shop" onClick={() => setIsOpen(false)}>SHOP</Link>

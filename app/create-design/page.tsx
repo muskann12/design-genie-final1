@@ -80,7 +80,7 @@ const CreatorDesignPage = () => {
     "Subtle texture overlay"
   ];
 
-  const prefix = "make a design for printing ";
+  const prefix = "create a design for printing ";
   
   useEffect(() => {
     if (inputRef.current) {
@@ -209,10 +209,10 @@ const CreatorDesignPage = () => {
     const value = e.target.value;
     
     if (!value.startsWith(prefix)) {
-      e.target.value = prefix + customPrompt;
+      e.target.value = prefix + (value || customPrompt);
       if (inputRef.current) {
-        inputRef.current.selectionStart = prefix.length + customPrompt.length;
-        inputRef.current.selectionEnd = prefix.length + customPrompt.length;
+        inputRef.current.selectionStart = prefix.length + (value || customPrompt).length;
+        inputRef.current.selectionEnd = prefix.length + (value || customPrompt).length;
       }
       return;
     }
@@ -505,9 +505,6 @@ const CreatorDesignPage = () => {
                 className="w-full px-4 py-2 border border-neutral-200 rounded text-sm focus:outline-none focus:ring-1 focus:ring-neutral-800 focus:border-transparent text-neutral-800 bg-white placeholder-neutral-400"
                 placeholder="Describe your custom design..."
               />
-              <div className="absolute left-4 top-2 pointer-events-none text-neutral-500 text-xs">
-                {prefix}
-              </div>
             </div>
           </div>
 
