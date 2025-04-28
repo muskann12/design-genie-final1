@@ -21,7 +21,7 @@ interface Product {
 const products: Product[] = [
   { 
     name: "Classic Baseball Cap", 
-    image: "/images/cap1.jpg", 
+    image: "/images/c1.jpg", 
     price: 1200, 
     rating: 4,
     description: "Premium quality baseball cap with adjustable strap. Perfect for casual outings and sunny days.",
@@ -30,7 +30,7 @@ const products: Product[] = [
   },
   { 
     name: "Snapback Hat", 
-    image: "/images/cap2.jpg", 
+    image: "/images/c2.jpg", 
     price: 1500, 
     rating: 4,
     description: "Stylish snapback hat with flat brim. Ideal for streetwear fashion.",
@@ -39,7 +39,7 @@ const products: Product[] = [
   },
   { 
     name: "Bucket Hat", 
-    image: "/images/cap3.jpg", 
+    image: "/images/c3.jpg", 
     price: 1300, 
     rating: 4,
     description: "Trendy bucket hat with a relaxed fit. Made from breathable fabric.",
@@ -48,7 +48,7 @@ const products: Product[] = [
   },
   { 
     name: "Dad Hat", 
-    image: "/images/cap4.jpg", 
+    image: "/images/c4.jpg", 
     price: 1100, 
     rating: 5,
     description: "Classic dad hat with curved brim. Soft and comfortable for all-day wear.",
@@ -57,7 +57,7 @@ const products: Product[] = [
   },
   { 
     name: "Trucker Cap", 
-    image: "/images/cap5.jpg", 
+    image: "/images/c5.jpg", 
     price: 1400, 
     rating: 4,
     description: "Vintage-style trucker cap with mesh back. Great for outdoor activities.",
@@ -66,7 +66,7 @@ const products: Product[] = [
   },
   { 
     name: "Beanie with Brim", 
-    image: "/images/cap6.jpg", 
+    image: "/images/c6.jpg", 
     price: 1600, 
     rating: 4,
     description: "Winter beanie with a small brim. Warm and stylish for cold weather.",
