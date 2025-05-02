@@ -12,10 +12,10 @@ export const PaymentOptions = ({ orderData }: any) => {
   const [accountName, setAccountName] = useState("")
 
   const paymentMethods = [
-    { label: 'JazzCash', method: 'jazzcash', img: '/images/jazzcash-logo.png' },
-    { label: 'EasyPaisa', method: 'easypaisa', img: '/images/easypaisa-logo.jpg' },
-    { label: 'NayaPay', method: 'nayapay', img: '/images/nayapay-logo.png' },
-    { label: 'Cash on Delivery', method: 'cod', img: '/images/cod-logo.jpg' },
+    { label: 'JazzCash', method: 'jazzcash', img: '/images/jazz.png' },
+    { label: 'EasyPaisa', method: 'easypaisa', img: '/images/easy.png' },
+    { label: 'NayaPay', method: 'nayapay', img: '/images/naya.png' },
+    { label: 'Cash on Delivery', method: 'cod', img: '/images/cod.png' },
   ]
 
   const paymentDetails: any = {

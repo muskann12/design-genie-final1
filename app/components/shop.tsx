@@ -5,45 +5,75 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 
 const products = [
-  { name: "Nexus Void Tee", category: "T-Shirts", image: "/images/s8.png", price: 2499, sale: true },
-  { name: "Pixel Panther Tee", category: "T-Shirts", image: "/images/ps2.jpg", price: 2999, sale: false },
-  { name: "Tokyo Neon Tee", category: "T-Shirts", image: "/images/s3.png", price: 2299, sale: true },
-  { name: "Nebula Notes Tee", category: "T-Shirts", image: "/images/s15.png", price: 2799, sale: false },
-  { name: "Glitch Glory Tee", category: "T-Shirts", image: "/images/s17.png", price: 1999, sale: true },
-  { name: "Synth Wave Tee", category: "T-Shirts", image: "/images/ps4.jpg", price: 2599, sale: false },
-  { name: "Cyber Spook Tee", category: "T-Shirts", image: "/images/s5.png", price: 1799, sale: true },
-  { name: "Binary Bloom Tee", category: "T-Shirts", image: "/images/slider5.png", price: 3499, sale: false },
-  { name: "Pink Matrix Tee", category: "T-Shirts", image: "/images/s16.png", price: 2199, sale: true },
-  { name: "Azure Echo Tee", category: "T-Shirts", image: "/images/s1.png", price: 2899, sale: false },
-  { name: "Galaxy Grid Tee", category: "T-Shirts", image: "/images/ps1.jpg", price: 1999, sale: true },
-  { name: "Deep Byte Tee", category: "T-Shirts", image: "/images/ps6.jpg", price: 2699, sale: false },
-  { name: "Morpho Code Tee", category: "T-Shirts", image: "/images/s2.png", price: 1699, sale: true },
-  { name: "Pure Script Tee", category: "T-Shirts", image: "/images/s18.png", price: 3299, sale: false },
-  { name: "Crypto Cub Tee", category: "T-Shirts", image: "/images/s19.png", price: 2099, sale: true },
-  { name: "Nexus Snapback", category: "Caps", image: "/images/cap1.jpg", price: 1499, sale: true },
-  { name: "Tokyo Nights Cap", category: "Caps", image: "/images/cap2.jpg", price: 1799, sale: false },
-  { name: "Quantum Edge Cap", category: "Caps", image: "/images/cap3.jpg", price: 1299, sale: true },
-  { name: "Pixel Peak Cap", category: "Caps", image: "/images/cap4.jpg", price: 1999, sale: false },
-  { name: "Pixel Peak Cap", category: "Caps", image: "/images/c1.jpg", price: 1999, sale: false },
-  { name: "Pixel Peak Cap", category: "Caps", image: "/images/c2.jpg", price: 1999, sale: false },
-  { name: "Pixel Peak Cap", category: "Caps", image: "/images/c3.jpg", price: 1999, sale: false },
-  { name: "Pixel Peak Cap", category: "Caps", image: "/images/c4.jpg", price: 1999, sale: false },
-  { name: "Pixel Peak Cap", category: "Caps", image: "/images/c5.jpg", price: 1999, sale: false },
-  { name: "Pixel Peak Cap", category: "Caps", image: "/images/c6.jpg", price: 1999, sale: false },
-  { name: "Pixel Peak Cap", category: "Caps", image: "/images/c7.jpg", price: 1999, sale: false },
-  { name: "Pixel Peak Cap", category: "Caps", image: "/images/c8.jpg", price: 1999, sale: false },
+  // Gaming Collection
+  { name: "DG PixelWarp", category: "Gaming", image: "/images/gaming1.png", price: 1500, sale: true },
+  { name: "DG RetroConsole", category: "Gaming", image: "/images/gaming2.png", price: 1800, sale: false },
+  
+  
+  // Gym Collection
+  { name: "DG IronFlex", category: "Gym", image: "/images/gym1.png", price: 2000, sale: true },
+  { name: "DG PowerLift", category: "Gym", image: "/images/gym2.png", price: 2200, sale: false },
+  { name: "DG MuscleTech", category: "Gym", image: "/images/gym3.png", price: 1900, sale: true },
+  { name: "DG CardioBurn", category: "Gym", image: "/images/gym4.png", price: 2100, sale: false },
+  
+  // Technology Collection
+  { name: "DG QuantumChip", category: "Technology", image: "/images/tec1.png", price: 2500, sale: true },
+  { name: "DG CyberMatrix", category: "Technology", image: "/images/tec2.png", price: 2700, sale: false },
+  { name: "DG NanoByte", category: "Technology", image: "/images/tec3.png", price: 2300, sale: true },
+  { name: "DG FutureGrid", category: "Technology", image: "/images/tec4.png", price: 2600, sale: false },
+  
+  // Travel Collection
+  { name: "DG GlobeTrotter", category: "Travel", image: "/images/travel1.png", price: 1800, sale: true },
+  { name: "DG WanderLust", category: "Travel", image: "/images/travel2.png", price: 2000, sale: false },
+  { name: "DG NomadVibe", category: "Travel", image: "/images/travel3.png", price: 1900, sale: true },
+  { name: "DG AdventurePeak", category: "Travel", image: "/images/travel4.png", price: 2100, sale: false },
+  
+  
+  // Caps Collection
+  { name: "DG CrownCaps", category: "Caps", image: "/images/cap1.jpg", price: 700, sale: true },
+  { name: "DG FlightCap", category: "Caps", image: "/images/cap2.jpg", price: 700, sale: false },
+  { name: "DG AuraPeak", category: "Caps", image: "/images/cap3.jpg", price: 700, sale: true },
+  { name: "DG StreetSpell", category: "Caps", image: "/images/cap4.jpg", price: 700, sale: false },
+  { name: "DG BoldGenie", category: "Caps", image: "/images/c1.jpg", price: 700, sale: true },
+  { name: "DG MysticCover", category: "Caps", image: "/images/c2.jpg", price: 700, sale: false },
+  { name: "DG UrbanHalo", category: "Caps", image: "/images/c3.jpg", price: 700, sale: true },
+  { name: "DG DreamTopper", category: "Caps", image: "/images/c4.jpg", price: 700, sale: false },
+  { name: "DG VibeVault", category: "Caps", image: "/images/c5.jpg", price: 700, sale: true },
+  { name: "DG SkyCraft", category: "Caps", image: "/images/c6.jpg", price: 700, sale: false },
+  
+  // T-Shirts Collection
+  { name: "DG NeonNova", category: "T-Shirts", image: "/images/s1.png", price: 1200, sale: true },
+  { name: "DG PixelPulse", category: "T-Shirts", image: "/images/s2.png", price: 1200, sale: false },
+  { name: "DG CyberSpirit", category: "T-Shirts", image: "/images/s3.png", price: 1200, sale: true },
+  { name: "DG GlitchGlory", category: "T-Shirts", image: "/images/s4.png", price: 1200, sale: false },
+  { name: "DG BinaryBloom", category: "T-Shirts", image: "/images/s5.png", price: 1200, sale: true },
+  { name: "DG SynthWave", category: "T-Shirts", image: "/images/s6.png", price: 1200, sale: false },
+  { name: "DG MatrixMuse", category: "T-Shirts", image: "/images/s7.png", price: 1200, sale: true },
+  { name: "DG VoidVibes", category: "T-Shirts", image: "/images/s8.png", price: 1200, sale: false },
+  { name: "DG TechTonic", category: "T-Shirts", image: "/images/s15.png", price: 1200, sale: true },
+  { name: "DG CodeCraze", category: "T-Shirts", image: "/images/s16.png", price: 1200, sale: false },
+  { name: "DG FutureFabric", category: "T-Shirts", image: "/images/s17.png", price: 1200, sale: true },
+  { name: "DG DigitalDrip", category: "T-Shirts", image: "/images/s18.png", price: 1200, sale: false },
+  { name: "DG HologramHood", category: "T-Shirts", image: "/images/s19.png", price: 1200, sale: true },
+  { name: "DG QuantumQuirk", category: "T-Shirts", image: "/images/ps1.jpg", price: 1200, sale: false },
+  { name: "DG RetroRush", category: "T-Shirts", image: "/images/ps2.jpg", price: 1200, sale: true },
+  { name: "DG ArcadeAura", category: "T-Shirts", image: "/images/ps4.jpg", price: 1200, sale: false },
+  { name: "DG PixelPanther", category: "T-Shirts", image: "/images/ps6.jpg", price: 1200, sale: true },
+  { name: "DG NeonNomad", category: "T-Shirts", image: "/images/slider5.png", price: 1200, sale: false }
 ];
 
 const sizes = ["S", "M", "L", "XL"];
-const categories = ["All", "Caps", "T-Shirts"];
+const categories = ["All", "Gaming", "Gym", "Technology", "Travel", "Street Style", "Caps", "T-Shirts"];
 const priceRanges = [
   { label: "All", min: 0, max: Infinity },
-  { label: "Under PKR 1500", min: 0, max: 1499 },
-  { label: "PKR 1500 - PKR 2500", min: 1500, max: 2500 },
-  { label: "Above PKR 2500", min: 2501, max: Infinity }
+  { label: "Under PKR 1000", min: 0, max: 999 },
+  { label: "PKR 1000 - PKR 1500", min: 1000, max: 1500 },
+  { label: "PKR 1500 - PKR 2000", min: 1500, max: 2000 },
+  { label: "Above PKR 2000", min: 2001, max: Infinity }
 ];
 
 const Index = () => {
+  const [isClient, setIsClient] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [selectedPriceRange, setSelectedPriceRange] = useState("All");
   const [cart, setCart] = useState<any[]>([]);
@@ -51,23 +81,18 @@ const Index = () => {
   const [selectedSizes, setSelectedSizes] = useState<{ [key: number]: string }>({});
   const [isCategoryOpen, setIsCategoryOpen] = useState(false);
   const [isPriceOpen, setIsPriceOpen] = useState(false);
-  const [pageLoaded, setPageLoaded] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [wishlist, setWishlist] = useState<number[]>([]);
   const [showFilters, setShowFilters] = useState(false);
   const [sortOption, setSortOption] = useState("Popular");
 
   useEffect(() => {
-    // Only run on client side
-    if (typeof window !== 'undefined') {
-      const storedCart = localStorage.getItem("cart");
-      if (storedCart) setCart(JSON.parse(storedCart));
-      
-      const storedWishlist = localStorage.getItem("wishlist");
-      if (storedWishlist) setWishlist(JSON.parse(storedWishlist));
-      
-      setPageLoaded(true);
-    }
+    setIsClient(true);
+    const storedCart = localStorage.getItem("cart");
+    if (storedCart) setCart(JSON.parse(storedCart));
+    
+    const storedWishlist = localStorage.getItem("wishlist");
+    if (storedWishlist) setWishlist(JSON.parse(storedWishlist));
     
     const handleClickOutside = (event: MouseEvent) => {
       const categoryDropdown = document.getElementById("category-dropdown");
@@ -126,14 +151,25 @@ const Index = () => {
       }
     });
 
+  const getCategoryColor = (category: string) => {
+    switch(category) {
+      case "Gaming": return "bg-purple-100 text-purple-800";
+      case "Gym": return "bg-red-100 text-red-800";
+      case "Technology": return "bg-blue-100 text-blue-800";
+      case "Travel": return "bg-green-100 text-green-800";
+      case "Street Style": return "bg-yellow-100 text-yellow-800";
+      case "Caps": return "bg-indigo-100 text-indigo-800";
+      case "T-Shirts": return "bg-pink-100 text-pink-800";
+      default: return "bg-gray-100 text-gray-800";
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gray-50 relative">
-      {/* Premium background pattern */}
       <div className="absolute inset-0 overflow-hidden opacity-5">
         <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-gray-100 to-gray-200"></div>
       </div>
 
-      {/* Toast notification */}
       <AnimatePresence>
         {addedToCart !== null && (
           <motion.div 
@@ -149,26 +185,24 @@ const Index = () => {
       </AnimatePresence>
 
       <div className="max-w-7xl mx-auto relative z-10 px-4 sm:px-6 lg:px-8 py-8">
-        {/* Header Section */}
         <div className="text-center mb-12">
-          <div className="inline-block bg-gray-200  text-gray-700 text-xs px-3 py-1 rounded-full mb-3 font-medium">
-            Premium Collection
+          <div className="inline-block bg-gray-200 text-gray-700 text-xs px-3 py-1 rounded-full mb-3 font-medium">
+            Design Genie Collections
           </div>
           <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-3">
-            Discover Our Collection
+            Premium Streetwear & Lifestyle
           </h1>
           <p className="max-w-2xl mx-auto text-gray-500">
-            Curated selection of premium merchandise designed for style and comfort
+            Explore our exclusive collections for gaming, gym, technology, travel, and street style enthusiasts
           </p>
         </div>
 
-        {/* Search and Filter Bar */}
         <div className="flex flex-col sm:flex-row gap-4 mb-8">
           <div className="relative flex-1">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
             <input
               type="text"
-              placeholder="Search products..."
+              placeholder="Search DG collections..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="w-full bg-white border border-gray-200 rounded-lg py-2 pl-10 pr-4 text-sm text-gray-800 focus:outline-none focus:ring-1 focus:ring-gray-300"
@@ -184,7 +218,6 @@ const Index = () => {
           </div>
           
           <div className="flex gap-2">
-            {/* Category Dropdown */}
             <div id="category-dropdown" className="relative">
               <button
                 onClick={() => setIsCategoryOpen(!isCategoryOpen)}
@@ -195,7 +228,7 @@ const Index = () => {
               </button>
               
               {isCategoryOpen && (
-                <div className="absolute z-10 mt-1 w-40 bg-white border border-gray-200 rounded-lg shadow-lg py-1">
+                <div className="absolute z-10 mt-1 w-48 bg-white border border-gray-200 rounded-lg shadow-lg py-1 max-h-96 overflow-y-auto">
                   {categories.map((category) => (
                     <button
                       key={category}
@@ -203,10 +236,11 @@ const Index = () => {
                         setSelectedCategory(category);
                         setIsCategoryOpen(false);
                       }}
-                      className={`w-full text-left px-3 py-2 text-sm ${
+                      className={`w-full text-left px-3 py-2 text-sm flex items-center ${
                         selectedCategory === category ? "bg-gray-100 text-gray-900" : "text-gray-700 hover:bg-gray-50"
                       }`}
                     >
+                      <span className={`w-2 h-2 rounded-full mr-2 ${getCategoryColor(category).replace('text-', 'bg-').split(' ')[0]}`}></span>
                       {category}
                     </button>
                   ))}
@@ -214,7 +248,6 @@ const Index = () => {
               )}
             </div>
 
-            {/* Price Dropdown */}
             <div id="price-dropdown" className="relative">
               <button
                 onClick={() => setIsPriceOpen(!isPriceOpen)}
@@ -225,7 +258,7 @@ const Index = () => {
               </button>
               
               {isPriceOpen && (
-                <div className="absolute z-10 mt-1 w-40 bg-white border border-gray-200 rounded-lg shadow-lg py-1">
+                <div className="absolute z-10 mt-1 w-48 bg-white border border-gray-200 rounded-lg shadow-lg py-1">
                   {priceRanges.map((range) => (
                     <button
                       key={range.label}
@@ -254,7 +287,6 @@ const Index = () => {
           </div>
         </div>
 
-        {/* Filters Panel */}
         <AnimatePresence>
           {showFilters && (
             <motion.div 
@@ -275,7 +307,9 @@ const Index = () => {
                           onChange={() => setSelectedCategory(category)}
                           className="h-4 w-4 text-gray-900 focus:ring-gray-900"
                         />
-                        <span className="text-sm text-gray-700">{category}</span>
+                        <span className={`text-sm ${getCategoryColor(category)} px-2 py-1 rounded-full`}>
+                          {category}
+                        </span>
                       </label>
                     ))}
                   </div>
@@ -319,15 +353,21 @@ const Index = () => {
           )}
         </AnimatePresence>
 
-        {/* Product count - Now properly hydrated */}
-        <div className="mb-4 text-sm text-gray-500">
-          Showing {filteredProducts.length} {filteredProducts.length === 1 ? "product" : "products"}
+        <div className="mb-6 flex justify-between items-center">
+          <div className="text-sm text-gray-500">
+            Showing {isClient ? filteredProducts.length : '...'} {isClient ? (filteredProducts.length === 1 ? "product" : "products") : ''}
+          </div>
+          {selectedCategory !== "All" && (
+            <div className={`text-xs px-3 py-1 rounded-full ${getCategoryColor(selectedCategory)}`}>
+              {selectedCategory} Collection
+            </div>
+          )}
         </div>
 
-        {/* Product Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
           {filteredProducts.map((product, index) => {
             const isWishlisted = wishlist.includes(index);
+            const discountPercent = product.sale ? Math.round(Math.random() * 10 + 10) : 0;
 
             return (
               <motion.div
@@ -336,19 +376,19 @@ const Index = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3 }}
                 whileHover={{ y: -5 }}
-                className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100 relative"
+                className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100 relative group"
               >
                 {product.sale && (
-                  <div className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded">
-                    SALE
+                  <div className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded z-10">
+                    SALE {discountPercent}% OFF
                   </div>
                 )}
                 
                 <div className="relative aspect-square">
                   <img
-                    src={product.image || "https://placehold.co/400x400/e5e7eb/9ca3af?text=Product"}
+                    src={product.image || "https://placehold.co/400x400/e5e7eb/9ca3af?text=DG"}
                     alt={product.name}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                     loading="lazy"
                   />
                   
@@ -360,7 +400,7 @@ const Index = () => {
                       setWishlist(newWishlist);
                       localStorage.setItem("wishlist", JSON.stringify(newWishlist));
                     }}
-                    className={`absolute top-2 right-2 p-1.5 rounded-full ${
+                    className={`absolute top-2 right-2 p-1.5 rounded-full transition-colors ${
                       isWishlisted 
                         ? 'bg-red-500 text-white' 
                         : 'bg-white/80 text-gray-400 hover:text-red-500'
@@ -374,15 +414,17 @@ const Index = () => {
                   <h3 className="text-sm font-medium text-gray-900 mb-1 truncate">
                     {product.name}
                   </h3>
-                  <p className="text-xs text-gray-500 mb-2">{product.category}</p>
+                  <div className={`text-xs px-2 py-1 rounded-full ${getCategoryColor(product.category)} inline-block mb-2`}>
+                    {product.category}
+                  </div>
                   
                   <div className="flex items-center mb-3">
                     <span className="text-sm font-semibold text-gray-900">
                       PKR {product.price.toLocaleString()}
                     </span>
                     {product.sale && (
-                      <span className="ml-2 text-xs text-red-600 font-medium">
-                        {Math.round(Math.random() * 20 + 10)}% OFF
+                      <span className="ml-2 text-xs text-gray-500 line-through">
+                        PKR {Math.round(product.price * (1 + discountPercent/100)).toLocaleString()}
                       </span>
                     )}
                   </div>
@@ -392,7 +434,7 @@ const Index = () => {
                       <button
                         key={size}
                         onClick={() => setSelectedSizes({...selectedSizes, [index]: size})}
-                        className={`text-xs py-1 rounded ${
+                        className={`text-xs py-1 rounded transition-colors ${
                           selectedSizes[index] === size || (!selectedSizes[index] && size === "M")
                             ? "bg-gray-900 text-white"
                             : "bg-gray-100 text-gray-700 hover:bg-gray-200"
@@ -416,7 +458,6 @@ const Index = () => {
           })}
         </div>
 
-        {/* Empty state */}
         {filteredProducts.length === 0 && (
           <div className="text-center py-16 bg-white rounded-lg border border-gray-200 mt-6">
             <Search className="w-10 h-10 mx-auto text-gray-400 mb-4" />
@@ -435,7 +476,6 @@ const Index = () => {
           </div>
         )}
 
-        {/* Load more button */}
         {filteredProducts.length > 0 && (
           <div className="mt-10 text-center">
             <button className="px-6 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50">
@@ -445,8 +485,7 @@ const Index = () => {
         )}
       </div>
 
-      {/* Cart Floating Button - Now properly hydrated */}
-      {pageLoaded && cart.length > 0 && (
+      {isClient && cart.length > 0 && (
         <Link href="/cart" passHref>
           <motion.div
             initial={{ x: 100, opacity: 0 }}

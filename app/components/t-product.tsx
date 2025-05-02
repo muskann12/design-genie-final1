@@ -20,58 +20,49 @@ interface Product {
 
 const products: Product[] = [
   { 
-    name: "Black Hoodie", 
+    name: "Classic Cotton Shirt", 
     image: "/images/s1.png", 
     price: 1800, 
     rating: 4,
-    description: "Premium quality black hoodie made from 100% cotton. Perfect for casual outings and cold weather.",
-    sizes: ["S", "M", "L", "XL"],
-    colors: ["Black", "Gray", "Navy"]
+    description: "Premium cotton shirt with a comfortable fit, perfect for both casual and formal occasions.",
+    sizes: ["S", "M", "L", "XL", "XXL"],
+    colors: ["Black", "White", "Gray", "Navy Blue", "Olive", "Red", "Brown"]
   },
   { 
-    name: "Black Top", 
+    name: "Slim Fit Dress Shirt", 
     image: "/images/s2.png", 
     price: 1800, 
     rating: 4,
-    description: "Sleek black top with a comfortable fit. Ideal for both casual and semi-formal occasions.",
-    sizes: ["S", "M", "L"],
-    colors: ["Black", "White"]
+    description: "Elegant slim-fit dress shirt made from high-quality fabric that maintains its shape all day.",
+    sizes: ["XS", "S", "M", "L", "XL"],
+    colors: ["Black", "White", "Gray", "Navy Blue", "Red", "Pink", "Brown"]
   },
   { 
-    name: "Drop T-Shirt", 
+    name: "Casual Button-Down Shirt", 
     image: "/images/s3.png", 
     price: 1800, 
     rating: 4,
-    description: "Trendy drop shoulder t-shirt with a relaxed fit. Made from breathable fabric.",
-    sizes: ["M", "L", "XL"],
-    colors: ["White", "Black", "Red"]
+    description: "Relaxed fit button-down shirt with a stylish pattern, ideal for everyday wear.",
+    sizes: ["S", "M", "L", "XL"],
+    colors: ["Black", "White", "Red", "Blue", "Yellow", "Green", "Gray"]
   },
   { 
-    name: "Classic Jacket", 
+    name: "Formal Oxford Shirt", 
     image: "/images/s4.png", 
     price: 2500, 
     rating: 5,
-    description: "Classic jacket with premium stitching and durable material. Water-resistant finish.",
+    description: "Premium Oxford shirt with a refined look, perfect for business meetings and special occasions.",
     sizes: ["S", "M", "L", "XL", "XXL"],
-    colors: ["Black", "Brown", "Olive"]
+    colors: ["Black", "Brown", "Olive", "Navy Blue", "Gray", "White", "Burgundy"]
   },
   { 
-    name: "Sporty Hoodie", 
+    name: "Linen Summer Shirt", 
     image: "/images/s5.png", 
     price: 2200, 
     rating: 4,
-    description: "Sporty hoodie with moisture-wicking technology. Perfect for workouts and casual wear.",
+    description: "Lightweight linen shirt that keeps you cool in warm weather while maintaining a polished look.",
     sizes: ["S", "M", "L", "XL"],
-    colors: ["Gray", "Blue", "Black"]
-  },
-  { 
-    name: "Trendy T-Shirt", 
-    image: "/images/s11.png", 
-    price: 1600, 
-    rating: 4,
-    description: "Fashion-forward t-shirt with unique prints. Lightweight and comfortable for all-day wear.",
-    sizes: ["XS", "S", "M", "L"],
-    colors: ["White", "Black", "Yellow"]
+    colors: ["Black", "Gray", "Blue", "Red", "White", "Green", "Orange"]
   },
 ];
 
@@ -87,6 +78,33 @@ const ProductSlider = () => {
     setSelectedProduct(null);
   };
 
+  const getColorStyle = (color: string) => {
+    const colorMap: Record<string, string> = {
+      'black': '#000000',
+      'white': '#FFFFFF',
+      'gray': '#808080',
+      'navy blue': '#000080',
+      'olive': '#808000',
+      'red': '#FF0000',
+      'brown': '#964B00',
+      'pink': '#FFC0CB',
+      'blue': '#0000FF',
+      'yellow': '#FFFF00',
+      'green': '#008000',
+      'orange': '#FFA500',
+      'burgundy': '#800020'
+    };
+
+    const lowerColor = color.toLowerCase();
+    const bgColor = colorMap[lowerColor] || '#FFFFFF';
+    const textColor = ['white', 'yellow'].includes(lowerColor) ? '#000000' : '#FFFFFF';
+
+    return { 
+      backgroundColor: bgColor,
+      color: textColor
+    };
+  };
+
   return (
     <div className="relative w-full max-w-7xl mx-auto p-6">
       <div className="mb-8 text-center">
@@ -96,7 +114,7 @@ const ProductSlider = () => {
           transition={{ delay: 0.1 }}
           className="text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-950 to-gray-500"
         >
-          FEATURED PRODUCTS
+          FEATURED SHIRTS
         </motion.h2>
       </div>
 
@@ -117,36 +135,35 @@ const ProductSlider = () => {
         {products.map((product, index) => (
           <SwiperSlide key={index}>
             <motion.div
-              className="p-2 rounded-xl shadow-lg text-center cursor-pointer"
+              className="p-2 rounded-xl text-center cursor-pointer bg-gradient-to-br from-gray-50 to-gray-100 shadow-md hover:shadow-lg transition-all"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
               onClick={() => openModal(product)}
             >
-              <div className="relative w-full h-56 mx-auto overflow-hidden flex items-center justify-center">
+              <div className="relative w-full h-64 mx-auto overflow-hidden flex items-center justify-center rounded-lg">
                 <img
                   src={product.image}
                   alt={product.name}
-                  className="object-cover max-w-full max-h-full transition-transform duration-700 hover:scale-110"
+                  className="object-cover max-w-full max-h-full transition-transform duration-500 hover:scale-105"
                 />
               </div>
 
-              <div className="mt-4">
+              <div className="mt-4 p-3">
                 <div className="flex justify-center gap-1 mb-2">
                   {Array(product.rating).fill(null).map((_, i) => (
                     <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
                   ))}
                 </div>
 
-                <h3 className="text-xl font-semibold text-blue-950 mb-1">{product.name}</h3>
-                <p className="text-blue-950 text-sm font-bold">PKR {product.price.toLocaleString()}</p>
+                <h3 className="text-lg font-semibold text-gray-800 mb-1">{product.name}</h3>
+                <p className="text-gray-700 text-sm font-bold">PKR {product.price.toLocaleString()}</p>
               </div>
             </motion.div>
           </SwiperSlide>
         ))}
       </Swiper>
 
-      {/* Navigation buttons */}
       <motion.button
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
@@ -162,7 +179,6 @@ const ProductSlider = () => {
         <ChevronRight className="w-5 h-5" />
       </motion.button>
 
-      {/* Product Detail Modal */}
       {selectedProduct && (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
           <motion.div 
@@ -211,7 +227,7 @@ const ProductSlider = () => {
                         {selectedProduct.sizes.map(size => (
                           <button 
                             key={size}
-                            className="px-3 py-1 border border-gray-300 rounded-md hover:bg-gray-100"
+                            className="px-3 py-1 border border-gray-300 rounded-md hover:bg-gray-100 transition-colors"
                           >
                             {size}
                           </button>
@@ -224,15 +240,18 @@ const ProductSlider = () => {
                     <div>
                       <h3 className="font-medium text-gray-900">Colors</h3>
                       <div className="flex flex-wrap gap-2 mt-2">
-                        {selectedProduct.colors.map(color => (
-                          <button 
-                            key={color}
-                            className="px-3 py-1 border border-gray-300 rounded-md hover:bg-gray-100"
-                            style={{ backgroundColor: color.toLowerCase() === 'white' ? '#fff' : color.toLowerCase() }}
-                          >
-                            {color}
-                          </button>
-                        ))}
+                        {selectedProduct.colors.map(color => {
+                          const colorStyle = getColorStyle(color);
+                          return (
+                            <button 
+                              key={color}
+                              className="px-3 py-1 border border-gray-300 rounded-md text-xs font-medium transition-all"
+                              style={colorStyle}
+                            >
+                              {color}
+                            </button>
+                          );
+                        })}
                       </div>
                     </div>
                   )}
@@ -240,7 +259,7 @@ const ProductSlider = () => {
                   <div className="pt-4">
                     <button 
                       onClick={() => router.push('/shop')}
-                      className="w-full bg-black text-white py-3 px-6 rounded-lg hover:bg-gray-800 transition-colors"
+                      className="w-full bg-black text-white py-3 px-6 rounded-lg hover:bg-gray-800 transition-colors font-medium"
                     >
                       SHOP NOW
                     </button>

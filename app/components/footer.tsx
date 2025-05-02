@@ -1,10 +1,12 @@
 import React from "react";
-import { FaInstagram, FaFacebookF, FaEnvelope } from "react-icons/fa";
+import { FaInstagram, FaFacebookF, FaEnvelope, FaWhatsapp } from "react-icons/fa";
 import "@fontsource/inter/400.css";
 
 const Footer: React.FC = () => {
+  const phoneNumber = "03205421692"; // Your phone number
+  const whatsappUrl = `https://wa.me/${phoneNumber}`; // WhatsApp URL
+
   return (
-    
     <footer className="bg-gradient-to-r from-[#021B41] to-[#09203f] text-white p-8 rounded-tl-[150px]">
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
         {/* Stay Connected Section */}
@@ -46,7 +48,7 @@ const Footer: React.FC = () => {
             <li><a href="/" className="hover:text-gray-400">Home</a></li>
             <li><a href="/about" className="hover:text-gray-400">About Us</a></li>
             <li><a href="/shop" className="hover:text-gray-400">Shop</a></li>
-            <li><a href="/contact" className="hover:text-gray-400">Contact Us</a></li>
+            <li><a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="hover:text-gray-400">Chat on WhatsApp</a></li>
             <li><a href="#" className="hover:text-gray-400">FAQs</a></li>
           </ul>
         </div>
@@ -65,7 +67,7 @@ const Footer: React.FC = () => {
           <h3 className="text-lg font-semibold mb-4">Contact Information:</h3>
           <ul className="space-y-2">
             <li>Email: support@yourwebsite.com</li>
-            <li>Phone: 03205421692</li>
+            <li>Phone: {phoneNumber}</li>
           </ul>
         </div>
       </div>

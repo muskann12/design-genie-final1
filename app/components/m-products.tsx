@@ -20,58 +20,58 @@ interface Product {
 
 const products: Product[] = [
   { 
-    name: "Classic Baseball Cap", 
+    name: "DG BoldGenie", 
     image: "/images/c1.jpg", 
     price: 1200, 
     rating: 4,
-    description: "Premium quality baseball cap with adjustable strap. Perfect for casual outings and sunny days.",
+    description: "Premium quality baseball cap with adjustable strap.",
     sizes: ["One Size"],
-    colors: ["Black", "Navy", "Red"]
+    colors: ["Black", "White", "Pink"]
   },
   { 
-    name: "Snapback Hat", 
+    name: "DG MysticCover", 
     image: "/images/c2.jpg", 
     price: 1500, 
     rating: 4,
-    description: "Stylish snapback hat with flat brim. Ideal for streetwear fashion.",
+    description: "Stylish snapback hat with flat brim.",
     sizes: ["One Size"],
-    colors: ["Black", "White", "Camouflage"]
+    colors: ["Black", "White", "Pink"]
   },
   { 
-    name: "Bucket Hat", 
+    name: "DG UrbanHalo", 
     image: "/images/c3.jpg", 
     price: 1300, 
     rating: 4,
-    description: "Trendy bucket hat with a relaxed fit. Made from breathable fabric.",
+    description: "Trendy bucket hat with a relaxed fit.",
     sizes: ["One Size"],
-    colors: ["Beige", "Black", "Denim"]
+    colors: ["Black", "White", "Pink"]
   },
   { 
-    name: "Dad Hat", 
+    name: "DG DreamTopper", 
     image: "/images/c4.jpg", 
     price: 1100, 
     rating: 5,
-    description: "Classic dad hat with curved brim. Soft and comfortable for all-day wear.",
+    description: "Classic dad hat with curved brim.",
     sizes: ["One Size"],
-    colors: ["Black", "Gray", "Olive"]
+    colors: ["Black", "White", "Pink"]
   },
   { 
     name: "Trucker Cap", 
     image: "/images/c5.jpg", 
     price: 1400, 
     rating: 4,
-    description: "Vintage-style trucker cap with mesh back. Great for outdoor activities.",
+    description: "Vintage-style trucker cap with mesh back.",
     sizes: ["One Size"],
-    colors: ["Black", "Blue", "White"]
+    colors: ["Black", "White", "Pink"]
   },
   { 
-    name: "Beanie with Brim", 
+    name: "DG SkyCraft", 
     image: "/images/c6.jpg", 
     price: 1600, 
     rating: 4,
-    description: "Winter beanie with a small brim. Warm and stylish for cold weather.",
+    description: "Winter beanie with a small brim.",
     sizes: ["One Size"],
-    colors: ["Black", "Gray", "Navy"]
+    colors: ["Black", "White", "Pink"]
   },
 ];
 
@@ -87,14 +87,24 @@ const ProductSlider = () => {
     setSelectedProduct(null);
   };
 
+  const getColorStyle = (color: string) => {
+    const colorMap: Record<string, { bg: string, text: string }> = {
+      'black': { bg: 'bg-black', text: 'text-white' },
+      'white': { bg: 'bg-white', text: 'text-black' },
+      'pink': { bg: 'bg-pink-500', text: 'text-white' }
+    };
+
+    return colorMap[color.toLowerCase()] || { bg: 'bg-gray-200', text: 'text-black' };
+  };
+
   return (
-    <div className="relative w-full max-w-7xl mx-auto p-6">
-      <div className="mb-8 text-center">
+    <div className="relative w-full max-w-7xl mx-auto p-4 bg-gradient-to-b from-gray-50 to-white">
+      <div className="mb-6 text-center">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-950 to-gray-700"
+          className="text-3xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-gray-900 to-gray-700"
         >
           PREMIUM CAPS COLLECTION
         </motion.h2>
@@ -102,9 +112,9 @@ const ProductSlider = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
-          className="mt-4 text-lg text-gray-900"
+          className="mt-2 text-sm text-gray-600"
         >
-          Discover our exclusive range of stylish headwear
+          Stylish headwear in classic colors
         </motion.p>
       </div>
 
@@ -118,36 +128,36 @@ const ProductSlider = () => {
         breakpoints={{
           640: { slidesPerView: 2 },
           768: { slidesPerView: 2 },
-          1024: { slidesPerView: 4 },
+          1024: { slidesPerView: 3 },
         }}
-        className="px-4"
+        className="px-2"
       >
         {products.map((product, index) => (
           <SwiperSlide key={index}>
             <motion.div
-              className="p-2 rounded-xl shadow-lg text-center cursor-pointer  transition-all"
+              className="p-3 rounded-lg bg-white shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer border border-gray-100"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: index * 0.1 }}
+              whileHover={{ y: -3 }}
               onClick={() => openModal(product)}
             >
-              <div className="relative w-full h-56 mx-auto overflow-hidden flex items-center justify-center">
+              <div className="relative w-full h-48 mx-auto overflow-hidden flex items-center justify-center">
                 <img
                   src={product.image}
                   alt={product.name}
-                  className="object-cover max-w-full max-h-full transition-transform duration-700 hover:scale-110"
+                  className="object-contain max-w-full max-h-full transition-transform duration-500 hover:scale-105"
                 />
               </div>
 
-              <div className="mt-4">
-                <div className="flex justify-center gap-1 mb-2">
+              <div className="mt-3">
+                <div className="flex justify-center gap-1 mb-1">
                   {Array(product.rating).fill(null).map((_, i) => (
-                    <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
+                    <Star key={i} className="w-3 h-3 text-yellow-400 fill-current" />
                   ))}
                 </div>
 
-                <h3 className="text-xl font-semibold text-blue-950 mb-1">{product.name}</h3>
-                <p className="text-blue-950 text-sm font-bold">PKR {product.price.toLocaleString()}</p>
+                <h3 className="text-lg font-semibold text-gray-900 mb-1">{product.name}</h3>
+                <p className="text-gray-800 font-bold text-sm">PKR {product.price.toLocaleString()}</p>
               </div>
             </motion.div>
           </SwiperSlide>
@@ -156,70 +166,69 @@ const ProductSlider = () => {
 
       {/* Navigation buttons */}
       <motion.button
-        whileHover={{ scale: 1.05 }}
+        whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
-        className="prev-btn absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 flex items-center justify-center bg-white/90 backdrop-blur-sm rounded-full shadow-lg text-neutral-800 hover:bg-white transition-all duration-300"
+        className="prev-btn absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 flex items-center justify-center bg-white rounded-full shadow-md text-gray-900 hover:bg-gray-100 transition-all duration-300 border border-gray-200"
       >
         <ChevronLeft className="w-5 h-5" />
       </motion.button>
       <motion.button
-        whileHover={{ scale: 1.05 }}
+        whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
-        className="next-btn absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 flex items-center justify-center bg-white/90 backdrop-blur-sm rounded-full shadow-lg text-neutral-800 hover:bg-white transition-all duration-300"
+        className="next-btn absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 flex items-center justify-center bg-white rounded-full shadow-md text-gray-900 hover:bg-gray-100 transition-all duration-300 border border-gray-200"
       >
         <ChevronRight className="w-5 h-5" />
       </motion.button>
 
       {/* Product Detail Modal */}
       {selectedProduct && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+        <div className="fixed inset-0 bg-black bg-opacity-70 z-50 flex items-center justify-center p-4">
           <motion.div 
-            className="bg-white rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto"
-            initial={{ opacity: 0, scale: 0.9 }}
+            className="bg-white rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl"
+            initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.9 }}
           >
             <div className="relative p-6">
               <button 
                 onClick={closeModal}
-                className="absolute top-4 right-4 p-1 rounded-full hover:bg-gray-100"
+                className="absolute top-4 right-4 p-1 rounded-full hover:bg-gray-100 transition-colors"
               >
-                <X className="w-6 h-6 text-gray-600" />
+                <X className="w-5 h-5 text-gray-600" />
               </button>
 
-              <div className="grid md:grid-cols-2 gap-8">
+              <div className="grid md:grid-cols-2 gap-6">
                 <div className="flex items-center justify-center bg-gray-50 rounded-lg p-4">
                   <img 
                     src={selectedProduct.image} 
                     alt={selectedProduct.name} 
-                    className="max-h-96 object-contain"
+                    className="max-h-80 object-contain"
                   />
                 </div>
 
                 <div className="space-y-4">
-                  <h2 className="text-3xl font-bold">{selectedProduct.name}</h2>
+                  <h2 className="text-2xl font-bold text-gray-900">{selectedProduct.name}</h2>
                   
                   <div className="flex items-center gap-1">
                     {Array(selectedProduct.rating).fill(null).map((_, i) => (
-                      <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
+                      <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
                     ))}
-                    <span className="text-gray-600 ml-2">({selectedProduct.rating}/5)</span>
+                    <span className="text-gray-600 ml-1 text-sm">({selectedProduct.rating}/5)</span>
                   </div>
 
-                  <p className="text-2xl font-bold text-gray-900">
+                  <p className="text-xl font-bold text-gray-900">
                     PKR {selectedProduct.price.toLocaleString()}
                   </p>
 
-                  <p className="text-gray-700">{selectedProduct.description}</p>
+                  <p className="text-gray-700 text-sm">{selectedProduct.description}</p>
 
                   {selectedProduct.sizes && (
                     <div>
-                      <h3 className="font-medium text-gray-900">Sizes</h3>
-                      <div className="flex flex-wrap gap-2 mt-2">
+                      <h3 className="font-medium text-gray-900 text-sm">Sizes</h3>
+                      <div className="flex flex-wrap gap-2 mt-1">
                         {selectedProduct.sizes.map(size => (
                           <button 
                             key={size}
-                            className="px-3 py-1 border border-gray-300 rounded-md hover:bg-gray-100"
+                            className="px-3 py-1 text-sm border border-gray-300 rounded-md hover:bg-gray-100 transition-colors"
                           >
                             {size}
                           </button>
@@ -230,17 +239,20 @@ const ProductSlider = () => {
 
                   {selectedProduct.colors && (
                     <div>
-                      <h3 className="font-medium text-gray-900">Colors</h3>
+                      <h3 className="font-medium text-gray-900 text-sm">Available Colors</h3>
                       <div className="flex flex-wrap gap-2 mt-2">
-                        {selectedProduct.colors.map(color => (
-                          <button 
-                            key={color}
-                            className="px-3 py-1 border border-gray-300 rounded-md hover:bg-gray-100"
-                            style={{ backgroundColor: color.toLowerCase() === 'white' ? '#fff' : color.toLowerCase() }}
-                          >
-                            {color}
-                          </button>
-                        ))}
+                        {selectedProduct.colors.map(color => {
+                          const { bg, text } = getColorStyle(color);
+                          return (
+                            <button 
+                              key={color}
+                              className={`px-3 py-1 text-sm rounded-md border border-gray-200 ${bg} ${text} font-medium flex items-center gap-1`}
+                            >
+                              <span className="w-3 h-3 rounded-full border border-gray-300"></span>
+                              {color}
+                            </button>
+                          );
+                        })}
                       </div>
                     </div>
                   )}
@@ -248,7 +260,7 @@ const ProductSlider = () => {
                   <div className="pt-4">
                     <button 
                       onClick={() => router.push('/shop')}
-                      className="w-full bg-black text-white py-3 px-6 rounded-lg hover:bg-gray-800 transition-colors"
+                      className="w-full bg-gray-900 text-white py-2 px-4 rounded-md hover:bg-gray-800 transition-colors font-medium shadow-sm text-sm"
                     >
                       SHOP NOW
                     </button>

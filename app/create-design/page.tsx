@@ -1,7 +1,7 @@
 'use client';
 import { useState, useRef, useEffect } from "react";
 import Card from "@/app/components/ui/card";
-import { CardContent } from "@/app/components/ui/cardconten"; // Fixed typo in import
+import { CardContent } from "@/app/components/ui/cardconten";
 import { motion, AnimatePresence } from "framer-motion";
 import { UploadCloud, X, Sparkles, ShoppingCart, Check, ChevronRight, Palette, Shirt, Zap, Loader } from "lucide-react";
 import { toast } from "sonner";
@@ -27,6 +27,11 @@ interface ProductItem {
   colors: string[];
   price: number;
   colorCodes: string[];
+  designAreas?: {
+    name: string;
+    preview: string;
+    className?: string;
+  }[];
 }
 
 const CreatorDesignPage = () => {
@@ -35,7 +40,7 @@ const CreatorDesignPage = () => {
   const [quantity, setQuantity] = useState(1);
   const [color, setColor] = useState("Black");
   const [size, setSize] = useState("M");
-  const [shirtDesignArea, setShirtDesignArea] = useState("Front");
+  const [designArea, setDesignArea] = useState("Front");
   const [uploadedImage, setUploadedImage] = useState<string | null>(null);
   const [selectedPrompt, setSelectedPrompt] = useState<string | null>(null);
   const [customPrompt, setCustomPrompt] = useState("");
@@ -48,25 +53,62 @@ const CreatorDesignPage = () => {
       name: "Shirt", 
       image: "/images/plain-shirt1.png", 
       sizes: ["S", "M", "L", "XL"], 
-      colors: ["Black", "White", "Navy", "Charcoal"], 
+      colors: ["Black", "White", "Brown", "Orange", "Red", "Blue", "Yellow", "Green", "Navy", "Pink"], 
       price: 25,
-      colorCodes: ["#000000", "#FFFFFF", "#001F3F", "#36454F"]
+      colorCodes: ["#000000", "#FFFFFF", "#795548", "#FF9800", "#F44336", "#2196F3", "#FFEB3B", "#4CAF50", "#001F3F", "#E91E63"],
+      designAreas: [
+        { 
+          name: "Front", 
+          preview: "/images/front.png",
+          className: "col-span-1"
+        },
+        { 
+          name: "Back", 
+          preview: "/images/back.png",
+          className: "col-span-1"
+        },
+        { 
+          name: "Right Sleeve", 
+          preview: "/images/sleeve.png",
+          className: "col-span-1"
+        },
+        { 
+          name: "Left Sleeve", 
+          preview: "/images/sleeve.png",
+          className: "col-span-1"
+        }
+      ]
     },
     { 
       name: "Cap", 
       image: "/images/plain-cap.png", 
       sizes: ["M", "L"], 
-      colors: ["Black", "White", "Navy"], 
+      colors: ["Black", "Navy", "White", "Pink"], 
       price: 15,
-      colorCodes: ["#000000", "#FFFFFF", "#001F3F"]
+      colorCodes: ["#000000", "#001F3F", "#FFFFFF", "#E91E63"],
+      designAreas: [
+        { 
+          name: "Front", 
+          preview: "/images/capfront.png",
+          className: "col-span-1"
+        },
+        { 
+          name: "Side", 
+          preview: "/images/cap-side.png",
+          className: "col-span-1"
+        },
+        { 
+          name: "Top", 
+          preview: "/images/cap-top.png",
+          className: "col-span-1"
+        },
+        { 
+          name: "Back", 
+          preview: "/images/capback.png",
+          className: "col-span-1"
+        }
+      ]
     },
-  ];
-
-  const designAreas = [
-    { name: "Front", className: "border-r border-b" },
-    { name: "Back", className: "border-b" },
-    { name: "Logo", className: "border-r" },
-    { name: "Sleeves", className: "" }
   ];
 
   const suggestedPrompts = [
@@ -87,7 +129,12 @@ const CreatorDesignPage = () => {
       inputRef.current.selectionStart = prefix.length;
       inputRef.current.selectionEnd = prefix.length;
     }
-  }, []);
+    // Reset design area when product changes
+    const currentItem = items.find(item => item.name === selectedItem);
+    if (currentItem && currentItem.designAreas) {
+      setDesignArea(currentItem.designAreas[0].name);
+    }
+  }, [selectedItem]);
 
   const selectedProduct = items.find((item) => item.name === selectedItem) || {
     name: "",
@@ -95,7 +142,8 @@ const CreatorDesignPage = () => {
     sizes: [],
     colors: [],
     colorCodes: [],
-    price: 0
+    price: 0,
+    designAreas: []
   };
 
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -181,12 +229,9 @@ const CreatorDesignPage = () => {
       color: color,
       quantity: quantity,
       colorCodes: selectedProduct.colorCodes,
-      sizes: selectedProduct.sizes
+      sizes: selectedProduct.sizes,
+      designArea: designArea
     };
-
-    if (selectedItem === "Shirt") {
-      cartItem.designArea = shirtDesignArea;
-    }
 
     const existingCart = localStorage.getItem("cart");
     const cartItems = existingCart ? JSON.parse(existingCart) : [];
@@ -322,22 +367,46 @@ const CreatorDesignPage = () => {
             ))}
           </div>
 
-          {selectedItem === "Shirt" && (
+          {selectedProduct.designAreas && selectedProduct.designAreas.length > 0 && (
             <div className="mb-4">
-              <label className="block text-xs font-normal text-neutral-600 mb-2">Design Placement</label>
-              <div className="grid grid-cols-2 border border-neutral-200 rounded-lg overflow-hidden">
-                {designAreas.map((area) => (
+              <label className="block text-xs font-normal text-neutral-600 mb-2">
+                Design Placement
+                <span className="ml-1 text-neutral-400">({selectedItem})</span>
+              </label>
+              <div className={`grid ${
+                selectedItem === "Shirt" ? "grid-cols-2" : "grid-cols-4"
+              } gap-2`}>
+                {selectedProduct.designAreas.map((area) => (
                   <motion.button
                     key={`area-${area.name}`}
+                    whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className={`py-1.5 text-xs font-normal transition-all ${
-                      shirtDesignArea === area.name 
-                        ? "bg-blue-950 text-white" 
-                        : "bg-white text-neutral-600 hover:bg-neutral-50"
-                    } ${area.className}`}
-                    onClick={() => setShirtDesignArea(area.name)}
+                    className={`relative overflow-hidden rounded-lg border ${
+                      designArea === area.name 
+                        ? "border-blue-600 ring-2 ring-blue-200" 
+                        : "border-neutral-200 hover:border-neutral-300"
+                    } ${area.className || ''} h-24`}
+                    onClick={() => setDesignArea(area.name)}
                   >
-                    {area.name}
+                    <div className="absolute inset-0 bg-neutral-50 flex items-center justify-center">
+                      <img 
+                        src={area.preview} 
+                        alt={area.name} 
+                        className="w-full h-full object-contain p-2"
+                      />
+                    </div>
+                    <div className={`absolute inset-0 flex items-end justify-center ${
+                      designArea === area.name ? 'bg-blue-50/20' : 'bg-white/20'
+                    }`}>
+                      <span className={`text-xs font-medium mb-1 ${
+                        designArea === area.name ? 'text-blue-800' : 'text-neutral-700'
+                      }`}>{area.name}</span>
+                    </div>
+                    {designArea === area.name && (
+                      <div className="absolute top-1 right-1 bg-blue-600 text-white rounded-full p-0.5">
+                        <Check size={10} />
+                      </div>
+                    )}
                   </motion.button>
                 ))}
               </div>
@@ -346,13 +415,13 @@ const CreatorDesignPage = () => {
 
           <div className="mb-4">
             <label className="block text-xs font-normal text-neutral-600 mb-2">Color Selection</label>
-            <div className="flex gap-2">
+            <div className="flex flex-wrap gap-2">
               {selectedProduct.colors.map((col, index) => (
                 <motion.div
                   key={`color-${col}`}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className={`w-6 h-6 rounded-full border cursor-pointer flex items-center justify-center transition-all ${
+                  className={`w-7 h-7 rounded-full border cursor-pointer flex items-center justify-center transition-all ${
                     color === col ? "border-neutral-800" : "border-neutral-200"
                   }`}
                   style={{ backgroundColor: selectedProduct.colorCodes[index] }}
