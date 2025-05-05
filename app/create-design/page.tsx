@@ -94,14 +94,10 @@ const CreatorDesignPage = () => {
         },
         { 
           name: "Side", 
-          preview: "/images/cap-side.png",
+          preview: "/images/capside.png",
           className: "col-span-1"
         },
-        { 
-          name: "Top", 
-          preview: "/images/cap-top.png",
-          className: "col-span-1"
-        },
+       
         { 
           name: "Back", 
           preview: "/images/capback.png",
