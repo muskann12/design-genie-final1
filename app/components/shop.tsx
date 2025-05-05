@@ -475,14 +475,6 @@ const Index = () => {
             </button>
           </div>
         )}
-
-        {filteredProducts.length > 0 && (
-          <div className="mt-10 text-center">
-            <button className="px-6 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50">
-              Load More
-            </button>
-          </div>
-        )}
       </div>
 
       {isClient && cart.length > 0 && (
