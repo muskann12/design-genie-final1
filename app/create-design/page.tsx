@@ -54,7 +54,7 @@ const CreatorDesignPage = () => {
       image: "/images/plain-shirt1.png", 
       sizes: ["S", "M", "L", "XL"], 
       colors: ["Black", "White", "Brown", "Orange", "Red", "Blue", "Yellow", "Green", "Navy", "Pink"], 
-      price: 25,
+      price: 1300,
       colorCodes: ["#000000", "#FFFFFF", "#795548", "#FF9800", "#F44336", "#2196F3", "#FFEB3B", "#4CAF50", "#001F3F", "#E91E63"],
       designAreas: [
         { 
@@ -84,7 +84,7 @@ const CreatorDesignPage = () => {
       image: "/images/plain-cap.png", 
       sizes: ["M", "L"], 
       colors: ["Black", "Navy", "White", "Pink"], 
-      price: 15,
+      price: 800,
       colorCodes: ["#000000", "#001F3F", "#FFFFFF", "#E91E63"],
       designAreas: [
         { 

@@ -22,7 +22,7 @@ const products: Product[] = [
   { 
     name: "DG BoldGenie", 
     image: "/images/c1.jpg", 
-    price: 1200, 
+    price: 800, 
     rating: 4,
     description: "Premium quality baseball cap with adjustable strap.",
     sizes: ["One Size"],
@@ -31,7 +31,7 @@ const products: Product[] = [
   { 
     name: "DG MysticCover", 
     image: "/images/c2.jpg", 
-    price: 1500, 
+    price: 800, 
     rating: 4,
     description: "Stylish snapback hat with flat brim.",
     sizes: ["One Size"],
@@ -40,7 +40,7 @@ const products: Product[] = [
   { 
     name: "DG UrbanHalo", 
     image: "/images/c3.jpg", 
-    price: 1300, 
+    price: 800, 
     rating: 4,
     description: "Trendy bucket hat with a relaxed fit.",
     sizes: ["One Size"],
@@ -49,7 +49,7 @@ const products: Product[] = [
   { 
     name: "DG DreamTopper", 
     image: "/images/c4.jpg", 
-    price: 1100, 
+    price: 800, 
     rating: 5,
     description: "Classic dad hat with curved brim.",
     sizes: ["One Size"],
@@ -58,7 +58,7 @@ const products: Product[] = [
   { 
     name: "Trucker Cap", 
     image: "/images/c5.jpg", 
-    price: 1400, 
+    price: 800, 
     rating: 4,
     description: "Vintage-style trucker cap with mesh back.",
     sizes: ["One Size"],
@@ -67,7 +67,7 @@ const products: Product[] = [
   { 
     name: "DG SkyCraft", 
     image: "/images/c6.jpg", 
-    price: 1600, 
+    price: 800, 
     rating: 4,
     description: "Winter beanie with a small brim.",
     sizes: ["One Size"],

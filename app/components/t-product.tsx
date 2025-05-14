@@ -22,7 +22,7 @@ const products: Product[] = [
   { 
     name: "Classic Cotton Shirt", 
     image: "/images/s1.png", 
-    price: 1800, 
+    price: 1300, 
     rating: 4,
     description: "Premium cotton shirt with a comfortable fit, perfect for both casual and formal occasions.",
     sizes: ["S", "M", "L", "XL", "XXL"],
@@ -31,7 +31,7 @@ const products: Product[] = [
   { 
     name: "Slim Fit Dress Shirt", 
     image: "/images/s2.png", 
-    price: 1800, 
+    price: 1300, 
     rating: 4,
     description: "Elegant slim-fit dress shirt made from high-quality fabric that maintains its shape all day.",
     sizes: ["XS", "S", "M", "L", "XL"],
@@ -40,7 +40,7 @@ const products: Product[] = [
   { 
     name: "Casual Button-Down Shirt", 
     image: "/images/s3.png", 
-    price: 1800, 
+    price: 1300, 
     rating: 4,
     description: "Relaxed fit button-down shirt with a stylish pattern, ideal for everyday wear.",
     sizes: ["S", "M", "L", "XL"],
@@ -49,7 +49,7 @@ const products: Product[] = [
   { 
     name: "Formal Oxford Shirt", 
     image: "/images/s4.png", 
-    price: 2500, 
+    price: 1300, 
     rating: 5,
     description: "Premium Oxford shirt with a refined look, perfect for business meetings and special occasions.",
     sizes: ["S", "M", "L", "XL", "XXL"],
@@ -58,7 +58,7 @@ const products: Product[] = [
   { 
     name: "Linen Summer Shirt", 
     image: "/images/s5.png", 
-    price: 2200, 
+    price: 1300, 
     rating: 4,
     description: "Lightweight linen shirt that keeps you cool in warm weather while maintaining a polished look.",
     sizes: ["S", "M", "L", "XL"],
