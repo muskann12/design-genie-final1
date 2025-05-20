@@ -195,7 +195,7 @@ const CartPage = () => {
             {/* Cart Items */}
             <div className="lg:col-span-2 space-y-4">
               {cart.map((item, index) => (
-                <div key={item.id} className="bg-white rounded-lg shadow-sm overflow-hidden">
+                <div key={item.id} className="bg-white  rounded-lg shadow-sm overflow-hidden">
                   <div className="p-4 md:p-6 flex flex-col md:flex-row gap-6">
                     <div className="flex-shrink-0">
                       <img
@@ -221,7 +221,7 @@ const CartPage = () => {
                       <p className="text-sm text-gray-600">Color: {item.color}</p>
                       {item.size && <p className="text-sm text-gray-600">Size: {item.size}</p>}
                       
-                      <div className="mt-4 flex items-center justify-between">
+                      <div className="mt-4 flex items-center text-black justify-between">
                         <div className="flex items-center space-x-3">
                           <button
                             onClick={() => updateQuantity(index, false)}
@@ -248,17 +248,17 @@ const CartPage = () => {
             {/* Order Summary */}
             <div className="space-y-6">
               <div className="bg-white rounded-lg shadow-sm p-6">
-                <h2 className="text-lg font-bold mb-4">Order Summary</h2>
+                <h2 className="text-lg text-black font-bold mb-4">Order Summary</h2>
                 
                 <div className="space-y-3">
                   <div className="flex justify-between">
                     <span className="text-gray-600">Subtotal</span>
-                    <span className="font-medium">PKR {calculateSubtotal().toLocaleString()}</span>
+                    <span className="font-medium text-black" >PKR {calculateSubtotal().toLocaleString()}</span>
                   </div>
                   
                   <div className="flex justify-between">
                     <span className="text-gray-600">Delivery</span>
-                    <span className="font-medium">PKR {deliveryFee.toLocaleString()}</span>
+                    <span className="font-medium text-black">PKR {deliveryFee.toLocaleString()}</span>
                   </div>
                   
                   {discount > 0 && (
@@ -268,7 +268,7 @@ const CartPage = () => {
                     </div>
                   )}
                   
-                  <div className="border-t pt-3 flex justify-between font-bold text-lg">
+                  <div className="border-t pt-3 flex text-black justify-between font-bold text-lg">
                     <span>Total</span>
                     <span>PKR {finalTotal.toLocaleString()}</span>
                   </div>
@@ -278,7 +278,7 @@ const CartPage = () => {
                   <label htmlFor="discount" className="block text-sm font-medium text-gray-700 mb-1">
                     Discount Code
                   </label>
-                  <div className="flex gap-2">
+                  <div className="flex gap-2 text-black">
                     <input
                       type="text"
                       id="discount"
@@ -309,7 +309,7 @@ const CartPage = () => {
 
               {/* Customer Information */}
               <div className="bg-white rounded-lg shadow-sm p-6">
-                <h2 className="text-lg font-bold mb-4">Customer Information</h2>
+                <h2 className="text-lg font-bold mb-4 text-black">Customer Information</h2>
                 
                 <div className="space-y-4">
                   <div>
@@ -349,7 +349,7 @@ const CartPage = () => {
                       id="contactNumber"
                       value={contactNumber}
                       onChange={(e) => setContactNumber(e.target.value)}
-                      className="w-full px-3 py-2 border rounded-md text-gray-700 focus:ring-blue-500 focus:border-blue-500"
+                      className="w-full px-3 text-blackpy-2 border rounded-md text-gray-700 focus:ring-blue-500 focus:border-blue-500"
                       required
                     />
                   </div>

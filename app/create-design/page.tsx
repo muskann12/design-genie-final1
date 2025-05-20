@@ -47,6 +47,7 @@ const CreatorDesignPage = () => {
   const [loading, setLoading] = useState(false);
   const [isAddedToCart, setIsAddedToCart] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
+  const imageRef = useRef<HTMLDivElement>(null);
 
   const items: ProductItem[] = [
     { 
@@ -97,7 +98,6 @@ const CreatorDesignPage = () => {
           preview: "/images/capside.png",
           className: "col-span-1"
         },
-       
         { 
           name: "Back", 
           preview: "/images/capback.png",
@@ -125,7 +125,6 @@ const CreatorDesignPage = () => {
       inputRef.current.selectionStart = prefix.length;
       inputRef.current.selectionEnd = prefix.length;
     }
-    // Reset design area when product changes
     const currentItem = items.find(item => item.name === selectedItem);
     if (currentItem && currentItem.designAreas) {
       setDesignArea(currentItem.designAreas[0].name);
@@ -141,6 +140,42 @@ const CreatorDesignPage = () => {
     price: 0,
     designAreas: []
   };
+
+  useEffect(() => {
+    const preventSave = (e: Event) => {
+      e.preventDefault();
+      return false;
+    };
+
+    const handleContextMenu = (e: MouseEvent) => {
+      if (imageRef.current?.contains(e.target as Node)) {
+        e.preventDefault();
+        toast.info("Design saving is disabled to protect your work");
+      }
+    };
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.ctrlKey && (e.key === 's' || e.key === 'p')) || e.key === 'PrintScreen') {
+        e.preventDefault();
+        toast.info("Design saving is disabled to protect your work");
+      }
+    };
+
+    const imageElement = imageRef.current;
+    if (imageElement) {
+      imageElement.addEventListener('contextmenu', handleContextMenu);
+      imageElement.addEventListener('dragstart', preventSave);
+      document.addEventListener('keydown', handleKeyDown);
+    }
+
+    return () => {
+      if (imageElement) {
+        imageElement.removeEventListener('contextmenu', handleContextMenu);
+        imageElement.removeEventListener('dragstart', preventSave);
+        document.removeEventListener('keydown', handleKeyDown);
+      }
+    };
+  }, [uploadedImage]);
 
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -191,12 +226,13 @@ const CreatorDesignPage = () => {
         throw new Error('Failed to generate image');
       }
 
-      const data = await response.json().catch(() => {
-        throw new Error('Invalid response from server');
-      });
+      const data = await response.json();
   
       if (data.imageUrl) {
-        setUploadedImage(data.imageUrl);
+        const blobResponse = await fetch(data.imageUrl);
+        const blob = await blobResponse.blob();
+        const blobUrl = URL.createObjectURL(blob);
+        setUploadedImage(blobUrl);
         toast.success("Design created successfully!");
       } else {
         throw new Error("Invalid response format");
@@ -487,7 +523,16 @@ const CreatorDesignPage = () => {
             Design Studio
           </h3>
 
-          <div className="mb-4 h-64 bg-neutral-50 rounded-lg border border-neutral-200 flex items-center justify-center overflow-hidden">
+          <div 
+            ref={imageRef}
+            className="mb-4 h-64 bg-neutral-50 rounded-lg border border-neutral-200 flex items-center justify-center overflow-hidden relative"
+            onDragStart={(e) => e.preventDefault()}
+            onMouseDown={(e) => {
+              if (e.target instanceof HTMLImageElement) {
+                e.preventDefault();
+              }
+            }}
+          >
             {!uploadedImage ? (
               <motion.div 
                 whileHover={{ scale: 0.99 }}
@@ -507,13 +552,28 @@ const CreatorDesignPage = () => {
               </motion.div>
             ) : (
               <div className="relative h-full w-full flex items-center justify-center p-3">
-                <motion.img 
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  src={uploadedImage} 
-                  alt="Generated" 
-                  className="max-h-full max-w-full object-contain" 
-                />
+                <div className="absolute inset-0 z-10 select-none pointer-events-none"></div>
+                
+                <div className="h-full w-full flex items-center justify-center">
+                  <motion.img 
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    src={uploadedImage} 
+                    alt="Generated" 
+                    className="max-h-full max-w-full object-contain"
+                    style={{
+                      pointerEvents: 'none',
+                      userSelect: 'none',
+                      WebkitUserSelect: 'none',
+                      WebkitTouchCallout: 'none',
+                      maxHeight: '100%',
+                      maxWidth: '100%',
+                      height: 'auto',
+                      width: 'auto'
+                    }}
+                  />
+                </div>
+                
                 <motion.button
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
@@ -521,7 +581,7 @@ const CreatorDesignPage = () => {
                     setUploadedImage(null);
                     setIsAddedToCart(false);
                   }}
-                  className="absolute top-2 right-2 bg-blue-950 text-white rounded-full p-1 hover:bg-neutral-800"
+                  className="absolute top-2 right-2 bg-blue-950 text-white rounded-full p-1 hover:bg-neutral-800 z-20"
                 >
                   <X size={12} />
                 </motion.button>
