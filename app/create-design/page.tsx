@@ -8,14 +8,19 @@ import { toast } from "sonner";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 
+interface Design {
+  area: string;
+  image: string;
+  prompt?: string;
+}
+
 interface CartItem {
   name: string;
-  image: string;
+  designs: Design[];
   price: number;
   size: string;
   color: string;
   quantity: number;
-  designArea?: string;
   colorCodes?: string[];
   sizes?: string[];
 }
@@ -27,7 +32,7 @@ interface ProductItem {
   colors: string[];
   price: number;
   colorCodes: string[];
-  designAreas?: {
+  designAreas: {
     name: string;
     preview: string;
     className?: string;
@@ -40,14 +45,18 @@ const CreatorDesignPage = () => {
   const [quantity, setQuantity] = useState(1);
   const [color, setColor] = useState("Black");
   const [size, setSize] = useState("M");
-  const [designArea, setDesignArea] = useState("Front");
-  const [uploadedImage, setUploadedImage] = useState<string | null>(null);
+  const [activeDesignArea, setActiveDesignArea] = useState("Front");
+  const [designs, setDesigns] = useState<Record<string, Design>>({});
   const [selectedPrompt, setSelectedPrompt] = useState<string | null>(null);
   const [customPrompt, setCustomPrompt] = useState("");
   const [loading, setLoading] = useState(false);
   const [isAddedToCart, setIsAddedToCart] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
-  const imageRef = useRef<HTMLDivElement>(null);
+  const imageRefs = useRef<Record<string, HTMLDivElement | null>>({});
+
+  const setImageRef = (area: string) => (el: HTMLDivElement | null) => {
+    imageRefs.current[area] = el;
+  };
 
   const items: ProductItem[] = [
     { 
@@ -58,26 +67,10 @@ const CreatorDesignPage = () => {
       price: 1300,
       colorCodes: ["#000000", "#FFFFFF", "#795548", "#FF9800", "#F44336", "#2196F3", "#FFEB3B", "#4CAF50", "#001F3F", "#E91E63"],
       designAreas: [
-        { 
-          name: "Front", 
-          preview: "/images/front.png",
-          className: "col-span-1"
-        },
-        { 
-          name: "Back", 
-          preview: "/images/back.png",
-          className: "col-span-1"
-        },
-        { 
-          name: "Right Sleeve", 
-          preview: "/images/sleeve.png",
-          className: "col-span-1"
-        },
-        { 
-          name: "Left Sleeve", 
-          preview: "/images/sleeve.png",
-          className: "col-span-1"
-        }
+        { name: "Front", preview: "/images/front.png", className: "col-span-1" },
+        { name: "Back", preview: "/images/back.png", className: "col-span-1" },
+        { name: "Right Sleeve", preview: "/images/sleeve.png", className: "col-span-1" },
+        { name: "Left Sleeve", preview: "/images/sleeve.png", className: "col-span-1" }
       ]
     },
     { 
@@ -88,21 +81,9 @@ const CreatorDesignPage = () => {
       price: 800,
       colorCodes: ["#000000", "#001F3F", "#FFFFFF", "#E91E63"],
       designAreas: [
-        { 
-          name: "Front", 
-          preview: "/images/capfront.png",
-          className: "col-span-1"
-        },
-        { 
-          name: "Side", 
-          preview: "/images/capside.png",
-          className: "col-span-1"
-        },
-        { 
-          name: "Back", 
-          preview: "/images/capback.png",
-          className: "col-span-1"
-        }
+        { name: "Front", preview: "/images/capfront.png", className: "col-span-1" },
+        { name: "Side", preview: "/images/capside.png", className: "col-span-1" },
+        { name: "Back", preview: "/images/capback.png", className: "col-span-1" }
       ]
     },
   ];
@@ -126,29 +107,31 @@ const CreatorDesignPage = () => {
       inputRef.current.selectionEnd = prefix.length;
     }
     const currentItem = items.find(item => item.name === selectedItem);
-    if (currentItem && currentItem.designAreas) {
-      setDesignArea(currentItem.designAreas[0].name);
+    if (currentItem) {
+      setActiveDesignArea(currentItem.designAreas[0].name);
+      const newDesigns = {...designs};
+      currentItem.designAreas.forEach(area => {
+        if (!newDesigns[area.name]) {
+          newDesigns[area.name] = { area: area.name, image: "", prompt: "" };
+        }
+      });
+      setDesigns(newDesigns);
     }
   }, [selectedItem]);
 
   const selectedProduct = items.find((item) => item.name === selectedItem) || {
-    name: "",
-    image: "",
-    sizes: [],
-    colors: [],
-    colorCodes: [],
-    price: 0,
+    name: "", 
+    image: "", 
+    sizes: [], 
+    colors: [], 
+    colorCodes: [], 
+    price: 0, 
     designAreas: []
   };
 
   useEffect(() => {
-    const preventSave = (e: Event) => {
-      e.preventDefault();
-      return false;
-    };
-
     const handleContextMenu = (e: MouseEvent) => {
-      if (imageRef.current?.contains(e.target as Node)) {
+      if (Object.values(imageRefs.current).some(ref => ref?.contains(e.target as Node))) {
         e.preventDefault();
         toast.info("Design saving is disabled to protect your work");
       }
@@ -161,40 +144,37 @@ const CreatorDesignPage = () => {
       }
     };
 
-    const imageElement = imageRef.current;
-    if (imageElement) {
-      imageElement.addEventListener('contextmenu', handleContextMenu);
-      imageElement.addEventListener('dragstart', preventSave);
-      document.addEventListener('keydown', handleKeyDown);
-    }
+    document.addEventListener('contextmenu', handleContextMenu);
+    document.addEventListener('keydown', handleKeyDown);
 
     return () => {
-      if (imageElement) {
-        imageElement.removeEventListener('contextmenu', handleContextMenu);
-        imageElement.removeEventListener('dragstart', preventSave);
-        document.removeEventListener('keydown', handleKeyDown);
-      }
+      document.removeEventListener('contextmenu', handleContextMenu);
+      document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [uploadedImage]);
+  }, []);
 
-  const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>, area: string) => {
     const file = event.target.files?.[0];
-    if (file) {
-      if (!['image/jpeg', 'image/png'].includes(file.type)) {
-        toast.error("Only JPG/PNG images are allowed");
-        return;
-      }
-      if (file.size > 10 * 1024 * 1024) {
-        toast.error("Image must be less than 10MB");
-        return;
-      }
-      const reader = new FileReader();
-      reader.onload = () => {
-        setUploadedImage(reader.result as string);
-        toast.success("Image uploaded successfully");
-      };
-      reader.readAsDataURL(file);
+    if (!file) return;
+
+    if (!['image/jpeg', 'image/png'].includes(file.type)) {
+      toast.error("Only JPG/PNG images are allowed");
+      return;
     }
+    if (file.size > 10 * 1024 * 1024) {
+      toast.error("Image must be less than 10MB");
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      setDesigns(prev => ({
+        ...prev,
+        [area]: { ...prev[area], image: reader.result as string }
+      }));
+      toast.success(`${area} design uploaded successfully`);
+    };
+    reader.readAsDataURL(file);
   };
 
   const handlePromptSelect = (prompt: string) => {
@@ -211,32 +191,33 @@ const CreatorDesignPage = () => {
     }
   
     setLoading(true);
-    toast.info("Generating your unique design...");
+    toast.info(`Generating ${activeDesignArea} design...`);
   
     try {
       const response = await fetch('/api/generate', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ prompt: prompt.trim() })
       });
 
-      if (!response.ok) {
-        throw new Error('Failed to generate image');
-      }
+      if (!response.ok) throw new Error('Failed to generate image');
 
       const data = await response.json();
-  
-      if (data.imageUrl) {
-        const blobResponse = await fetch(data.imageUrl);
-        const blob = await blobResponse.blob();
-        const blobUrl = URL.createObjectURL(blob);
-        setUploadedImage(blobUrl);
-        toast.success("Design created successfully!");
-      } else {
-        throw new Error("Invalid response format");
-      }
+      if (!data.imageUrl) throw new Error("Invalid response format");
+
+      const blobResponse = await fetch(data.imageUrl);
+      const blob = await blobResponse.blob();
+      const blobUrl = URL.createObjectURL(blob);
+      
+      setDesigns(prev => ({
+        ...prev,
+        [activeDesignArea]: {
+          ...prev[activeDesignArea],
+          image: blobUrl,
+          prompt: prompt.trim()
+        }
+      }));
+      toast.success(`${activeDesignArea} design created successfully!`);
     } catch (error: any) {
       console.error("Generation Error:", error);
       toast.error(error.message || "Failed to generate design");
@@ -245,24 +226,31 @@ const CreatorDesignPage = () => {
     }
   };
 
+  const calculateTotalPrice = () => {
+    const basePrice = selectedProduct.price;
+    const designCount = Object.values(designs).filter(design => design.image).length;
+    // Add 300 PKR if there are 2 or more designs
+    const additionalDesignCost = designCount >= 2 ? 300 : 0;
+    return (basePrice + additionalDesignCost) * quantity;
+  };
+
   const addToCart = () => {
     if (typeof window === 'undefined') return;
     
-    if (!uploadedImage) {
-      toast.error("Please upload or generate a design first");
+    if (!Object.values(designs).some(design => design.image)) {
+      toast.error("Please create at least one design first");
       return;
     }
 
     const cartItem: CartItem = {
       name: selectedProduct.name,
-      image: uploadedImage,
-      price: selectedProduct.price,
-      size: size,
-      color: color,
-      quantity: quantity,
+      designs: Object.values(designs).filter(design => design.image),
+      price: calculateTotalPrice() / quantity, // Store per-item price
+      size,
+      color,
+      quantity,
       colorCodes: selectedProduct.colorCodes,
-      sizes: selectedProduct.sizes,
-      designArea: designArea
+      sizes: selectedProduct.sizes
     };
 
     const existingCart = localStorage.getItem("cart");
@@ -271,11 +259,8 @@ const CreatorDesignPage = () => {
     localStorage.setItem("cart", JSON.stringify(cartItems));
     
     setIsAddedToCart(true);
-    toast.success(`${selectedProduct.name} added to cart!`, {
-      action: {
-        label: "View Cart",
-        onClick: () => window.location.href = "/cart"
-      },
+    toast.success(`${selectedProduct.name} with ${cartItem.designs.length} designs added to cart!`, {
+      action: { label: "View Cart", onClick: () => window.location.href = "/cart" },
       duration: 3000
     });
     
@@ -284,7 +269,6 @@ const CreatorDesignPage = () => {
 
   const handlePromptChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    
     if (!value.startsWith(prefix)) {
       e.target.value = prefix + (value || customPrompt);
       if (inputRef.current) {
@@ -293,7 +277,6 @@ const CreatorDesignPage = () => {
       }
       return;
     }
-    
     setCustomPrompt(value.slice(prefix.length));
   };
 
@@ -302,28 +285,29 @@ const CreatorDesignPage = () => {
     const cursorPos = input.selectionStart;
     
     if (cursorPos !== null && cursorPos <= prefix.length) {
-      if (e.key === 'Backspace' || e.key === 'Delete') {
+      if (e.key === 'Backspace' || e.key === 'Delete') e.preventDefault();
+      if (e.key === 'ArrowLeft') {
         e.preventDefault();
+        input.setSelectionRange(prefix.length, prefix.length);
       }
-    }
-    
-    if (e.key === 'ArrowLeft' && cursorPos !== null && cursorPos <= prefix.length) {
-      e.preventDefault();
-      input.setSelectionRange(prefix.length, prefix.length);
     }
   };
 
   const handleClick = (e: React.MouseEvent<HTMLInputElement>) => {
     const input = e.target as HTMLInputElement;
     const cursorPos = input.selectionStart;
-    
     if (cursorPos !== null && cursorPos < prefix.length) {
       input.setSelectionRange(prefix.length, prefix.length);
     }
   };
 
-  const navigateToPrompts = () => {
-    router.push("/prompt");
+  const navigateToPrompts = () => router.push("/prompt");
+
+  const removeDesign = (area: string) => {
+    setDesigns(prev => ({
+      ...prev,
+      [area]: { ...prev[area], image: "" }
+    }));
   };
 
   return (
@@ -348,7 +332,6 @@ const CreatorDesignPage = () => {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-6xl mx-auto">
-        {/* Product Selection Panel */}
         <motion.div 
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
@@ -379,17 +362,13 @@ const CreatorDesignPage = () => {
                     setSelectedItem(item.name);
                     setSize(item.sizes[0] || "");
                     setColor(item.colors[0] || "Black");
-                    setUploadedImage(null);
+                    setDesigns({});
                     setIsAddedToCart(false);
                   }}
                 >
                   <CardContent className="flex flex-col items-center p-1">
                     <div className="w-16 h-16 flex items-center justify-center mb-2">
-                      <img 
-                        src={item.image} 
-                        alt={item.name} 
-                        className="object-contain h-full"
-                      />
+                      <img src={item.image} alt={item.name} className="object-contain h-full"/>
                     </div>
                     <p className="text-center font-normal text-neutral-700 text-sm">{item.name}</p>
                     <p className="text-center text-xs font-light text-neutral-500 mt-0.5">PKR {item.price}</p>
@@ -399,43 +378,41 @@ const CreatorDesignPage = () => {
             ))}
           </div>
 
-          {selectedProduct.designAreas && selectedProduct.designAreas.length > 0 && (
+          {selectedProduct.designAreas.length > 0 && (
             <div className="mb-4">
               <label className="block text-xs font-normal text-neutral-600 mb-2">
-                Design Placement
-                <span className="ml-1 text-neutral-400">({selectedItem})</span>
+                Design Placement <span className="ml-1 text-neutral-400">({selectedItem})</span>
               </label>
-              <div className={`grid ${
-                selectedItem === "Shirt" ? "grid-cols-2" : "grid-cols-4"
-              } gap-2`}>
+              <div className={`grid ${selectedItem === "Shirt" ? "grid-cols-2" : "grid-cols-4"} gap-2`}>
                 {selectedProduct.designAreas.map((area) => (
                   <motion.button
                     key={`area-${area.name}`}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     className={`relative overflow-hidden rounded-lg border ${
-                      designArea === area.name 
+                      activeDesignArea === area.name 
                         ? "border-blue-600 ring-2 ring-blue-200" 
                         : "border-neutral-200 hover:border-neutral-300"
                     } ${area.className || ''} h-24`}
-                    onClick={() => setDesignArea(area.name)}
+                    onClick={() => setActiveDesignArea(area.name)}
                   >
                     <div className="absolute inset-0 bg-neutral-50 flex items-center justify-center">
-                      <img 
-                        src={area.preview} 
-                        alt={area.name} 
-                        className="w-full h-full object-contain p-2"
-                      />
+                      <img src={area.preview} alt={area.name} className="w-full h-full object-contain p-2"/>
                     </div>
                     <div className={`absolute inset-0 flex items-end justify-center ${
-                      designArea === area.name ? 'bg-blue-50/20' : 'bg-white/20'
+                      activeDesignArea === area.name ? 'bg-blue-50/20' : 'bg-white/20'
                     }`}>
                       <span className={`text-xs font-medium mb-1 ${
-                        designArea === area.name ? 'text-blue-800' : 'text-neutral-700'
+                        activeDesignArea === area.name ? 'text-blue-800' : 'text-neutral-700'
                       }`}>{area.name}</span>
                     </div>
-                    {designArea === area.name && (
+                    {activeDesignArea === area.name && (
                       <div className="absolute top-1 right-1 bg-blue-600 text-white rounded-full p-0.5">
+                        <Check size={10} />
+                      </div>
+                    )}
+                    {designs[area.name]?.image && (
+                      <div className="absolute top-1 left-1 bg-green-600 text-white rounded-full p-0.5">
                         <Check size={10} />
                       </div>
                     )}
@@ -509,7 +486,6 @@ const CreatorDesignPage = () => {
           </div>
         </motion.div>
 
-        {/* Design Panel */}
         <motion.div 
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
@@ -520,11 +496,11 @@ const CreatorDesignPage = () => {
             <span className="w-7 h-7 rounded-full bg-neutral-100 flex items-center justify-center mr-2">
               <Palette size={14} className="text-neutral-600" />
             </span>
-            Design Studio
+            Design Studio - {activeDesignArea}
           </h3>
 
           <div 
-            ref={imageRef}
+            ref={setImageRef(activeDesignArea)}
             className="mb-4 h-64 bg-neutral-50 rounded-lg border border-neutral-200 flex items-center justify-center overflow-hidden relative"
             onDragStart={(e) => e.preventDefault()}
             onMouseDown={(e) => {
@@ -533,33 +509,32 @@ const CreatorDesignPage = () => {
               }
             }}
           >
-            {!uploadedImage ? (
+            {!designs[activeDesignArea]?.image ? (
               <motion.div 
                 whileHover={{ scale: 0.99 }}
                 className="p-4 text-center cursor-pointer h-full w-full flex flex-col items-center justify-center"
               >
                 <label className="flex flex-col items-center cursor-pointer">
                   <UploadCloud size={28} className="text-neutral-400 mb-2" />
-                  <span className="text-neutral-500 font-light text-sm">Upload your design</span>
+                  <span className="text-neutral-500 font-light text-sm">Upload your {activeDesignArea.toLowerCase()} design</span>
                   <span className="text-xs text-neutral-400 mt-0.5">PNG or JPG, 10MB max</span>
                   <input 
                     type="file" 
                     accept="image/*" 
                     className="hidden" 
-                    onChange={handleImageUpload} 
+                    onChange={(e) => handleImageUpload(e, activeDesignArea)} 
                   />
                 </label>
               </motion.div>
             ) : (
               <div className="relative h-full w-full flex items-center justify-center p-3">
                 <div className="absolute inset-0 z-10 select-none pointer-events-none"></div>
-                
                 <div className="h-full w-full flex items-center justify-center">
                   <motion.img 
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    src={uploadedImage} 
-                    alt="Generated" 
+                    src={designs[activeDesignArea].image} 
+                    alt={`Generated ${activeDesignArea}`} 
                     className="max-h-full max-w-full object-contain"
                     style={{
                       pointerEvents: 'none',
@@ -573,14 +548,10 @@ const CreatorDesignPage = () => {
                     }}
                   />
                 </div>
-                
                 <motion.button
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
-                  onClick={() => {
-                    setUploadedImage(null);
-                    setIsAddedToCart(false);
-                  }}
+                  onClick={() => removeDesign(activeDesignArea)}
                   className="absolute top-2 right-2 bg-blue-950 text-white rounded-full p-1 hover:bg-neutral-800 z-20"
                 >
                   <X size={12} />
@@ -628,7 +599,7 @@ const CreatorDesignPage = () => {
                 onKeyDown={handleKeyDown}
                 onClick={handleClick}
                 className="w-full px-4 py-2 border border-neutral-200 rounded text-sm focus:outline-none focus:ring-1 focus:ring-neutral-800 focus:border-transparent text-neutral-800 bg-white placeholder-neutral-400"
-                placeholder="Describe your custom design..."
+                placeholder={`Describe your ${activeDesignArea.toLowerCase()} design...`}
               />
             </div>
           </div>
@@ -650,7 +621,7 @@ const CreatorDesignPage = () => {
             ) : (
               <>
                 <Sparkles size={14} />
-                CREATE DESIGN
+                CREATE {activeDesignArea.toUpperCase()} DESIGN
               </>
             )}
           </motion.button>
@@ -665,13 +636,13 @@ const CreatorDesignPage = () => {
               whileHover={!isAddedToCart ? { y: -1 } : {}}
               whileTap={!isAddedToCart ? { scale: 0.99 } : {}}
               className={`w-full py-2.5 rounded text-sm font-normal flex items-center justify-center gap-1.5 ${
-                uploadedImage 
+                Object.values(designs).some(d => d.image)
                   ? isAddedToCart
                     ? "bg-green-600 text-white"
                     : "bg-blue-950 hover:bg-neutral-700 text-white"
                   : "bg-neutral-200 cursor-not-allowed text-neutral-400"
               }`}
-              disabled={!uploadedImage || isAddedToCart}
+              disabled={!Object.values(designs).some(d => d.image) || isAddedToCart}
               onClick={addToCart}
             >
               {isAddedToCart ? (
@@ -682,7 +653,7 @@ const CreatorDesignPage = () => {
               ) : (
                 <>
                   <ShoppingCart size={14} />
-                  Add to Cart • PKR {(selectedProduct.price * quantity).toFixed(2)}
+                  Add to Cart • PKR {calculateTotalPrice().toFixed(2)}
                 </>
               )}
             </motion.button>
@@ -705,6 +676,31 @@ const CreatorDesignPage = () => {
               )}
             </AnimatePresence>
           </motion.div>
+
+          {selectedProduct.designAreas.length > 1 && (
+            <div className="mt-4 pt-3 border-t border-neutral-100">
+              <h4 className="text-xs font-normal text-neutral-600 mb-2">Design Progress</h4>
+              <div className="flex flex-wrap gap-2">
+                {selectedProduct.designAreas.map(area => (
+                  <div 
+                    key={`status-${area.name}`} 
+                    className={`px-2 py-1 text-xs rounded border ${
+                      designs[area.name]?.image 
+                        ? "bg-green-100 text-green-800 border-green-200" 
+                        : "bg-neutral-100 text-neutral-600 border-neutral-200"
+                    }`}
+                  >
+                    {area.name}: {designs[area.name]?.image ? "✓" : "—"}
+                  </div>
+                ))}
+              </div>
+              {Object.values(designs).filter(d => d.image).length >= 2 && (
+                <div className="mt-2 text-xs text-neutral-500">
+                  +300 PKR for multiple designs
+                </div>
+              )}
+            </div>
+          )}
         </motion.div>
       </div>
     </div>
