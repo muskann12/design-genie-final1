@@ -4,10 +4,22 @@ import { Trash2, Plus, Minus, ShoppingCart } from "lucide-react";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { CartItem } from "@/helper/componentTypes";
-import Payment_Confirmation from "../payment_process/page";
+
+type Design = {
+  area: string;
+  image: string;
+};
+
+type CartItemWithDesigns = CartItem & {
+  designs?: Design[];
+  designArea?: string;
+  color?: string;
+  size?: string;
+  image: string;
+};
 
 const CartPage = () => {
-  const [cart, setCart] = useState<CartItem[]>([]);
+  const [cart, setCart] = useState<CartItemWithDesigns[]>([]);
   const [loading, setLoading] = useState(true);
   const [discount, setDiscount] = useState(0);
   const [deliveryFee, setDeliveryFee] = useState(200);
@@ -28,10 +40,12 @@ const CartPage = () => {
       const storedCart = localStorage.getItem("cart");
       if (storedCart) {
         try {
-          const parsedCart = JSON.parse(storedCart).map((item: any) => ({
+          const parsedCart: CartItemWithDesigns[] = JSON.parse(storedCart).map((item: any) => ({
             ...item,
             quantity: item.quantity || 1,
-            id: item.id || Math.random().toString(36).substring(2, 9)
+            id: item.id || Math.random().toString(36).substring(2, 9),
+            designs: item.designs || [],
+            image: item.image || '/default-product-image.jpg'
           }));
           setCart(parsedCart);
         } catch (error) {
@@ -148,7 +162,6 @@ const CartPage = () => {
       console.log("Order submitted:", orderData);
       localStorage.setItem("currentOrder", JSON.stringify(orderData));
       router.push("/payment_process");
-      //<Payment_Confirmation />
       
       // Clear cart after successful order
       setCart([]);
@@ -195,14 +208,21 @@ const CartPage = () => {
             {/* Cart Items */}
             <div className="lg:col-span-2 space-y-4">
               {cart.map((item, index) => (
-                <div key={item.id} className="bg-white  rounded-lg shadow-sm overflow-hidden">
+                <div key={item.id} className="bg-white rounded-lg shadow-sm overflow-hidden">
                   <div className="p-4 md:p-6 flex flex-col md:flex-row gap-6">
                     <div className="flex-shrink-0">
-                      <img
-                        src={item.image}
-                        alt={item.name}
-                        className="w-32 h-32 object-contain rounded border border-gray-200"
-                      />
+                      {/* Main product image with error handling */}
+                      <div className="w-32 h-32 border border-gray-200 rounded flex items-center justify-center overflow-hidden">
+                        <img
+                          src={item.image}
+                          alt={item.name}
+                          className="w-full h-full object-contain"
+                          onError={(e) => {
+                            const target = e.target as HTMLImageElement;
+                            target.src = '/default-product-image.jpg';
+                          }}
+                        />
+                      </div>
                     </div>
                     <div className="flex-grow">
                       <div className="flex justify-between">
@@ -215,10 +235,38 @@ const CartPage = () => {
                         </button>
                       </div>
                       
-                      {item.designArea && (
-                        <p className="text-sm text-gray-600 mt-1">Design: {item.designArea}</p>
+                      {/* Display all design areas and their images */}
+                      {item.designs && item.designs.length > 0 && (
+                        <div className="mt-2">
+                          <p className="text-sm font-medium text-gray-600">Design Locations:</p>
+                          <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 mt-2">
+                            {item.designs.map((design, designIndex) => (
+                              <div key={designIndex} className="flex flex-col items-center">
+                                <div className="w-16 h-16 border border-gray-200 rounded flex items-center justify-center overflow-hidden">
+                                  {design.image ? (
+                                    <img
+                                      src={design.image}
+                                      alt={`${design.area} design`}
+                                      className="w-full h-full object-contain"
+                                      onError={(e) => {
+                                        const target = e.target as HTMLImageElement;
+                                        target.src = '/default-design-image.jpg';
+                                      }}
+                                    />
+                                  ) : (
+                                    <div className="w-full h-full bg-gray-100 flex items-center justify-center">
+                                      <span className="text-xs text-gray-400">No image</span>
+                                    </div>
+                                  )}
+                                </div>
+                                <span className="text-xs text-gray-500 mt-1">{design.area}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
                       )}
-                      <p className="text-sm text-gray-600">Color: {item.color}</p>
+                      
+                      {item.color && <p className="text-sm text-gray-600 mt-1">Color: {item.color}</p>}
                       {item.size && <p className="text-sm text-gray-600">Size: {item.size}</p>}
                       
                       <div className="mt-4 flex items-center text-black justify-between">
@@ -253,7 +301,7 @@ const CartPage = () => {
                 <div className="space-y-3">
                   <div className="flex justify-between">
                     <span className="text-gray-600">Subtotal</span>
-                    <span className="font-medium text-black" >PKR {calculateSubtotal().toLocaleString()}</span>
+                    <span className="font-medium text-black">PKR {calculateSubtotal().toLocaleString()}</span>
                   </div>
                   
                   <div className="flex justify-between">
@@ -349,7 +397,7 @@ const CartPage = () => {
                       id="contactNumber"
                       value={contactNumber}
                       onChange={(e) => setContactNumber(e.target.value)}
-                      className="w-full px-3 text-blackpy-2 border rounded-md text-gray-700 focus:ring-blue-500 focus:border-blue-500"
+                      className="w-full px-3 py-2 border rounded-md text-gray-700 focus:ring-blue-500 focus:border-blue-500"
                       required
                     />
                   </div>
