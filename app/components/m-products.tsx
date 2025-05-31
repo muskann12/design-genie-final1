@@ -15,7 +15,6 @@ interface Product {
   rating: number;
   description?: string;
   sizes?: string[];
-  colors?: string[];
 }
 
 const products: Product[] = [
@@ -25,8 +24,7 @@ const products: Product[] = [
     price: 800, 
     rating: 4,
     description: "Premium quality baseball cap with adjustable strap.",
-    sizes: ["One Size"],
-    colors: ["Black", "White", "Pink"]
+    sizes: ["One Size"]
   },
   { 
     name: "DG MysticCover", 
@@ -34,8 +32,7 @@ const products: Product[] = [
     price: 800, 
     rating: 4,
     description: "Stylish snapback hat with flat brim.",
-    sizes: ["One Size"],
-    colors: ["Black", "White", "Pink"]
+    sizes: ["One Size"]
   },
   { 
     name: "DG UrbanHalo", 
@@ -43,8 +40,7 @@ const products: Product[] = [
     price: 800, 
     rating: 4,
     description: "Trendy bucket hat with a relaxed fit.",
-    sizes: ["One Size"],
-    colors: ["Black", "White", "Pink"]
+    sizes: ["One Size"]
   },
   { 
     name: "DG DreamTopper", 
@@ -52,8 +48,7 @@ const products: Product[] = [
     price: 800, 
     rating: 5,
     description: "Classic dad hat with curved brim.",
-    sizes: ["One Size"],
-    colors: ["Black", "White", "Pink"]
+    sizes: ["One Size"]
   },
   { 
     name: "Trucker Cap", 
@@ -61,8 +56,7 @@ const products: Product[] = [
     price: 800, 
     rating: 4,
     description: "Vintage-style trucker cap with mesh back.",
-    sizes: ["One Size"],
-    colors: ["Black", "White", "Pink"]
+    sizes: ["One Size"]
   },
   { 
     name: "DG SkyCraft", 
@@ -70,8 +64,7 @@ const products: Product[] = [
     price: 800, 
     rating: 4,
     description: "Winter beanie with a small brim.",
-    sizes: ["One Size"],
-    colors: ["Black", "White", "Pink"]
+    sizes: ["One Size"]
   },
 ];
 
@@ -85,16 +78,6 @@ const ProductSlider = () => {
 
   const closeModal = () => {
     setSelectedProduct(null);
-  };
-
-  const getColorStyle = (color: string) => {
-    const colorMap: Record<string, { bg: string, text: string }> = {
-      'black': { bg: 'bg-black', text: 'text-white' },
-      'white': { bg: 'bg-white', text: 'text-black' },
-      'pink': { bg: 'bg-pink-500', text: 'text-white' }
-    };
-
-    return colorMap[color.toLowerCase()] || { bg: 'bg-gray-200', text: 'text-black' };
   };
 
   return (
@@ -233,26 +216,6 @@ const ProductSlider = () => {
                             {size}
                           </button>
                         ))}
-                      </div>
-                    </div>
-                  )}
-
-                  {selectedProduct.colors && (
-                    <div>
-                      <h3 className="font-medium text-gray-900 text-sm">Available Colors</h3>
-                      <div className="flex flex-wrap gap-2 mt-2">
-                        {selectedProduct.colors.map(color => {
-                          const { bg, text } = getColorStyle(color);
-                          return (
-                            <button 
-                              key={color}
-                              className={`px-3 py-1 text-sm rounded-md border border-gray-200 ${bg} ${text} font-medium flex items-center gap-1`}
-                            >
-                              <span className="w-3 h-3 rounded-full border border-gray-300"></span>
-                              {color}
-                            </button>
-                          );
-                        })}
                       </div>
                     </div>
                   )}
