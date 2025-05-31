@@ -15,7 +15,6 @@ interface Product {
   rating: number;
   description?: string;
   sizes?: string[];
-  colors?: string[];
 }
 
 const products: Product[] = [
@@ -25,8 +24,7 @@ const products: Product[] = [
     price: 1300, 
     rating: 4,
     description: "Premium cotton shirt with a comfortable fit, perfect for both casual and formal occasions.",
-    sizes: ["S", "M", "L", "XL", "XXL"],
-    colors: ["Black", "White", "Gray", "Navy Blue", "Olive", "Red", "Brown"]
+    sizes: ["S", "M", "L", "XL", "XXL"]
   },
   { 
     name: "Slim Fit Dress Shirt", 
@@ -34,8 +32,7 @@ const products: Product[] = [
     price: 1300, 
     rating: 4,
     description: "Elegant slim-fit dress shirt made from high-quality fabric that maintains its shape all day.",
-    sizes: ["XS", "S", "M", "L", "XL"],
-    colors: ["Black", "White", "Gray", "Navy Blue", "Red", "Pink", "Brown"]
+    sizes: ["XS", "S", "M", "L", "XL"]
   },
   { 
     name: "Casual Button-Down Shirt", 
@@ -43,8 +40,7 @@ const products: Product[] = [
     price: 1300, 
     rating: 4,
     description: "Relaxed fit button-down shirt with a stylish pattern, ideal for everyday wear.",
-    sizes: ["S", "M", "L", "XL"],
-    colors: ["Black", "White", "Red", "Blue", "Yellow", "Green", "Gray"]
+    sizes: ["S", "M", "L", "XL"]
   },
   { 
     name: "Formal Oxford Shirt", 
@@ -52,8 +48,7 @@ const products: Product[] = [
     price: 1300, 
     rating: 5,
     description: "Premium Oxford shirt with a refined look, perfect for business meetings and special occasions.",
-    sizes: ["S", "M", "L", "XL", "XXL"],
-    colors: ["Black", "Brown", "Olive", "Navy Blue", "Gray", "White", "Burgundy"]
+    sizes: ["S", "M", "L", "XL", "XXL"]
   },
   { 
     name: "Linen Summer Shirt", 
@@ -61,8 +56,7 @@ const products: Product[] = [
     price: 1300, 
     rating: 4,
     description: "Lightweight linen shirt that keeps you cool in warm weather while maintaining a polished look.",
-    sizes: ["S", "M", "L", "XL"],
-    colors: ["Black", "Gray", "Blue", "Red", "White", "Green", "Orange"]
+    sizes: ["S", "M", "L", "XL"]
   },
 ];
 
@@ -76,33 +70,6 @@ const ProductSlider = () => {
 
   const closeModal = () => {
     setSelectedProduct(null);
-  };
-
-  const getColorStyle = (color: string) => {
-    const colorMap: Record<string, string> = {
-      'black': '#000000',
-      'white': '#FFFFFF',
-      'gray': '#808080',
-      'navy blue': '#000080',
-      'olive': '#808000',
-      'red': '#FF0000',
-      'brown': '#964B00',
-      'pink': '#FFC0CB',
-      'blue': '#0000FF',
-      'yellow': '#FFFF00',
-      'green': '#008000',
-      'orange': '#FFA500',
-      'burgundy': '#800020'
-    };
-
-    const lowerColor = color.toLowerCase();
-    const bgColor = colorMap[lowerColor] || '#FFFFFF';
-    const textColor = ['white', 'yellow'].includes(lowerColor) ? '#000000' : '#FFFFFF';
-
-    return { 
-      backgroundColor: bgColor,
-      color: textColor
-    };
   };
 
   return (
@@ -232,26 +199,6 @@ const ProductSlider = () => {
                             {size}
                           </button>
                         ))}
-                      </div>
-                    </div>
-                  )}
-
-                  {selectedProduct.colors && (
-                    <div>
-                      <h3 className="font-medium text-gray-900">Colors</h3>
-                      <div className="flex flex-wrap gap-2 mt-2">
-                        {selectedProduct.colors.map(color => {
-                          const colorStyle = getColorStyle(color);
-                          return (
-                            <button 
-                              key={color}
-                              className="px-3 py-1 border border-gray-300 rounded-md text-xs font-medium transition-all"
-                              style={colorStyle}
-                            >
-                              {color}
-                            </button>
-                          );
-                        })}
                       </div>
                     </div>
                   )}
