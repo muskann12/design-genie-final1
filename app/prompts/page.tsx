@@ -194,10 +194,10 @@ const Index = () => {
 
         <motion.div className="grid gap-6">
           {Object.entries(mainCategories).map(([mainCategory, subCategories]) => (
-            <motion.div key={mainCategory} className="rounded-2xl overflow-hidden border bg-gray-200 shadow-sm">
+            <motion.div key={mainCategory} className="rounded-2xl overflow-hidden border bg-gray-200 text-black shadow-sm">
               <motion.button
                 onClick={() => toggleMainCategory(mainCategory)}
-                className="w-full px-6 py-4 flex justify-between items-center text-left hover:bg-neutral-50  transition-colors"
+                className="w-full px-6 py-4 flex justify-between items-center text-black text-left hover:bg-neutral-50  transition-colors"
               >
                 <span className="text-lg font-medium text-neutral-900 dark:text-neutral-100">{mainCategory}</span>
                 <motion.div animate={{ rotate: expandedMainCategory === mainCategory ? 180 : 0 }}>
