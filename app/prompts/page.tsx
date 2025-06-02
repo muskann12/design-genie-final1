@@ -183,7 +183,7 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-blue-900">
+    <div className="min-h-screen bg-gradient-to-r from-[#4c6489] to-[#001534]">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-8">
         <motion.div className="text-center space-y-4">
           <h1 className="text-4xl sm:text-5xl font-extrabold text-white">AI Prompt Collection</h1>
