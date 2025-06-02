@@ -183,25 +183,25 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-r from-[#4c6489] to-[#001534] ">
+    <div className="min-h-screen bg-blue-900">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-8">
         <motion.div className="text-center space-y-4">
-          <h1 className="text-4xl block  bg-clip-text bg-gradient-to-r from-gray-100 to-blue-400 sm:text-5xl font-extrabold text-neutral-100 ">AI Prompt Collection</h1>
-          <p className="text-neutral-100 dark:text-neutral-400 max-w-2xl mx-auto text-lg">
+          <h1 className="text-4xl sm:text-5xl font-extrabold text-white">AI Prompt Collection</h1>
+          <p className="text-white text-opacity-80 max-w-2xl mx-auto text-lg">
             Select a category to explore design prompts.
           </p>
         </motion.div>
 
         <motion.div className="grid gap-6">
           {Object.entries(mainCategories).map(([mainCategory, subCategories]) => (
-            <motion.div key={mainCategory} className="rounded-2xl overflow-hidden border bg-gray-200 text-black shadow-sm">
+            <motion.div key={mainCategory} className="rounded-2xl overflow-hidden border bg-gray-200 shadow-sm">
               <motion.button
                 onClick={() => toggleMainCategory(mainCategory)}
-                className="w-full px-6 py-4 flex justify-between items-center text-black text-left hover:bg-neutral-50  transition-colors"
+                className="w-full px-6 py-4 flex justify-between items-center text-black text-left hover:bg-gray-100 transition-colors"
               >
-                <span className="text-lg font-medium text-neutral-900 dark:text-neutral-100">{mainCategory}</span>
+                <span className="text-lg font-medium text-gray-900">{mainCategory}</span>
                 <motion.div animate={{ rotate: expandedMainCategory === mainCategory ? 180 : 0 }}>
-                  <IoChevronDown className="w-5 h-5 text-neutral-500" />
+                  <IoChevronDown className="w-5 h-5 text-gray-500" />
                 </motion.div>
               </motion.button>
 
@@ -210,14 +210,14 @@ const Index = () => {
                   <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="border-t">
                     <div className="grid gap-4 p-4">
                       {Object.entries(subCategories).map(([subCategory, prompts]) => (
-                        <motion.div key={subCategory} className="rounded-xl border bg-white ">
+                        <motion.div key={subCategory} className="rounded-xl border bg-white">
                           <motion.button
                             onClick={() => toggleSubCategory(subCategory)}
-                            className="w-full px-6 py-3 flex justify-between items-center text-left hover:bg-gray-100  transition-colors"
+                            className="w-full px-6 py-3 flex justify-between items-center text-left hover:bg-gray-100 transition-colors"
                           >
-                            <span className="text-md font-medium text-neutral-900 ">{subCategory}</span>
+                            <span className="text-md font-medium text-gray-900">{subCategory}</span>
                             <motion.div animate={{ rotate: expandedSubCategories.includes(subCategory) ? 180 : 0 }}>
-                              <IoChevronDown className="w-5 h-5 text-neutral-500" />
+                              <IoChevronDown className="w-5 h-5 text-gray-500" />
                             </motion.div>
                           </motion.button>
 
@@ -226,11 +226,11 @@ const Index = () => {
                               <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="border-t">
                                 <div className="grid gap-2 p-4">
                                   {prompts.map((prompt) => (
-                                    <motion.div key={prompt} className="group p-4 rounded-xl bg-neutral-50  flex justify-between items-center gap-4">
-                                      <span className="text-neutral-700  text-sm sm:text-base">{prompt}</span>
+                                    <motion.div key={prompt} className="group p-4 rounded-xl bg-gray-50 flex justify-between items-center gap-4">
+                                      <span className="text-gray-700 text-sm sm:text-base">{prompt}</span>
                                       <button
                                         onClick={() => copyToClipboard(prompt)}
-                                        className="shrink-0 p-2 rounded-lg text-neutral-500 hover:text-neutral-900  "
+                                        className="shrink-0 p-2 rounded-lg text-gray-500 hover:text-gray-900"
                                         aria-label="Copy to clipboard"
                                       >
                                         {copiedPrompts.includes(prompt) ? <HiCheck className="w-5 h-5" /> : <HiClipboardCopy className="w-5 h-5" />}
