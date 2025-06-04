@@ -52,6 +52,36 @@ const mainCategories: Record<string, Record<string, string[]>> = {
       "A silhouette of a runner with 'Push Beyond Limits.'",
       "'Progress Not Perfection' in minimal typography."
     ],
+     "Eco-Friendly Designs": [
+      "A minimalist Earth illustration with 'Protect Our Planet'.",
+      "A tree with roots forming a recycling symbol.",
+      "A watercolor-style tree growing inside a lightbulb.",
+       "'FEARLESS' in glitch-style bold typography.",
+      "The word 'HUSTLE' in a metallic 3D effect.",
+      "'Dream Big' in retro neon-style typography.",
+       
+    ],
+    "Minimal Zen": [
+  "A single lotus flower with soft pastel background.",
+  "Simple line art of meditating person with balanced chakras.",
+  "'Breathe' written in soft cursive with cloud motifs.",
+  "Abstract waves and moon phases in monochrome.",
+  "A digital circuit board forming a heart shape.",
+  "'404 NOT FOUND' styled in cyberpunk colors.",
+  "Robot hand holding a flower with glitch effect.",
+  "'UPLOADING DREAMS' with progress bar illustration.",
+],
+    "Royal / Luxury Vibes": [
+  "'QUEEN' in gold foil style with crown icon.",
+  "Lion's face with glowing eyes and ornate mane design.",
+  "Black and gold geometric design with luxury texture.",
+  "'ROYALTY' with vintage crest emblem background.",
+  "'ROYALTY' with vintage crest emblem background.",
+  "'KING MODE' with glowing crown and diamond texture.",
+  "Gold chains and laurel wreaths forming a bold frame.",
+  "'ELITE' written in a serif font with velvet background.",
+  "Ornate sword crossing behind a golden shield crest.",
+],
   },
   "Caps": {
     "Streetwear & Hip-Hop Caps": [
@@ -114,42 +144,7 @@ const mainCategories: Record<string, Record<string, string[]>> = {
       "A truck art peacock with vibrant colors.",
       "A traditional ajrak pattern in a minimal style."
     ],
-    "Nature & Wildlife Caps": [
-      "A roaring bear in a mountain landscape.",
-      "An eagle in flight with sharp details.",
-      "A silhouette of a deer standing in a forest.",
-      "A wolf howling at the moon.",
-      "A hummingbird hovering near a flower.",
-      "A tiger's eyes with a dark jungle background.",
-      "A whale diving into the ocean.",
-      "A desert scene with a lone cactus.",
-      "A dolphin jumping over the waves.",
-      "A cherry blossom branch with petals falling."
-    ],
-    "Futuristic & Sci-Fi Caps": [
-      "A UFO hovering over a city at night.",
-      "A robotic hand with glowing circuits.",
-      "A cybernetic wolf with neon highlights.",
-      "A planet with a futuristic space station.",
-      "A time traveler stepping into a portal.",
-      "A holographic skull with digital effects.",
-      "A robotic samurai with energy swords.",
-      "An astronaut floating in a galaxy.",
-      "A futuristic city skyline with flying cars.",
-      "An alien face with glowing eyes."
-    ],
-    "Abstract & Geometric Caps": [
-      "A pattern of interconnected triangles.",
-      "An optical illusion spiral.",
-      "A broken glass effect with light reflections.",
-      "A three-dimensional cube pattern.",
-      "A maze-like geometric design.",
-      "An abstract face formed with simple lines.",
-      "A colorful, overlapping circle pattern.",
-      "A futuristic grid with neon lights.",
-      "A surreal melting clock design.",
-      "A hypnotic vortex swirl."
-    ],
+    
   },
 };
 
