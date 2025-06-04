@@ -54,6 +54,8 @@ const CreatorDesignPage = () => {
   const inputRef = useRef<HTMLInputElement>(null);
   const imageRefs = useRef<Record<string, HTMLDivElement | null>>({});
 
+  const prefix = "create design for printing ";
+  
   const setImageRef = (area: string) => (el: HTMLDivElement | null) => {
     imageRefs.current[area] = el;
   };
@@ -89,18 +91,17 @@ const CreatorDesignPage = () => {
   ];
 
   const suggestedPrompts = [
-    "Minimalist geometric pattern",
-    "Vintage typography design",
-    "Abstract watercolor composition",
-    "Modern linear illustration",
-    "Botanical line drawing",
-    "Monochromatic architectural sketch",
-    "Handcrafted lettering",
-    "Subtle texture overlay"
+    "Vintage car by the beach, golden hour, retro look",
+    "Floral skull art, dark theme, modern tattoo design",
+    "Minimalist quote: 'Stay Wild', bold font, white background",
+    "Space girl with glowing hair, stars around, surreal feel",
+    "Arabic calligraphy, gold ink on black, elegant style",
+    "Hand holding blooming flowers, minimal line art, white canvas",
+    "Text art: 'Soft Heart, Strong Mind' — serif font, beige tones, clean poster look",
+    "Text art: 'Soft Heart, Strong Mind' — serif font, beige tones, clean poster look",
+    "Aesthetic word art: 'Sabr ✦ Shukr' — elegant Arabic-English mix, soft pastel background"
   ];
 
-  const prefix = "create a design for printing ";
-  
   useEffect(() => {
     if (inputRef.current) {
       inputRef.current.selectionStart = prefix.length;
@@ -184,7 +185,7 @@ const CreatorDesignPage = () => {
   };
 
   const generateImage = async () => {
-    const prompt = prefix + (selectedPrompt || customPrompt);
+    const prompt = prefix + customPrompt.trim();
     if (!prompt.trim() || prompt === prefix) {
       toast.error("Please enter your design description!");
       return;
@@ -229,7 +230,6 @@ const CreatorDesignPage = () => {
   const calculateTotalPrice = () => {
     const basePrice = selectedProduct.price;
     const designCount = Object.values(designs).filter(design => design.image).length;
-    // Add 300 PKR if there are 2 or more designs
     const additionalDesignCost = designCount >= 2 ? 300 : 0;
     return (basePrice + additionalDesignCost) * quantity;
   };
@@ -245,7 +245,7 @@ const CreatorDesignPage = () => {
     const cartItem: CartItem = {
       name: selectedProduct.name,
       designs: Object.values(designs).filter(design => design.image),
-      price: calculateTotalPrice() / quantity, // Store per-item price
+      price: calculateTotalPrice() / quantity,
       size,
       color,
       quantity,
@@ -300,8 +300,6 @@ const CreatorDesignPage = () => {
       input.setSelectionRange(prefix.length, prefix.length);
     }
   };
-
-  const navigateToPrompts = () => router.push("/prompt");
 
   const removeDesign = (area: string) => {
     setDesigns(prev => ({
@@ -501,7 +499,7 @@ const CreatorDesignPage = () => {
 
           <div 
             ref={setImageRef(activeDesignArea)}
-            className="mb-4 h-64 bg-neutral-50 rounded-lg border border-neutral-200 flex items-center justify-center overflow-hidden relative"
+            className="mb-4 h-96 bg-neutral-50 rounded-lg border border-neutral-200 flex items-center justify-center overflow-hidden relative"
             onDragStart={(e) => e.preventDefault()}
             onMouseDown={(e) => {
               if (e.target instanceof HTMLImageElement) {
@@ -535,16 +533,12 @@ const CreatorDesignPage = () => {
                     animate={{ opacity: 1, scale: 1 }}
                     src={designs[activeDesignArea].image} 
                     alt={`Generated ${activeDesignArea}`} 
-                    className="max-h-full max-w-full object-contain"
+                    className="h-full w-full object-contain"
                     style={{
                       pointerEvents: 'none',
                       userSelect: 'none',
                       WebkitUserSelect: 'none',
-                      WebkitTouchCallout: 'none',
-                      maxHeight: '100%',
-                      maxWidth: '100%',
-                      height: 'auto',
-                      width: 'auto'
+                      WebkitTouchCallout: 'none'
                     }}
                   />
                 </div>
@@ -566,7 +560,7 @@ const CreatorDesignPage = () => {
               <motion.button
                 whileHover={{ x: 2 }}
                 whileTap={{ scale: 0.98 }}
-                onClick={navigateToPrompts}
+                onClick={() => router.push("/prompt")}
                 className="flex items-center text-xs text-blue-600 hover:text-blue-800"
               >
                 View all prompts <ChevronRight size={14} className="ml-0.5" />
