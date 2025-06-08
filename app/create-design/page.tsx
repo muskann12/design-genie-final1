@@ -98,7 +98,6 @@ const CreatorDesignPage = () => {
     "Arabic calligraphy, gold ink on black, elegant style",
     "Hand holding blooming flowers, minimal line art, white canvas",
     "Text art: 'Soft Heart, Strong Mind' — serif font, beige tones, clean poster look",
-    "Text art: 'Soft Heart, Strong Mind' — serif font, beige tones, clean poster look",
     "Aesthetic word art: 'Sabr ✦ Shukr' — elegant Arabic-English mix, soft pastel background"
   ];
 
