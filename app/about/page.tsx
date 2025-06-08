@@ -1,8 +1,15 @@
 "use client";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 const AboutPage = () => {
+  const router = useRouter();
+
+  const handleCreateDesign = () => {
+    router.push("/create-design");
+  };
+
   return (
     <div
       className="relative min-h-screen flex flex-col items-center justify-center bg-black bg-cover bg-center text-white px-6 sm:px-12 py-12"
@@ -33,7 +40,7 @@ const AboutPage = () => {
           transition={{ duration: 1, delay: 0.3 }}
         >
           <p className="text-lg sm:text-xl lg:text-2xl text-gray-300 leading-relaxed">
-            Where imagination meets craftsmanship! We turn your ideas into reality with personalized designs for hoodies, t-shirts, mugs, and more. Whether it’s creating unique merchandise for your brand or gifts that stand out, we’re here to make every design meaningful and memorable.
+            Where imagination meets craftsmanship! We turn your ideas into reality with personalized designs for hoodies, t-shirts, mugs, and more. Whether it's creating unique merchandise for your brand or gifts that stand out, we're here to make every design meaningful and memorable.
           </p>
 
           <p className="text-lg sm:text-xl lg:text-2xl text-gray-300 leading-relaxed">
@@ -84,6 +91,7 @@ const AboutPage = () => {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 1 }}
+          onClick={handleCreateDesign}
         >
           CREATE DESIGN
         </motion.button>
