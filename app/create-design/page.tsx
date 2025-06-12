@@ -559,7 +559,7 @@ const CreatorDesignPage = () => {
               <motion.button
                 whileHover={{ x: 2 }}
                 whileTap={{ scale: 0.98 }}
-                onClick={() => router.push("/prompt")}
+                onClick={() => router.push("/prompts")}
                 className="flex items-center text-xs text-blue-600 hover:text-blue-800"
               >
                 View all prompts <ChevronRight size={14} className="ml-0.5" />
