@@ -45,7 +45,8 @@ const CartPage = () => {
             quantity: item.quantity || 1,
             id: item.id || Math.random().toString(36).substring(2, 9),
             designs: item.designs || [],
-            image: item.image || '/default-product-image.jpg'
+            image: item.image || (item.name?.toLowerCase().includes("cap") ? "/images/plain-cap.png" : "/images/plain-shirt1.png")
+
           }));
           setCart(parsedCart);
         } catch (error) {
@@ -219,7 +220,7 @@ const CartPage = () => {
                           className="w-full h-full object-contain"
                           onError={(e) => {
                             const target = e.target as HTMLImageElement;
-                            target.src = '/default-product-image.jpg';
+                            target.src = '/images/plain-shirt1.png';
                           }}
                         />
                       </div>
@@ -250,7 +251,7 @@ const CartPage = () => {
                                       className="w-full h-full object-contain"
                                       onError={(e) => {
                                         const target = e.target as HTMLImageElement;
-                                        target.src = '/default-design-image.jpg';
+                                        target.src = '/images/plain-shirt1.png';
                                       }}
                                     />
                                   ) : (

@@ -205,18 +205,15 @@ const CreatorDesignPage = () => {
       const data = await response.json();
       if (!data.imageUrl) throw new Error("Invalid response format");
 
-      const blobResponse = await fetch(data.imageUrl);
-      const blob = await blobResponse.blob();
-      const blobUrl = URL.createObjectURL(blob);
-      
       setDesigns(prev => ({
-        ...prev,
-        [activeDesignArea]: {
-          ...prev[activeDesignArea],
-          image: blobUrl,
-          prompt: prompt.trim()
-        }
-      }));
+  ...prev,
+  [activeDesignArea]: {
+    ...prev[activeDesignArea],
+    image: data.imageUrl, // Store the direct URL instead of a blob
+    prompt: prompt.trim()
+  }
+}));
+
       toast.success(`${activeDesignArea} design created successfully!`);
     } catch (error: any) {
       console.error("Generation Error:", error);
