@@ -21,17 +21,17 @@ const Footer: React.FC = () => {
 
         {/* Social Icons */}
         <div className="flex space-x-6 mt-7 md:mt-0 mr-[39px]">
-          <a href="#" className="relative group font-inter">
+          <a href="https://www.instagram.com/design.genie.pk/" target="_blank" className="relative group font-inter">
             <div className="w-12 h-12 flex items-center justify-center rounded-full border-2 border-white">
               <FaInstagram className="text-white text-2xl group-hover:text-gray-400" />
             </div>
           </a>
-          <a href="#" className="relative group font-inter">
+          <a href="https://www.facebook.com/share/15irkb5UdA/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="relative group font-inter">
             <div className="w-12 h-12 flex items-center justify-center rounded-full border-2 border-white">
               <FaFacebookF className="text-white text-2xl group-hover:text-gray-400" />
             </div>
           </a>
-          <a href="#" className="relative group font-inter">
+          <a href="mailto: designgenie.pakistan@gmail.com" rel="noopener noreferrer" target="_blank" className="relative group font-inter">
             <div className="w-12 h-12 flex items-center justify-center rounded-full border-2 border-white">
               <FaEnvelope className="text-white text-2xl group-hover:text-gray-400" />
             </div>

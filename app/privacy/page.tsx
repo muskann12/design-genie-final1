@@ -47,7 +47,7 @@ export default function PrivacyPolicy() {
             },
             {
               title: "11. Contact Us",
-              text: "For any privacy-related concerns, email us at support@designgenie.com."
+              text: "For any privacy-related concerns, email us at designgenie.pakistan@gmail.com."
             },
           ].map((section, index) => (
             <section key={index} className="bg-white/10 p-6 rounded-xl shadow-md backdrop-blur-sm border border-white/10">

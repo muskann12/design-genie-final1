@@ -51,7 +51,7 @@ export default function TermsAndConditions() {
             },
             {
               title: "12. Contact",
-              text: "For legal or terms-related queries, reach out to us at support@designgenie.com."
+              text: "For legal or terms-related queries, reach out to us at designgenie.pakistan@gmail.com."
             },
           ].map((section, index) => (
             <section key={index} className="bg-white/10 p-6 rounded-xl shadow-md backdrop-blur-sm border border-white/10">
