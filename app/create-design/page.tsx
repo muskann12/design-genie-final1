@@ -580,18 +580,19 @@ const CreatorDesignPage = () => {
               ))}
             </div>
 
-            <div className="relative">
-              <input
-                type="text"
-                ref={inputRef}
-                value={prefix + customPrompt}
-                onChange={handlePromptChange}
-                onKeyDown={handleKeyDown}
-                onClick={handleClick}
-                className="w-full px-4 py-2 border border-neutral-200 rounded text-sm focus:outline-none focus:ring-1 focus:ring-neutral-800 focus:border-transparent text-neutral-800 bg-white placeholder-neutral-400"
-                placeholder={`Describe your ${activeDesignArea.toLowerCase()} design...`}
-              />
-            </div>
+        <div className="relative">
+  <input
+    type="text"
+    ref={inputRef}
+    value={prefix + customPrompt}
+    onChange={handlePromptChange}
+    onKeyDown={handleKeyDown}
+    onClick={handleClick}
+    className="w-full px-4 py-3 border border-neutral-200 rounded-lg shadow-2xl text-m focus:outline-none focus:ring-1 focus:ring-neutral-800 focus:border-transparent text-neutral-800 bg-white placeholder-neutral-400 h-12"
+    placeholder={`Describe your ${activeDesignArea.toLowerCase()} design...`}
+  />
+</div>
+
           </div>
 
           <motion.button 

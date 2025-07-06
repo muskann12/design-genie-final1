@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { IoChevronDown } from "react-icons/io5";
 import { HiClipboardCopy, HiCheck } from "react-icons/hi";
 
-const mainCategories: Record<string, Record<string, string[]>> = {
+const mainCategories = {
   "T-Shirts": {
     "T-Shirt Design Prompts": [
       "A minimalist Earth illustration with 'Protect Our Planet' in stylish typography.",
@@ -40,7 +40,7 @@ const mainCategories: Record<string, Record<string, string[]>> = {
       "Hip-hop album covers with a unique color scheme.",
       "A cyberpunk-style gas mask with holographic reflections."
     ],
-    "Motivational & Inspirational T-Shirt Designs ": [
+    "Motivational & Inspirational T-Shirt Designs": [
       "'Stay Strong' in bold, brush-stroke typography.",
       "A mountain peak with 'Keep Climbing' written below.",
       "'Never Give Up' with a shattered effect.",
@@ -52,36 +52,34 @@ const mainCategories: Record<string, Record<string, string[]>> = {
       "A silhouette of a runner with 'Push Beyond Limits.'",
       "'Progress Not Perfection' in minimal typography."
     ],
-     "Eco-Friendly Designs": [
+    "Eco-Friendly Designs": [
       "A minimalist Earth illustration with 'Protect Our Planet'.",
       "A tree with roots forming a recycling symbol.",
       "A watercolor-style tree growing inside a lightbulb.",
-       "'FEARLESS' in glitch-style bold typography.",
+      "'FEARLESS' in glitch-style bold typography.",
       "The word 'HUSTLE' in a metallic 3D effect.",
-      "'Dream Big' in retro neon-style typography.",
-       
+      "'Dream Big' in retro neon-style typography."
     ],
     "Minimal Zen": [
-  "A single lotus flower with soft pastel background.",
-  "Simple line art of meditating person with balanced chakras.",
-  "'Breathe' written in soft cursive with cloud motifs.",
-  "Abstract waves and moon phases in monochrome.",
-  "A digital circuit board forming a heart shape.",
-  "'404 NOT FOUND' styled in cyberpunk colors.",
-  "Robot hand holding a flower with glitch effect.",
-  "'UPLOADING DREAMS' with progress bar illustration.",
-],
+      "A single lotus flower with soft pastel background.",
+      "Simple line art of meditating person with balanced chakras.",
+      "'Breathe' written in soft cursive with cloud motifs.",
+      "Abstract waves and moon phases in monochrome.",
+      "A digital circuit board forming a heart shape.",
+      "'404 NOT FOUND' styled in cyberpunk colors.",
+      "Robot hand holding a flower with glitch effect.",
+      "'UPLOADING DREAMS' with progress bar illustration."
+    ],
     "Royal / Luxury Vibes": [
-  "'QUEEN' in gold foil style with crown icon.",
-  "Lion's face with glowing eyes and ornate mane design.",
-  "Black and gold geometric design with luxury texture.",
-  "'ROYALTY' with vintage crest emblem background.",
-  "'ROYALTY' with vintage crest emblem background.",
-  "'KING MODE' with glowing crown and diamond texture.",
-  "Gold chains and laurel wreaths forming a bold frame.",
-  "'ELITE' written in a serif font with velvet background.",
-  "Ornate sword crossing behind a golden shield crest.",
-],
+      "'QUEEN' in gold foil style with crown icon.",
+      "Lion's face with glowing eyes and ornate mane design.",
+      "Black and gold geometric design with luxury texture.",
+      "'ROYALTY' with vintage crest emblem background.",
+      "'KING MODE' with glowing crown and diamond texture.",
+      "Gold chains and laurel wreaths forming a bold frame.",
+      "'ELITE' written in a serif font with velvet background.",
+      "Ornate sword crossing behind a golden shield crest."
+    ]
   },
   "Caps": {
     "Streetwear & Hip-Hop Caps": [
@@ -143,9 +141,8 @@ const mainCategories: Record<string, Record<string, string[]>> = {
       "A green and white wave pattern representing the flag.",
       "A truck art peacock with vibrant colors.",
       "A traditional ajrak pattern in a minimal style."
-    ],
-    
-  },
+    ]
+  }
 };
 
 const Index = () => {
@@ -186,7 +183,6 @@ const Index = () => {
             Select a category to explore design prompts.
           </p>
         </motion.div>
-
         <motion.div className="grid gap-6">
           {Object.entries(mainCategories).map(([mainCategory, subCategories]) => (
             <motion.div key={mainCategory} className="rounded-2xl overflow-hidden border bg-gray-200 shadow-sm">
@@ -199,7 +195,6 @@ const Index = () => {
                   <IoChevronDown className="w-5 h-5 text-gray-500" />
                 </motion.div>
               </motion.button>
-
               <AnimatePresence>
                 {expandedMainCategory === mainCategory && (
                   <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="border-t">
@@ -215,7 +210,6 @@ const Index = () => {
                               <IoChevronDown className="w-5 h-5 text-gray-500" />
                             </motion.div>
                           </motion.button>
-
                           <AnimatePresence>
                             {expandedSubCategories.includes(subCategory) && (
                               <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="border-t">
@@ -245,6 +239,16 @@ const Index = () => {
             </motion.div>
           ))}
         </motion.div>
+        <div className="flex justify-center mt-4">
+          
+          <button
+            onClick={() => setExpandedMainCategory(null)}
+            className="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors"
+            
+          >
+            <a href="/create-design">Back to Design</a>
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -86,7 +86,7 @@ const HeroSection = () => {
                     />
                   </svg>
                 </div>
-                <span className="font-semibold tracking-wide text-gray-800 group-hover:text-gray-900">
+                <span className="font-semibold tracking-wide text-gray-800 group-hover:text-gray-900 ">
                   START CUSTOMIZING
                 </span>
               </motion.button>
