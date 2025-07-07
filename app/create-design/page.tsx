@@ -72,7 +72,8 @@ const CreatorDesignPage = () => {
         { name: "Front", preview: "/images/front.png", className: "col-span-1" },
         { name: "Back", preview: "/images/back.png", className: "col-span-1" },
         { name: "Right Sleeve", preview: "/images/sleeve.png", className: "col-span-1" },
-        { name: "Left Sleeve", preview: "/images/sleeve.png", className: "col-span-1" }
+        { name: "Left Sleeve", preview: "/images/sleeve.png", className: "col-span-1" },
+        { name: "Logo", preview: "/images/logo.jpg", className: "col-span-1" }
       ]
     },
     { 
@@ -98,7 +99,9 @@ const CreatorDesignPage = () => {
     "Arabic calligraphy, gold ink on black, elegant style",
     "Hand holding blooming flowers, minimal line art, white canvas",
     "Text art: 'Soft Heart, Strong Mind' — serif font, beige tones, clean poster look",
-    "Aesthetic word art: 'Sabr ✦ Shukr' — elegant Arabic-English mix, soft pastel background"
+    "Aesthetic word art: 'Sabr ✦ Shukr' — elegant Arabic-English mix, soft pastel background",
+    "Minimalist company logo, clean lines, professional look",
+    "Circular badge logo with initials, vintage style"
   ];
 
   useEffect(() => {
@@ -206,13 +209,13 @@ const CreatorDesignPage = () => {
       if (!data.imageUrl) throw new Error("Invalid response format");
 
       setDesigns(prev => ({
-  ...prev,
-  [activeDesignArea]: {
-    ...prev[activeDesignArea],
-    image: data.imageUrl, // Store the direct URL instead of a blob
-    prompt: prompt.trim()
-  }
-}));
+        ...prev,
+        [activeDesignArea]: {
+          ...prev[activeDesignArea],
+          image: data.imageUrl,
+          prompt: prompt.trim()
+        }
+      }));
 
       toast.success(`${activeDesignArea} design created successfully!`);
     } catch (error: any) {
@@ -377,7 +380,7 @@ const CreatorDesignPage = () => {
               <label className="block text-xs font-normal text-neutral-600 mb-2">
                 Design Placement <span className="ml-1 text-neutral-400">({selectedItem})</span>
               </label>
-              <div className={`grid ${selectedItem === "Shirt" ? "grid-cols-2" : "grid-cols-4"} gap-2`}>
+              <div className={`grid ${selectedItem === "Shirt" ? "grid-cols-4" : "grid-cols-3"} gap-2`}>
                 {selectedProduct.designAreas.map((area) => (
                   <motion.button
                     key={`area-${area.name}`}
@@ -580,19 +583,18 @@ const CreatorDesignPage = () => {
               ))}
             </div>
 
-        <div className="relative">
-  <input
-    type="text"
-    ref={inputRef}
-    value={prefix + customPrompt}
-    onChange={handlePromptChange}
-    onKeyDown={handleKeyDown}
-    onClick={handleClick}
-    className="w-full px-4 py-3 border border-neutral-200 rounded-lg shadow-2xl text-m focus:outline-none focus:ring-1 focus:ring-neutral-800 focus:border-transparent text-neutral-800 bg-white placeholder-neutral-400 h-12"
-    placeholder={`Describe your ${activeDesignArea.toLowerCase()} design...`}
-  />
-</div>
-
+            <div className="relative">
+              <input
+                type="text"
+                ref={inputRef}
+                value={prefix + customPrompt}
+                onChange={handlePromptChange}
+                onKeyDown={handleKeyDown}
+                onClick={handleClick}
+                className="w-full px-4 py-2 border border-neutral-200 rounded text-sm focus:outline-none focus:ring-1 focus:ring-neutral-800 focus:border-transparent text-neutral-800 bg-white placeholder-neutral-400"
+                placeholder={`Describe your ${activeDesignArea.toLowerCase()} design...`}
+              />
+            </div>
           </div>
 
           <motion.button 
