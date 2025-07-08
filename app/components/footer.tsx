@@ -3,7 +3,7 @@ import { FaInstagram, FaFacebookF, FaEnvelope, FaWhatsapp } from "react-icons/fa
 import "@fontsource/inter/400.css";
 
 const Footer: React.FC = () => {
-  const phoneNumber = "03205421692"; // Your phone number
+  const phoneNumber = "+92-3205421692"; // Your phone number
   const whatsappUrl = `https://wa.me/${phoneNumber}`; // WhatsApp URL
 
   return (
@@ -15,7 +15,7 @@ const Footer: React.FC = () => {
           <input
             type="email"
             placeholder="Enter Your Email Address"
-            className="p-8 rounded-[88px] w-full md:w-96 text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="p-8 rounded-[88px] w-full md:w-96 text-gray-200 focus:outline-none focus:ring-2 focus:ring-black-400"
           />
         </div>
 
