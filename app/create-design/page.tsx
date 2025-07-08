@@ -100,8 +100,6 @@ const CreatorDesignPage = () => {
     "Hand holding blooming flowers, minimal line art, white canvas",
     "Text art: 'Soft Heart, Strong Mind' — serif font, beige tones, clean poster look",
     "Aesthetic word art: 'Sabr ✦ Shukr' — elegant Arabic-English mix, soft pastel background",
-    "Minimalist tech startup logo, futuristic font, abstract symbol, blue and white theme, modern and clean",
-    "Creative logo for a futuristic delivery app, bold sans-serif letters, dynamic arrow icon, red and white color scheme"
   ];
 
   useEffect(() => {
