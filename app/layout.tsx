@@ -4,6 +4,7 @@ import "./globals.css";
 import TopHeader from "./components/topheader";
 import Header from "./components/navbar";
 import Footer from "./components/footer";
+
 import KommunicateChat from "./components/KommunicateChat";
 
 const geistSans = localFont({
