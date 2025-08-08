@@ -37,9 +37,13 @@ export default function Header() {
           <Link href="/create-design" className="text-white hover:text-gray-300">CREATE DESIGN</Link>
           <Link href="/prompts" className="text-white hover:text-gray-300">VIEW PROMPTS</Link>
           <Link href="/about" className="text-white hover:text-gray-300">ABOUT</Link>
-          <Link href="/cart">
-            <AiOutlineShoppingCart className="text-white hover:text-gray-300 text-2xl" />
-          </Link>
+          <Link
+  href="/cart"
+  className="flex items-center gap-1 text-white hover:text-gray-300 text-sm sm:text-base"
+>
+  <AiOutlineShoppingCart className="text-lg sm:text-xl" />
+  <span className="block sm:inline ">Cart</span>
+</Link>
         </nav>
 
         {/* Mobile Menu Button */}
