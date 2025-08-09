@@ -228,6 +228,7 @@ const ProductSlider = () => {
                       SHOP NOW
                     </button>
                   </div>
+                  
                 </div>
               </div>
             </div>
