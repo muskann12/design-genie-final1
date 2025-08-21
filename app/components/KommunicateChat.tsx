@@ -1,29 +1,24 @@
 "use client";
+import { useEffect } from "react";
 
-import Script from "next/script";
+export default function KommunicateChat() {
+  useEffect(() => {
+    (function (d, m) {
+      var kommunicateSettings = {
+        appId: "33c7b415c0e9380b6991e65c5049b17c0",
+        popupWidget: true,
+        automaticChatOpenOnNavigation: true,
+      };
+      var s = document.createElement("script");
+      s.type = "text/javascript";
+      s.async = true;
+      s.src = "https://widget.kommunicate.io/v2/kommunicate.app";
+      var h = document.getElementsByTagName("head")[0];
+      h.appendChild(s);
+      (window as any).kommunicate = m;
+      m._globals = kommunicateSettings;
+    })(document, (window as any).kommunicate || {});
+  }, []);
 
-const KommunicateChat = () => {
-  return (
-    <>
-      <Script
-        id="kommunicate-script"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `
-            (function(d, m){
-                var kommunicateSettings = 
-                    {"appId":"33ff3567a177b27e873a16b764ac77f67","popupWidget":true,"automaticChatOpenOnNavigation":true};
-                var s = document.createElement("script"); s.type = "text/javascript"; s.async = true;
-                s.src = "https://widget.kommunicate.io/v2/kommunicate.app";
-                var h = document.getElementsByTagName("head")[0]; h.appendChild(s);
-                window.kommunicate = m; m._globals = kommunicateSettings;
-            })(document, window.kommunicate || {});
-            /* NOTE : Use web server to view HTML files as real-time update will not work if you directly open the HTML file in the browser. */
-          `,
-        }}
-      />
-    </>
-  );
-};
-
-export default KommunicateChat;
+  return null; // ye component sirf script inject karega, UI return nahi karega
+}
