@@ -15,10 +15,10 @@ export default function KommunicateChat() {
       s.src = "https://widget.kommunicate.io/v2/kommunicate.app";
       var h = document.getElementsByTagName("head")[0];
       h.appendChild(s);
-      (window as any).kommunicate = m;
+      window.kommunicate = m;
       m._globals = kommunicateSettings;
-    })(document, (window as any).kommunicate || {});
+    })(document, window.kommunicate || {});
   }, []);
 
-  return null; // ye component sirf script inject karega, UI return nahi karega
+  return null; // Ye component UI render nahi karega, sirf script inject karega
 }
