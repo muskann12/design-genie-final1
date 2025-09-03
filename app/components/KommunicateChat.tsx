@@ -1,6 +1,13 @@
 "use client";
 import { useEffect } from "react";
 
+// Extend Window type to include kommunicate
+declare global {
+  interface Window {
+    kommunicate: any;
+  }
+}
+
 export default function KommunicateChat() {
   useEffect(() => {
     (function (d, m) {
