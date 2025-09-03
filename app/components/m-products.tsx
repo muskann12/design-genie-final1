@@ -82,6 +82,10 @@ const ProductSlider = () => {
 
   return (
     <div className="relative w-full max-w-7xl mx-auto p-4 bg-gradient-to-b from-gray-50 to-white">
+
+
+      //cap collection  
+      {/* 
       <div className="mb-6 text-center">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -147,7 +151,6 @@ const ProductSlider = () => {
         ))}
       </Swiper>
 
-      {/* Navigation buttons */}
       <motion.button
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
@@ -162,6 +165,7 @@ const ProductSlider = () => {
       >
         <ChevronRight className="w-5 h-5" />
       </motion.button>
+      */}
 
       {/* Product Detail Modal */}
       {selectedProduct && (

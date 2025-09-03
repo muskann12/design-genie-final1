@@ -7,7 +7,7 @@ const Footer: React.FC = () => {
   const whatsappUrl = `https://wa.me/${phoneNumber}`; // WhatsApp URL
 
   return (
-    <footer className="bg-gradient-to-r from-[#021B41] to-[#09203f] text-white p-8 rounded-tl-[150px]">
+    <footer className="bg-gradient-to-r from-[#000] to-[#09203f] text-white p-8 rounded-tl-[150px]">
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
         {/* Stay Connected Section */}
         <div className="flex flex-col ml-16 items-center md:items-start">
@@ -21,12 +21,12 @@ const Footer: React.FC = () => {
 
         {/* Social Icons */}
         <div className="flex space-x-6 mt-7 md:mt-0 mr-[39px]">
-          <a href="https://www.instagram.com/design.genie.pk/" target="_blank" className="relative group font-inter">
+          <a href="https://www.instagram.com/design.genie.shop/" target="_blank" className="relative group font-inter">
             <div className="w-12 h-12 flex items-center justify-center rounded-full border-2 border-white">
               <FaInstagram className="text-white text-2xl group-hover:text-gray-400" />
             </div>
           </a>
-          <a href="https://www.facebook.com/share/15irkb5UdA/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="relative group font-inter">
+          <a href="https://www.facebook.com/profile.php?id=61579150530934" target="_blank" rel="noopener noreferrer" className="relative group font-inter">
             <div className="w-12 h-12 flex items-center justify-center rounded-full border-2 border-white">
               <FaFacebookF className="text-white text-2xl group-hover:text-gray-400" />
             </div>

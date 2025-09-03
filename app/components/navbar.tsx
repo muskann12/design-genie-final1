@@ -22,7 +22,7 @@ export default function Header() {
         {/* Logo */}
         <Link href="/">
           <Image 
-            src="/images/l.png" 
+            src="/images/2.png" 
             alt="Logo"
             width={80}
             height={80}

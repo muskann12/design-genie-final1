@@ -6,69 +6,74 @@ import Link from "next/link";
 
 const products = [
   // Gaming Collection
-  { name: "DG PixelWarp", category: "Gaming", image: "/images/gaming1.png", price: 1300, sale: true },
-  { name: "DG RetroConsole", category: "Gaming", image: "/images/gaming2.png", price: 1300, sale: false },
+  { name: "DG PixelWarp", category: "Gaming", image: "/images/gaming1.png", price: 1499, sale: true },
+  { name: "DG RetroConsole", category: "Gaming", image: "/images/gaming2.png", price: 1499, sale: false },
   
   
   // Gym Collection
-  { name: "DG IronFlex", category: "Gym", image: "/images/gym1.png", price: 1300, sale: true },
-  { name: "DG PowerLift", category: "Gym", image: "/images/gym2.png", price: 1300, sale: false },
-  { name: "DG MuscleTech", category: "Gym", image: "/images/gym3.png", price: 1300, sale: true },
-  { name: "DG CardioBurn", category: "Gym", image: "/images/gym4.png", price: 1300, sale: false },
+  { name: "DG IronFlex", category: "Gym", image: "/images/gym1.png", price: 1499, sale: true },
+  { name: "DG MuscleTech", category: "Gym", image: "/images/gym3.png", price: 1499, sale: true },
+  { name: "DG CardioBurn", category: "Gym", image: "/images/gym4.png", price: 1499, sale: false },
   
   // Technology Collection
-  { name: "DG QuantumChip", category: "Technology", image: "/images/tec1.png", price: 1300, sale: true },
-  { name: "DG CyberMatrix", category: "Technology", image: "/images/tec2.png", price: 1300, sale: false },
-  { name: "DG NanoByte", category: "Technology", image: "/images/tec3.png", price: 1300, sale: true },
-  { name: "DG FutureGrid", category: "Technology", image: "/images/tec4.png", price: 1300, sale: false },
+  { name: "DG QuantumChip", category: "Technology", image: "/images/tec1.png", price: 1499, sale: true },
+  { name: "DG CyberMatrix", category: "Technology", image: "/images/tec2.png", price: 1499, sale: false },
+  { name: "DG NanoByte", category: "Technology", image: "/images/tec3.png", price: 1499, sale: true },
+  { name: "DG FutureGrid", category: "Technology", image: "/images/tec4.png", price: 1499, sale: false },
   
   // Travel Collection
-  { name: "DG GlobeTrotter", category: "Travel", image: "/images/travel1.png", price: 1300, sale: true },
-  { name: "DG WanderLust", category: "Travel", image: "/images/travel2.png", price: 1300, sale: false },
-  { name: "DG NomadVibe", category: "Travel", image: "/images/travel3.png", price: 1300, sale: true },
-  { name: "DG AdventurePeak", category: "Travel", image: "/images/travel4.png", price: 1300, sale: false },
+  { name: "DG GlobeTrotter", category: "Travel", image: "/images/travel1.png", price: 1499, sale: true },
+  { name: "DG WanderLust", category: "Travel", image: "/images/travel2.png", price: 1499, sale: false },
+  { name: "DG NomadVibe", category: "Travel", image: "/images/travel3.png", price: 1499, sale: true },
+  { name: "DG AdventurePeak", category: "Travel", image: "/images/travel4.png", price: 1499, sale: false },
   
+    // Cultural collection 
+  { name: "DG Khana Badosh", category: "Cultural", image: "/images/khana.png", price: 1499, sale: false },
+  { name: "DG Fate Punk", category: "Cultural", image: "/images/punk.jpeg", price: 1499, sale: false },
+  { name: "DG Death Meets", category: "Cultural", image: "/images/get.png", price: 1499, sale: false },
+  // { name: "DG Fly", category: "Cultural", image: "/images/fly.png", price: 1499, sale: false },
   
-  // Caps Collection
-  { name: "DG CrownCaps", category: "Caps", image: "/images/cap1.jpg", price: 800, sale: true },
-  { name: "DG FlightCap", category: "Caps", image: "/images/cap2.jpg", price: 800, sale: false },
-  { name: "DG AuraPeak", category: "Caps", image: "/images/cap3.jpg", price: 800, sale: true },
-  { name: "DG StreetSpell", category: "Caps", image: "/images/cap4.jpg", price: 800, sale: false },
-  { name: "DG BoldGenie", category: "Caps", image: "/images/c1.jpg", price: 800, sale: true },
-  { name: "DG MysticCover", category: "Caps", image: "/images/c2.jpg", price: 800, sale: false },
-  { name: "DG UrbanHalo", category: "Caps", image: "/images/c3.jpg", price: 800, sale: true },
-  { name: "DG DreamTopper", category: "Caps", image: "/images/c4.jpg", price: 800, sale: false },
-  { name: "DG VibeVault", category: "Caps", image: "/images/c5.jpg", price: 800, sale: true },
-  { name: "DG SkyCraft", category: "Caps", image: "/images/c6.jpg", price: 800, sale: false },
+  // Couple collection 
+  { name: "DG Love Forever", category: "Couple Goal", image: "/images/couple1.png", price: 2599, sale: false },
+
+  // // Caps Collection
+  // { name: "DG CrownCaps", category: "Caps", image: "/images/cap1.jpg", price: 800, sale: true },
+  // { name: "DG FlightCap", category: "Caps", image: "/images/cap2.jpg", price: 800, sale: false },
+  // { name: "DG AuraPeak", category: "Caps", image: "/images/cap3.jpg", price: 800, sale: true },
+  // { name: "DG StreetSpell", category: "Caps", image: "/images/cap4.jpg", price: 800, sale: false },
+  // { name: "DG BoldGenie", category: "Caps", image: "/images/c1.jpg", price: 800, sale: true },
+  // { name: "DG MysticCover", category: "Caps", image: "/images/c2.jpg", price: 800, sale: false },
+  // { name: "DG UrbanHalo", category: "Caps", image: "/images/c3.jpg", price: 800, sale: true },
+  // { name: "DG DreamTopper", category: "Caps", image: "/images/c4.jpg", price: 800, sale: false },
+  // { name: "DG VibeVault", category: "Caps", image: "/images/c5.jpg", price: 800, sale: true },
+  // { name: "DG SkyCraft", category: "Caps", image: "/images/c6.jpg", price: 800, sale: false },
   
   // T-Shirts Collection
-  { name: "DG NeonNova", category: "T-Shirts", image: "/images/s1.png", price: 1300, sale: true },
-  { name: "DG PixelPulse", category: "T-Shirts", image: "/images/s2.png", price: 1300, sale: false },
-  { name: "DG CyberSpirit", category: "T-Shirts", image: "/images/s3.png", price: 1300, sale: true },
-  { name: "DG GlitchGlory", category: "T-Shirts", image: "/images/s4.png", price: 1300, sale: false },
-  { name: "DG BinaryBloom", category: "T-Shirts", image: "/images/s5.png", price: 1300, sale: true },
-  { name: "DG SynthWave", category: "T-Shirts", image: "/images/s6.png", price: 1300, sale: false },
-  { name: "DG MatrixMuse", category: "T-Shirts", image: "/images/s7.png", price: 1300, sale: true },
-  { name: "DG VoidVibes", category: "T-Shirts", image: "/images/s8.png", price: 1300, sale: false },
-  { name: "DG TechTonic", category: "T-Shirts", image: "/images/s15.png", price: 1300, sale: true },
-  { name: "DG CodeCraze", category: "T-Shirts", image: "/images/s16.png", price: 1300, sale: false },
-  { name: "DG FutureFabric", category: "T-Shirts", image: "/images/s17.png", price: 1300, sale: true },
-  { name: "DG DigitalDrip", category: "T-Shirts", image: "/images/s18.png", price: 1300, sale: false },
-  { name: "DG HologramHood", category: "T-Shirts", image: "/images/s19.png", price: 1300, sale: true },
-  { name: "DG QuantumQuirk", category: "T-Shirts", image: "/images/ps1.jpg", price: 1300, sale: false },
-  { name: "DG RetroRush", category: "T-Shirts", image: "/images/ps2.jpg", price: 1300, sale: true },
-  { name: "DG ArcadeAura", category: "T-Shirts", image: "/images/ps4.jpg", price: 1300, sale: false },
-  { name: "DG PixelPanther", category: "T-Shirts", image: "/images/ps6.jpg", price: 1300, sale: true },
-  { name: "DG NeonNomad", category: "T-Shirts", image: "/images/slider5.png", price: 1300, sale: false }
+  { name: "DG NeonNova", category: "T-Shirts", image: "/images/s1.png", price: 1499, sale: true },
+  { name: "DG PixelPulse", category: "T-Shirts", image: "/images/s2.png", price: 1499, sale: false },
+  { name: "DG CyberSpirit", category: "T-Shirts", image: "/images/s3.png", price: 1499, sale: true },
+  { name: "DG GlitchGlory", category: "T-Shirts", image: "/images/s4.png", price: 1499, sale: false },
+  { name: "DG MatrixMuse", category: "T-Shirts", image: "/images/s7.png", price: 1499, sale: true },
+  { name: "DG VoidVibes", category: "T-Shirts", image: "/images/s8.png", price: 1499, sale: false },
+  { name: "DG TechTonic", category: "T-Shirts", image: "/images/s15.png", price: 1499, sale: true },
+  { name: "DG CodeCraze", category: "T-Shirts", image: "/images/s16.png", price: 1499, sale: false },
+  { name: "DG FutureFabric", category: "T-Shirts", image: "/images/s17.png", price: 1499, sale: true },
+  { name: "DG DigitalDrip", category: "T-Shirts", image: "/images/s18.png", price: 1499, sale: false },
+  { name: "DG HologramHood", category: "T-Shirts", image: "/images/s19.png", price: 1499, sale: true },
+  { name: "DG QuantumQuirk", category: "T-Shirts", image: "/images/ps1.jpg", price: 1499, sale: false },
+  { name: "DG RetroRush", category: "T-Shirts", image: "/images/ps2.jpg", price: 1499, sale: true },
+  { name: "DG ArcadeAura", category: "T-Shirts", image: "/images/ps4.jpg", price: 1499, sale: false },
+  { name: "DG PixelPanther", category: "T-Shirts", image: "/images/ps6.jpg", price: 1499, sale: true },
+  { name: "DG NeonNomad", category: "T-Shirts", image: "/images/slider5.png", price: 1499, sale: false }
 ];
 
 const sizes = ["S", "M", "L", "XL"];
-const categories = ["All", "Gaming", "Gym", "Technology", "Travel", "Street Style", "Caps", "T-Shirts"];
+const categories = ["All", "Gaming", "Gym", "Technology", "Travel", "Street Style", "Cultural", "Couple Goal", "Caps", "T-Shirts"];
 const priceRanges = [
   { label: "All", min: 0, max: Infinity },
   { label: "Under PKR 1000", min: 0, max: 999 },
-  { label: "PKR 1000 - PKR 1500", min: 1000, max: 1500 },
-  { label: "PKR 1500 - PKR 2000", min: 1500, max: 2000 },
+  { label: "PKR 1000 - PKR 1499", min: 1000, max: 1499 },
+  { label: "PKR 1499 - PKR 2000", min: 1499, max: 2000 },
   { label: "Above PKR 2000", min: 2001, max: Infinity }
 ];
 
@@ -159,7 +164,9 @@ const Index = () => {
       case "Travel": return "bg-green-100 text-green-800";
       case "Street Style": return "bg-yellow-100 text-yellow-800";
       case "Caps": return "bg-indigo-100 text-indigo-800";
-      case "T-Shirts": return "bg-pink-100 text-pink-800";
+      case "T-Shirts": return "bg-green-100 text-green-800";
+      case "Cultural": return "bg-red-100 text-red-800";
+      case "Couple Goal": return "bg-pink-100 text-pink-800";
       default: return "bg-gray-100 text-gray-800";
     }
   };
