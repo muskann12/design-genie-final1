@@ -6,31 +6,32 @@ import Link from "next/link";
 
 const products = [
   // Gaming Collection
-  { name: "DG PixelWarp", category: "Gaming", image: "/images/gaming1.png", price: 1499, sale: true },
+  { name: "DG PixelWarp", category: "Gaming", image: "/images/gaming1.png", price: 1499, sale: false },
   { name: "DG RetroConsole", category: "Gaming", image: "/images/gaming2.png", price: 1499, sale: false },
   
   
   // Gym Collection
-  { name: "DG IronFlex", category: "Gym", image: "/images/gym1.png", price: 1499, sale: true },
-  { name: "DG MuscleTech", category: "Gym", image: "/images/gym3.png", price: 1499, sale: true },
+  { name: "DG IronFlex", category: "Gym", image: "/images/gym1.png", price: 1499, sale: false },
+  { name: "DG MuscleTech", category: "Gym", image: "/images/gym3.png", price: 1499, sale: false },
   { name: "DG CardioBurn", category: "Gym", image: "/images/gym4.png", price: 1499, sale: false },
+  { name: "DG Gain", category: "Gym", image: "/images/gym6.png", price: 1499, sale: false },
   
   // Technology Collection
-  { name: "DG QuantumChip", category: "Technology", image: "/images/tec1.png", price: 1499, sale: true },
+  { name: "DG QuantumChip", category: "Technology", image: "/images/tec1.png", price: 1499, sale: false },
   { name: "DG CyberMatrix", category: "Technology", image: "/images/tec2.png", price: 1499, sale: false },
-  { name: "DG NanoByte", category: "Technology", image: "/images/tec3.png", price: 1499, sale: true },
+  { name: "DG NanoByte", category: "Technology", image: "/images/tec3.png", price: 1499, sale: false },
   { name: "DG FutureGrid", category: "Technology", image: "/images/tec4.png", price: 1499, sale: false },
   
   // Travel Collection
-  { name: "DG GlobeTrotter", category: "Travel", image: "/images/travel1.png", price: 1499, sale: true },
+  { name: "DG GlobeTrotter", category: "Travel", image: "/images/travel1.png", price: 1499, sale: false },
   { name: "DG WanderLust", category: "Travel", image: "/images/travel2.png", price: 1499, sale: false },
-  { name: "DG NomadVibe", category: "Travel", image: "/images/travel3.png", price: 1499, sale: true },
+  { name: "DG NomadVibe", category: "Travel", image: "/images/travel3.png", price: 1499, sale: false },
   { name: "DG AdventurePeak", category: "Travel", image: "/images/travel4.png", price: 1499, sale: false },
   
     // Cultural collection 
-  { name: "DG Khana Badosh", category: "Cultural", image: "/images/khana.png", price: 1499, sale: false },
-  { name: "DG Fate Punk", category: "Cultural", image: "/images/punk.jpeg", price: 1499, sale: false },
-  { name: "DG Death Meets", category: "Cultural", image: "/images/get.png", price: 1499, sale: false },
+  { name: "DG Khana Badosh", category: "Cultural", image: "/images/khana1.png", price: 1499, sale: false },
+  { name: "DG Fate Punk", category: "Cultural", image: "/images/punk2.png", price: 1499, sale: false },
+  { name: "DG Death Meets", category: "Cultural", image: "/images/get3.png", price: 1499, sale: false },
   // { name: "DG Fly", category: "Cultural", image: "/images/fly.png", price: 1499, sale: false },
   
   // Couple collection 
@@ -49,21 +50,20 @@ const products = [
   // { name: "DG SkyCraft", category: "Caps", image: "/images/c6.jpg", price: 800, sale: false },
   
   // T-Shirts Collection
-  { name: "DG NeonNova", category: "T-Shirts", image: "/images/s1.png", price: 1499, sale: true },
+  { name: "DG NeonNova", category: "T-Shirts", image: "/images/s1.png", price: 1499, sale: false },
   { name: "DG PixelPulse", category: "T-Shirts", image: "/images/s2.png", price: 1499, sale: false },
-  { name: "DG CyberSpirit", category: "T-Shirts", image: "/images/s3.png", price: 1499, sale: true },
+  { name: "DG CyberSpirit", category: "T-Shirts", image: "/images/s3.png", price: 1499, sale: false },
   { name: "DG GlitchGlory", category: "T-Shirts", image: "/images/s4.png", price: 1499, sale: false },
-  { name: "DG MatrixMuse", category: "T-Shirts", image: "/images/s7.png", price: 1499, sale: true },
-  { name: "DG VoidVibes", category: "T-Shirts", image: "/images/s8.png", price: 1499, sale: false },
-  { name: "DG TechTonic", category: "T-Shirts", image: "/images/s15.png", price: 1499, sale: true },
+  { name: "DG MatrixMuse", category: "T-Shirts", image: "/images/s7.png", price: 1499, sale: false },
+  { name: "DG TechTonic", category: "T-Shirts", image: "/images/s15.png", price: 1499, sale: false },
   { name: "DG CodeCraze", category: "T-Shirts", image: "/images/s16.png", price: 1499, sale: false },
-  { name: "DG FutureFabric", category: "T-Shirts", image: "/images/s17.png", price: 1499, sale: true },
+  { name: "DG FutureFabric", category: "T-Shirts", image: "/images/s17.png", price: 1499, sale: false },
   { name: "DG DigitalDrip", category: "T-Shirts", image: "/images/s18.png", price: 1499, sale: false },
-  { name: "DG HologramHood", category: "T-Shirts", image: "/images/s19.png", price: 1499, sale: true },
+  { name: "DG HologramHood", category: "T-Shirts", image: "/images/s19.png", price: 1499, sale: false },
   { name: "DG QuantumQuirk", category: "T-Shirts", image: "/images/ps1.jpg", price: 1499, sale: false },
-  { name: "DG RetroRush", category: "T-Shirts", image: "/images/ps2.jpg", price: 1499, sale: true },
+  { name: "DG RetroRush", category: "T-Shirts", image: "/images/ps2.jpg", price: 1499, sale: false },
   { name: "DG ArcadeAura", category: "T-Shirts", image: "/images/ps4.jpg", price: 1499, sale: false },
-  { name: "DG PixelPanther", category: "T-Shirts", image: "/images/ps6.jpg", price: 1499, sale: true },
+  { name: "DG PixelPanther", category: "T-Shirts", image: "/images/ps6.jpg", price: 1499, sale: false },
   { name: "DG NeonNomad", category: "T-Shirts", image: "/images/slider5.png", price: 1499, sale: false }
 ];
 
