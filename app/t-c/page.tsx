@@ -7,7 +7,7 @@ export default function TermsAndConditions() {
           {[
             {
               title: "1. Introduction",
-              text: "By accessing Design Genie, you agree to the terms laid out on this page. If you disagree with any part, please discontinue using our services."
+              text: "By accessing PARVAAZ, you agree to the terms laid out on this page. If you disagree with any part, please discontinue using our services."
             },
             {
               title: "2. Orders & Payment",
@@ -35,11 +35,11 @@ export default function TermsAndConditions() {
             },
             {
               title: "8. Intellectual Property",
-              text: "All content, logos, and designs on Design Genie are our property and protected under copyright law."
+              text: "All content, logos, and designs on PARVAAZ are our property and protected under copyright law."
             },
             {
               title: "9. Limitation of Liability",
-              text: "Design Genie is not liable for indirect damages resulting from your use or inability to use the site."
+              text: "PARVAAZ is not liable for indirect damages resulting from your use or inability to use the site."
             },
             {
               title: "10. Changes to Terms",

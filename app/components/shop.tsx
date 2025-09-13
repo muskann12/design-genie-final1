@@ -6,65 +6,65 @@ import Link from "next/link";
 
 const products = [
   // Gaming Collection
-  { name: "DG PixelWarp", category: "Gaming", image: "/images/gaming1.png", price: 1499, sale: false },
-  { name: "DG RetroConsole", category: "Gaming", image: "/images/gaming2.png", price: 1499, sale: false },
+  { name: "PRVZ PixelWarp", category: "Gaming", image: "/images/gaming1.png", price: 1499, sale: false },
+  { name: "PRVZ RetroConsole", category: "Gaming", image: "/images/gaming2.png", price: 1499, sale: false },
   
   
   // Gym Collection
-  { name: "DG IronFlex", category: "Gym", image: "/images/gym1.png", price: 1499, sale: false },
-  { name: "DG MuscleTech", category: "Gym", image: "/images/gym3.png", price: 1499, sale: false },
-  { name: "DG CardioBurn", category: "Gym", image: "/images/gym4.png", price: 1499, sale: false },
-  { name: "DG Gain", category: "Gym", image: "/images/gym6.png", price: 1499, sale: false },
+  { name: "PRVZ IronFlex", category: "Gym", image: "/images/gym1.png", price: 1499, sale: false },
+  { name: "PRVZ MuscleTech", category: "Gym", image: "/images/gym3.png", price: 1499, sale: false },
+  { name: "PRVZ CardioBurn", category: "Gym", image: "/images/gym4.png", price: 1499, sale: false },
+  { name: "PRVZ Gain", category: "Gym", image: "/images/gym6.png", price: 1499, sale: false },
   
   // Technology Collection
-  { name: "DG QuantumChip", category: "Technology", image: "/images/tec1.png", price: 1499, sale: false },
-  { name: "DG CyberMatrix", category: "Technology", image: "/images/tec2.png", price: 1499, sale: false },
-  { name: "DG NanoByte", category: "Technology", image: "/images/tec3.png", price: 1499, sale: false },
-  { name: "DG FutureGrid", category: "Technology", image: "/images/tec4.png", price: 1499, sale: false },
+  { name: "PRVZ QuantumChip", category: "Technology", image: "/images/tec1.png", price: 1499, sale: false },
+  { name: "PRVZ CyberMatrix", category: "Technology", image: "/images/tec2.png", price: 1499, sale: false },
+  { name: "PRVZ NanoByte", category: "Technology", image: "/images/tec3.png", price: 1499, sale: false },
+  { name: "PRVZ FutureGrid", category: "Technology", image: "/images/tec4.png", price: 1499, sale: false },
   
   // Travel Collection
-  { name: "DG GlobeTrotter", category: "Travel", image: "/images/travel1.png", price: 1499, sale: false },
-  { name: "DG WanderLust", category: "Travel", image: "/images/travel2.png", price: 1499, sale: false },
-  { name: "DG NomadVibe", category: "Travel", image: "/images/travel3.png", price: 1499, sale: false },
-  { name: "DG AdventurePeak", category: "Travel", image: "/images/travel4.png", price: 1499, sale: false },
+  { name: "PRVZ GlobeTrotter", category: "Travel", image: "/images/travel1.png", price: 1499, sale: false },
+  { name: "PRVZ WanderLust", category: "Travel", image: "/images/travel2.png", price: 1499, sale: false },
+  { name: "PRVZ NomadVibe", category: "Travel", image: "/images/travel3.png", price: 1499, sale: false },
+  { name: "PRVZ AdventurePeak", category: "Travel", image: "/images/travel4.png", price: 1499, sale: false },
   
     // Cultural collection 
-  { name: "DG Khana Badosh", category: "Cultural", image: "/images/khana1.png", price: 1499, sale: false },
-  { name: "DG Fate Punk", category: "Cultural", image: "/images/punk2.png", price: 1499, sale: false },
-  { name: "DG Death Meets", category: "Cultural", image: "/images/get3.png", price: 1499, sale: false },
-  // { name: "DG Fly", category: "Cultural", image: "/images/fly.png", price: 1499, sale: false },
+  { name: "PRVZ Khana Badosh", category: "Cultural", image: "/images/khana1.png", price: 1499, sale: false },
+  { name: "PRVZ Fate Punk", category: "Cultural", image: "/images/punk2.png", price: 1499, sale: false },
+  { name: "PRVZ Death Meets", category: "Cultural", image: "/images/get3.png", price: 1499, sale: false },
+  // { name: "PRVZ Fly", category: "Cultural", image: "/images/fly.png", price: 1499, sale: false },
   
   // Couple collection 
-  { name: "DG Love Forever", category: "Couple Goal", image: "/images/couple1.png", price: 2599, sale: false },
+  { name: "PRVZ Love Forever", category: "Couple Goal", image: "/images/couple1.png", price: 2599, sale: false },
 
   // // Caps Collection
-  // { name: "DG CrownCaps", category: "Caps", image: "/images/cap1.jpg", price: 800, sale: true },
-  // { name: "DG FlightCap", category: "Caps", image: "/images/cap2.jpg", price: 800, sale: false },
-  // { name: "DG AuraPeak", category: "Caps", image: "/images/cap3.jpg", price: 800, sale: true },
-  // { name: "DG StreetSpell", category: "Caps", image: "/images/cap4.jpg", price: 800, sale: false },
-  // { name: "DG BoldGenie", category: "Caps", image: "/images/c1.jpg", price: 800, sale: true },
-  // { name: "DG MysticCover", category: "Caps", image: "/images/c2.jpg", price: 800, sale: false },
-  // { name: "DG UrbanHalo", category: "Caps", image: "/images/c3.jpg", price: 800, sale: true },
-  // { name: "DG DreamTopper", category: "Caps", image: "/images/c4.jpg", price: 800, sale: false },
-  // { name: "DG VibeVault", category: "Caps", image: "/images/c5.jpg", price: 800, sale: true },
-  // { name: "DG SkyCraft", category: "Caps", image: "/images/c6.jpg", price: 800, sale: false },
+  // { name: "PRVZ CrownCaps", category: "Caps", image: "/images/cap1.jpg", price: 800, sale: true },
+  // { name: "PRVZ FlightCap", category: "Caps", image: "/images/cap2.jpg", price: 800, sale: false },
+  // { name: "PRVZ AuraPeak", category: "Caps", image: "/images/cap3.jpg", price: 800, sale: true },
+  // { name: "PRVZ StreetSpell", category: "Caps", image: "/images/cap4.jpg", price: 800, sale: false },
+  // { name: "PRVZ BolPRVZenie", category: "Caps", image: "/images/c1.jpg", price: 800, sale: true },
+  // { name: "PRVZ MysticCover", category: "Caps", image: "/images/c2.jpg", price: 800, sale: false },
+  // { name: "PRVZ UrbanHalo", category: "Caps", image: "/images/c3.jpg", price: 800, sale: true },
+  // { name: "PRVZ DreamTopper", category: "Caps", image: "/images/c4.jpg", price: 800, sale: false },
+  // { name: "PRVZ VibeVault", category: "Caps", image: "/images/c5.jpg", price: 800, sale: true },
+  // { name: "PRVZ SkyCraft", category: "Caps", image: "/images/c6.jpg", price: 800, sale: false },
   
   // T-Shirts Collection
-  { name: "DG NeonNova", category: "T-Shirts", image: "/images/s1.png", price: 1499, sale: false },
-  { name: "DG PixelPulse", category: "T-Shirts", image: "/images/s2.png", price: 1499, sale: false },
-  { name: "DG CyberSpirit", category: "T-Shirts", image: "/images/s3.png", price: 1499, sale: false },
-  { name: "DG GlitchGlory", category: "T-Shirts", image: "/images/s4.png", price: 1499, sale: false },
-  { name: "DG MatrixMuse", category: "T-Shirts", image: "/images/s7.png", price: 1499, sale: false },
-  { name: "DG TechTonic", category: "T-Shirts", image: "/images/s15.png", price: 1499, sale: false },
-  { name: "DG CodeCraze", category: "T-Shirts", image: "/images/s16.png", price: 1499, sale: false },
-  { name: "DG FutureFabric", category: "T-Shirts", image: "/images/s17.png", price: 1499, sale: false },
-  { name: "DG DigitalDrip", category: "T-Shirts", image: "/images/s18.png", price: 1499, sale: false },
-  { name: "DG HologramHood", category: "T-Shirts", image: "/images/s19.png", price: 1499, sale: false },
-  { name: "DG QuantumQuirk", category: "T-Shirts", image: "/images/ps1.jpg", price: 1499, sale: false },
-  { name: "DG RetroRush", category: "T-Shirts", image: "/images/ps2.jpg", price: 1499, sale: false },
-  { name: "DG ArcadeAura", category: "T-Shirts", image: "/images/ps4.jpg", price: 1499, sale: false },
-  { name: "DG PixelPanther", category: "T-Shirts", image: "/images/ps6.jpg", price: 1499, sale: false },
-  { name: "DG NeonNomad", category: "T-Shirts", image: "/images/slider5.png", price: 1499, sale: false }
+  { name: "PRVZ NeonNova", category: "T-Shirts", image: "/images/s1.png", price: 1499, sale: false },
+  { name: "PRVZ PixelPulse", category: "T-Shirts", image: "/images/s2.png", price: 1499, sale: false },
+  { name: "PRVZ CyberSpirit", category: "T-Shirts", image: "/images/s3.png", price: 1499, sale: false },
+  { name: "PRVZ GlitchGlory", category: "T-Shirts", image: "/images/s4.png", price: 1499, sale: false },
+  { name: "PRVZ MatrixMuse", category: "T-Shirts", image: "/images/s7.png", price: 1499, sale: false },
+  { name: "PRVZ TechTonic", category: "T-Shirts", image: "/images/s15.png", price: 1499, sale: false },
+  { name: "PRVZ CodeCraze", category: "T-Shirts", image: "/images/s16.png", price: 1499, sale: false },
+  { name: "PRVZ FutureFabric", category: "T-Shirts", image: "/images/s17.png", price: 1499, sale: false },
+  { name: "PRVZ DigitalDrip", category: "T-Shirts", image: "/images/s18.png", price: 1499, sale: false },
+  { name: "PRVZ HologramHood", category: "T-Shirts", image: "/images/s19.png", price: 1499, sale: false },
+  { name: "PRVZ QuantumQuirk", category: "T-Shirts", image: "/images/ps1.jpg", price: 1499, sale: false },
+  { name: "PRVZ RetroRush", category: "T-Shirts", image: "/images/ps2.jpg", price: 1499, sale: false },
+  { name: "PRVZ ArcadeAura", category: "T-Shirts", image: "/images/ps4.jpg", price: 1499, sale: false },
+  { name: "PRVZ PixelPanther", category: "T-Shirts", image: "/images/ps6.jpg", price: 1499, sale: false },
+  { name: "PRVZ NeonNomad", category: "T-Shirts", image: "/images/slider5.png", price: 1499, sale: false }
 ];
 
 const sizes = ["S", "M", "L", "XL"];
@@ -194,7 +194,7 @@ const Index = () => {
       <div className="max-w-7xl mx-auto relative z-10 px-4 sm:px-6 lg:px-8 py-8">
         <div className="text-center mb-12">
           <div className="inline-block bg-gray-200 text-gray-700 text-xs px-3 py-1 rounded-full mb-3 font-medium">
-            Design Genie Collections
+            PARVAAZ Collections
           </div>
           <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-3">
             Premium Streetwear & Lifestyle
@@ -393,7 +393,7 @@ const Index = () => {
                 
                 <div className="relative aspect-square">
                   <img
-                    src={product.image || "https://placehold.co/400x400/e5e7eb/9ca3af?text=DG"}
+                    src={product.image || "https://placehold.co/400x400/e5e7eb/9ca3af?text=PRVZ"}
                     alt={product.name}
                     className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                     loading="lazy"

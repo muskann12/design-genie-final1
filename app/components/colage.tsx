@@ -40,7 +40,7 @@ const HeroBanner = () => {
           className="text-center mb-12 md:mb-16"
         >
           <span className="inline-block rounded-full bg-white/10 backdrop-blur-sm px-4 py-1.5 text-sm font-medium tracking-wide text-white mb-4 border border-white/20">
-            DESIGN GENIE
+            PARVAAZ
           </span>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white mb-4">
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-blue-100">

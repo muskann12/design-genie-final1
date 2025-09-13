@@ -8,7 +8,7 @@ export default function TopHeader() {
     show && (
       <div className="bg-[#040b1f] text-white py-1 flex justify-center items-center">
         <p className="text-lg font-thin text-center animate-pulse">
-         Design Genie – Grab Your <span className="font-bold">10% OFF</span> Today!
+         PARVAAZ – Grab Your <span className="font-bold">10% OFF</span> Today!
         </p>
       </div>
     )

@@ -26,7 +26,7 @@ const AboutPage = () => {
           Meet the Magic Behind the Designs
         </h2>
         <h1 className="text-3xl sm:text-5xl font-extrabold bg-gradient-to-r from-[#d1d1d1] via-[#aeaeae] to-[#000d5a] bg-clip-text text-transparent mt-2">
-          Welcome to Design Genie
+          Welcome to PARVAAZ
         </h1>
       </motion.div>
 
@@ -44,7 +44,7 @@ const AboutPage = () => {
           </p>
 
           <p className="text-lg sm:text-xl lg:text-2xl text-gray-300 leading-relaxed">
-            At Design Genie, we believe every design tells a story. Our passionate team combines creativity and precision to deliver high-quality, custom products that reflect your style and vision. Let us bring a little magic to your designs and help you make an unforgettable impression!
+            At PARVAAZ, we believe every design tells a story. Our passionate team combines creativity and precision to deliver high-quality, custom products that reflect your style and vision. Along with modern fashion, we also work on cultural and traditional designs that carry a unique essence. These exclusive pieces are available on our website and Instagram page, showcasing the perfect blend of heritage and contemporary style. Let us bring a little magic to your designs and help you make an unforgettable impression!
           </p>
         </motion.div>
 
@@ -57,7 +57,7 @@ const AboutPage = () => {
         >
           <Image
             src="/images/img1.png"
-            alt="Design Genie"
+            alt="PARVAAZ"
             width={400}
             height={400}
             className="rounded-lg shadow-lg w-full max-w-[300px] sm:max-w-[400px] md:max-w-[450px] lg:max-w-[500px]"

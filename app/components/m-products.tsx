@@ -19,7 +19,7 @@ interface Product {
 
 const products: Product[] = [
   { 
-    name: "DG BoldGenie", 
+    name: "PRVZ BolPRVZenie", 
     image: "/images/c1.jpg", 
     price: 800, 
     rating: 4,
@@ -27,7 +27,7 @@ const products: Product[] = [
     sizes: ["One Size"]
   },
   { 
-    name: "DG MysticCover", 
+    name: "PRVZ MysticCover", 
     image: "/images/c2.jpg", 
     price: 800, 
     rating: 4,
@@ -35,7 +35,7 @@ const products: Product[] = [
     sizes: ["One Size"]
   },
   { 
-    name: "DG UrbanHalo", 
+    name: "PRVZ UrbanHalo", 
     image: "/images/c3.jpg", 
     price: 800, 
     rating: 4,
@@ -43,7 +43,7 @@ const products: Product[] = [
     sizes: ["One Size"]
   },
   { 
-    name: "DG DreamTopper", 
+    name: "PRVZ DreamTopper", 
     image: "/images/c4.jpg", 
     price: 800, 
     rating: 5,
@@ -59,7 +59,7 @@ const products: Product[] = [
     sizes: ["One Size"]
   },
   { 
-    name: "DG SkyCraft", 
+    name: "PRVZ SkyCraft", 
     image: "/images/c6.jpg", 
     price: 800, 
     rating: 4,

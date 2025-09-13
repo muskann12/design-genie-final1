@@ -34,10 +34,10 @@ const HeroSection = () => {
             transition={{ duration: 0.5 }}
             className="text-5xl md:text-6xl font-extrabold lg:text-7xl"
           >
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-gray-950 to-blue-600 font-extrabold">Unleash Your</span>
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-gray-950 to-blue-600 font-extrabold">Creativity,</span>
-            <span className="block font-extrabold">Design <span className="bg-gradient-to-r from-gray-950 to-blue-600 bg-clip-text text-transparent">Your</span></span>
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-gray-950 to-blue-600 font-extrabold">Way!</span>
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-gray-950 to-blue-600 font-extrabold">Rise With</span>
+            <span className="block font-extrabold">PARVAAZ</span>
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-gray-950 to-blue-600 font-extrabold">Style <span className="bg-gradient-to-r from-gray-950 to-blue-600 bg-clip-text text-transparent">Your</span></span>
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-gray-950 to-blue-600 font-extrabold">Dreams!</span>
           </motion.h1>
 
           {/* Button & Image */}
@@ -55,9 +55,8 @@ const HeroSection = () => {
                 transition={{ duration: 0.5, delay: 0.3 }}
                 className="text-gray-950 text-base font-light max-w-sm"
               >
-                Transform your imagination into reality. <br />
-                Design anything you dream of with the 
-                freedom to customize every detail.
+                Turn your vision into timeless style.
+                Create anything you imagine with freedom in every detail.
               </motion.p>
 
               {/* Button */}
@@ -112,7 +111,7 @@ const HeroSection = () => {
 
           {/* Hero Image */}
           <motion.img
-            src="/images/hero1.png"
+            src="/images/hero6.png"
             alt="Hero Image"
             className="w-auto h-auto max-h-[60vh] lg:mt-20 md:max-h-screen lg:w-[700px] lg:h-[700px] object-contain rounded-lg relative z-10 mt-[-20px]"
             animate={{ scale: [1, 1.02, 1] }}
